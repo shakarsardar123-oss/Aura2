@@ -4,6 +4,18 @@ import 'package:aura_assistant/core/errors/result.dart';
 
 typedef MemoryResult<T> = Result<T, MemoryFailure>;
 
+enum MemoryFailurePhase {
+  store,
+  recall,
+  search,
+  update,
+  forget,
+  embedding,
+  policy,
+  integration,
+  unknown,
+}
+
 sealed class MemoryFailure {
   const MemoryFailure._({
     this.message,

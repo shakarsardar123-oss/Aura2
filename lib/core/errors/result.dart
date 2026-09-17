@@ -1,6 +1,3 @@
-/// A minimal Result/Either type used across the domain layer to represent
-/// an operation that either succeeds with a value of type [T] or fails
-/// with a failure of type [F].
 sealed class Result<T, F> {
   const Result();
 
@@ -22,6 +19,7 @@ class Failure<T, F> extends Result<T, F> {
 extension ResultAccessors<T, F> on Result<T, F> {
   bool get isSuccess => this is Success<T, F>;
   bool get isError => this is Failure<T, F>;
+  bool get isFailure => isError;
 
   T? get value => switch (this) {
         Success<T, F> success => success.value,
@@ -40,6 +38,13 @@ extension ResultAccessors<T, F> on Result<T, F> {
     return switch (this) {
       Success<T, F> s => success(s.value),
       Failure<T, F> f => failure(f.failure),
+    };
+  }
+
+  W fold<W>(W Function(T value) onSuccess, W Function(F failure) onFailure) {
+    return switch (this) {
+      Success<T, F> s => onSuccess(s.value),
+      Failure<T, F> f => onFailure(f.failure),
     };
   }
 
