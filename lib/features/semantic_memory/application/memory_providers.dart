@@ -25,6 +25,7 @@ import 'agent_memory_integration.dart';
 import 'memory_manager.dart';
 import 'memory_policy.dart';
 import 'memory_state.dart';
+import '../../../core/errors/result.dart';
 
 /// Provider name constants for the semantic memory feature.
 ///

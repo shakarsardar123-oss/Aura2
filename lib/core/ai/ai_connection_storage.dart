@@ -20,6 +20,7 @@ import 'ai_connection_config.dart';
 import 'connection_type.dart';
 import 'endpoint_validator.dart';
 import 'provider_exception.dart';
+import '../errors/result.dart';
 
 /// SharedPreferences key for the AI model name.
 const kModelStorageKey = 'aura_ai_model';

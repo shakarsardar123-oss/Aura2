@@ -29,6 +29,7 @@ import '../../data/repositories/app_config_repository_impl.dart';
 import '../../domain/entities/agent_config.dart';
 import '../../domain/repositories/agent_config_repository.dart';
 import '../../domain/repositories/app_config_repository.dart';
+import '../../core/errors/result.dart';
 import '../../services/ai/ai_provider.dart';
 import '../../core/ai/connection_type.dart';
 import '../../core/ai/gemini_provider.dart' show GeminiProvider;

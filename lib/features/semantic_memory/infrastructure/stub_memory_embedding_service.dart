@@ -11,6 +11,7 @@ import 'dart:math';
 
 import '../domain/models/memory_failure.dart';
 import '../domain/services/memory_embedding_service.dart';
+import '../../../core/errors/result.dart';
 
 /// Stub embedding service that generates deterministic pseudo-vectors.
 ///

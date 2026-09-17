@@ -10,6 +10,7 @@ import 'dart:math';
 
 import '../domain/models/memory_entry.dart';
 import '../domain/models/memory_failure.dart';
+import '../../../core/errors/result.dart';
 
 /// A scored memory entry from a vector search.
 class ScoredMemoryEntry {

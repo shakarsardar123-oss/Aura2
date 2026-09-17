@@ -27,6 +27,7 @@ import '../../core/ai/ai_message.dart';
 import '../../core/ai/ai_connection_storage.dart';
 import '../../core/ai/provider_exception.dart';
 import '../../core/ai/endpoint_validator.dart';
+import '../errors/result.dart';
 
 /// Secure storage key for the Gemini API key.
 const _geminiApiKeyStorageKey = 'aura_gemini_api_key';

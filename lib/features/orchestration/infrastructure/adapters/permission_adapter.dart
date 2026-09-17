@@ -20,6 +20,7 @@ import '../../../../core/security/security_policy.dart';
 import '../../../../core/tools/tool.dart';
 import '../../../../core/tools/tool_registry.dart';
 import '../../domain/orchestration_domain.dart';
+import '../../../../core/errors/result.dart';
 
 class PermissionAdapter implements PermissionRepository {
   /// The real Step 16 permission service (injected).
