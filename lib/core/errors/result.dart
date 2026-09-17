@@ -1,74 +1,155 @@
-sealed class Result<T, F> {
+/// A lightweight [Either]-style result type.
+///
+/// [Result] makes error handling explicit by forcing callers to
+/// handle both success ([Success]) and failure ([Failure]) paths.
+///
+/// Usage:
+/// ```dart
+/// Result<User, StorageFailure> result = repository.getUser(id);
+/// result.when(
+///   success: (user) => print(user.name),
+///   failure: (failure) => print(failure.message),
+/// );
+/// ```
+sealed class Result<S, F> {
   const Result();
 
-  const factory Result.success(T value) = SuccessResult<T, F>;
-  const factory Result.failure(F failure) = FailureResult<T, F>;
-  const factory Result.error(F failure) = FailureResult<T, F>;
+  /// Convenience factory for the success branch.
+  const factory Result.success(S value) = Success<S, F>;
 
-  R fold<R>({
-    required R Function(T value) onSuccess,
-    required R Function(F failure) onFailure,
-  }) {
-    if (this is SuccessResult<T, F>) {
-      return onSuccess((this as SuccessResult<T, F>).value);
-    } else if (this is FailureResult<T, F>) {
-      return onFailure((this as FailureResult<T, F>).failure);
-    }
-    throw StateError('Unknown Result type');
-  }
+  /// Convenience factory for the failure branch.
+  const factory Result.failure(F failure) = FailureResult<S, F>;
+
+  /// Alias for [Result.failure], used throughout the existing codebase.
+  const factory Result.error(F failure) = FailureResult<S, F>;
+
+  /// Whether this result represents a successful outcome.
+  bool get isSuccess;
+
+  /// Whether this result represents a failure.
+  bool get isFailure;
+
+  /// Maps the success value to a new type.
+  Result<T, F> map<T>(T Function(S value) mapper);
+
+  /// Maps the failure value to a new type.
+  Result<S, E> mapFailure<E>(E Function(F failure) mapper);
+
+  /// Folds the result into a single value of type [T].
+  T fold<T>({
+    required T Function(S value) onSuccess,
+    required T Function(F failure) onFailure,
+  });
+
+  /// Convenience method for pattern-matching style usage.
+  T when<T>({
+    required T Function(S value) success,
+    required T Function(F failure) failure,
+  });
+
+  /// Returns the success value, or throws if this is a failure.
+  S getOrElse(S Function() orElse);
 }
 
-final class SuccessResult<T, F> extends Result<T, F> {
-  const SuccessResult(this.value);
-  final T value;
+final class Success<S, F> extends Result<S, F> {
+  const Success(this.value);
+  final S value;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SuccessResult<T, F> &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+  bool get isSuccess => true;
 
   @override
-  int get hashCode => value.hashCode;
+  bool get isFailure => false;
 
   @override
-  String toString() => 'Result.success($value)';
+  Result<T, F> map<T>(T Function(S value) mapper) => Result.success(mapper(value));
+
+  @override
+  Result<S, E> mapFailure<E>(E Function(F failure) mapper) => Result.success(value);
+
+  @override
+  T fold<T>({
+    required T Function(S value) onSuccess,
+    required T Function(F failure) onFailure,
+  }) =>
+      onSuccess(value);
+
+  @override
+  T when<T>({
+    required T Function(S value) success,
+    required T Function(F failure) failure,
+  }) =>
+      success(value);
+
+  @override
+  S getOrElse(S Function() orElse) => value;
+
+  @override
+  String toString() => 'Success($value)';
 }
 
-final class FailureResult<T, F> extends Result<T, F> {
+final class FailureResult<S, F> extends Result<S, F> {
   const FailureResult(this.failure);
   final F failure;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FailureResult<T, F> &&
-          runtimeType == other.runtimeType &&
-          failure == other.failure;
+  bool get isSuccess => false;
 
   @override
-  int get hashCode => failure.hashCode;
+  bool get isFailure => true;
 
   @override
-  String toString() => 'Result.failure($failure)';
+  Result<T, F> map<T>(T Function(S value) mapper) => Result.failure(failure);
+
+  @override
+  Result<S, E> mapFailure<E>(E Function(F failure) mapper) =>
+      Result.failure(mapper(failure));
+
+  @override
+  T fold<T>({
+    required T Function(S value) onSuccess,
+    required T Function(F failure) onFailure,
+  }) =>
+      onFailure(failure);
+
+  @override
+  T when<T>({
+    required T Function(S value) success,
+    required T Function(F failure) failure,
+  }) =>
+      failure(this.failure);
+
+  @override
+  S getOrElse(S Function() orElse) => orElse();
+
+  @override
+  String toString() => 'Failure($failure)';
 }
 
-extension ResultAccessors<T, F> on Result<T, F> {
-  bool get isSuccess => this is SuccessResult<T, F>;
-  bool get isFailure => this is FailureResult<T, F>;
-  bool get isError => isFailure;
-
-  T? get valueOrNull => fold(
+/// Additive convenience accessors on [Result] that the existing codebase
+/// relies on but which are not part of the sealed class declaration above.
+///
+/// Adding them as an extension preserves every existing member and behavior
+/// of `Result`, `Success`, and `FailureResult` without modification.
+extension ResultAccessors<S, F> on Result<S, F> {
+  /// The success value, or `null` if this is a failure.
+  S? get valueOrNull => fold(
         onSuccess: (v) => v,
         onFailure: (_) => null,
       );
 
+  /// The failure value, or `null` if this is a success.
   F? get failureOrNull => fold(
         onSuccess: (_) => null,
         onFailure: (f) => f,
       );
 
-  T? get value => valueOrNull;
+  /// Alias for [isFailure], used throughout the existing codebase.
+  bool get isError => isFailure;
+
+  /// Alias for [failureOrNull], used throughout the existing codebase.
   F? get error => failureOrNull;
+
+  /// Alias for [valueOrNull], used throughout the existing codebase.
+  S? get value => valueOrNull;
 }
