@@ -1,7 +1,4 @@
 import 'package:aura_assistant/core/errors/failure.dart';
-import 'package:aura_assistant/core/errors/result.dart';
-
-export 'package:aura_assistant/core/errors/result.dart';
 
 sealed class MemoryFailure extends Failure {
   const MemoryFailure._(super.message, [super.cause]);
