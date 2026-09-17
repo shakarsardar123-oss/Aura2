@@ -11,7 +11,7 @@ library;
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:aura_assistant/core/errors/result.dart' show Result, Success, FailureResult;
+import 'package:aura_assistant/core/errors/result.dart' show Result, Success, Failure;
 import '../application/secure_storage_service.dart';
 import '../domain/models/security_audit_entry.dart';
 import '../domain/models/security_config.dart';
@@ -22,6 +22,7 @@ import '../domain/services/secret_scanner_service.dart';
 import '../domain/services/secure_logging_service.dart';
 import '../domain/services/sensitive_data_redactor.dart';
 import '../domain/services/security_audit_service.dart';
+import '../../../core/errors/result.dart';
 
 class SecurityStateNotifier extends StateNotifier<SecurityState> {
   final SecretScannerService _scanner;

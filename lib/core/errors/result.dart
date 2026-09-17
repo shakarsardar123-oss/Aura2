@@ -41,7 +41,10 @@ extension ResultAccessors<T, F> on Result<T, F> {
     };
   }
 
-  W fold<W>(W Function(T value) onSuccess, W Function(F failure) onFailure) {
+  W fold<W>({
+    required W Function(T value) onSuccess,
+    required W Function(F failure) onFailure,
+  }) {
     return switch (this) {
       Success<T, F> s => onSuccess(s.value),
       Failure<T, F> f => onFailure(f.failure),

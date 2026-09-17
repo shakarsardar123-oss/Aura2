@@ -8,13 +8,14 @@
 /// rather than risk leaking sensitive data.
 library;
 
-import 'package:aura_assistant/core/errors/result.dart' show Result, Success, FailureResult;
+import 'package:aura_assistant/core/errors/result.dart' show Result, Success, Failure;
 import '../domain/models/security_audit_entry.dart';
 import '../domain/models/security_config.dart';
 import '../domain/models/security_failure.dart';
 import '../domain/models/security_state.dart';
 import '../domain/services/secure_logging_service.dart';
 import '../domain/services/sensitive_data_redactor.dart';
+import '../../../core/errors/result.dart';
 
 /// Default secure logger implementation.
 ///
