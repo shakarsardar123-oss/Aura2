@@ -1,3 +1,4 @@
+export '../models/memory_type.dart' show MemoryType;
 /// memory_storage_service.dart
 /// AURA Assistant – Step 17: Semantic Memory
 ///
@@ -48,4 +49,3 @@ abstract class MemoryStorageService {
 }
 
 // Re-export MemoryType for convenience in storage interface.
-export '../models/memory_type.dart' show MemoryType;

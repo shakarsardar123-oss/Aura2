@@ -22,7 +22,7 @@ import '../memory_policy.dart';
 import '../../domain/models/memory_entry.dart';
 import '../../domain/models/memory_failure.dart';
 import '../../domain/models/memory_type.dart';
-import 'memory_providers.dart';
+import '../memory_providers.dart';
 
 /// Provides a formatted context string from recalled semantic memories.
 ///

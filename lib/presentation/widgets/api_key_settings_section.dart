@@ -1,3 +1,4 @@
+import 'dart:convert';
 /// api_key_settings_section.dart
 /// AURA Assistant – P1+P2 Fix: Provider-Agnostic API Settings
 ///

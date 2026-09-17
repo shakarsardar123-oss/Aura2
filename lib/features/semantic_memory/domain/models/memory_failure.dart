@@ -1,3 +1,4 @@
+import 'package:aura_assistant/core/errors/result.dart';
 /// memory_failure.dart
 /// AURA Assistant – Step 17: Semantic Memory
 ///

@@ -6,7 +6,7 @@
 /// Added supportedModels list, allowsCustomModel, icon property alias.
 library;
 
-import 'ai_provider.dart';
+import '../../services/ai/ai_provider.dart';
 import 'connection_type.dart';
 
 /// A provider preset (template) for the provider picker UI.
@@ -145,7 +145,7 @@ class ProviderRegistry {
   ];
 
   /// The default (primary) preset — Gemini.
-  static const ProviderPreset defaultPreset = presets.first;
+  static ProviderPreset get defaultPreset => presets.first;
 
   /// Lookup a preset by its id.
   static ProviderPreset? getPreset(String id) {

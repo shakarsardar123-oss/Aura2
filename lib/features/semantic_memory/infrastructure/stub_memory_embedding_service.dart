@@ -17,7 +17,7 @@ import '../domain/services/memory_embedding_service.dart';
 /// Uses a simple hash-based approach: each character contributes to
 /// a fixed-dimensional vector. Not semantically meaningful but
 /// deterministic for the same input — suitable for testing.
-class StubMemoryEmbeddingService implements MemoryEmbeddingService {
+class StubMemoryEmbeddingService extends MemoryEmbeddingService {
   final int _dimension;
   bool _simulateFailure = false;
 
