@@ -72,3 +72,29 @@ extension ResultAccessors<T, F> on Result<T, F> {
   T? get value => valueOrNull;
   F? get error => failureOrNull;
 }
+
+/// Convenience: pattern-match on a [Result] with named callbacks.
+extension ResultWhen<T, F> on Result<T, F> {
+  R when<R>({
+    required R Function(T value) success,
+    required R Function(F failure) failure,
+  }) {
+    return fold(onSuccess: success, onFailure: failure);
+  }
+}
+
+/// Convenience: unwrap a [Result], falling back to [orElse] on failure.
+extension ResultGetOrElse<T, F> on Result<T, F> {
+  T getOrElse(T Function() orElse) {
+    return fold(onSuccess: (v) => v, onFailure: (_) => orElse());
+  }
+}
+
+/// Shorthand for constructing a successful [Result] without the
+/// `Result.success(...)` prefix — inferred from the call-site context.
+Result<T, F> Success<T, F>(T value) => Result<T, F>.success(value);
+
+/// Wraps any [Failure] subtype into a failed [Result] of type [T].
+extension FailureToResult<F extends Failure> on F {
+  Result<T, F> asFailure<T>() => Result<T, F>.failure(this);
+}
