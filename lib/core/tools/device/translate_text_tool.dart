@@ -44,7 +44,7 @@ class TranslateTextTool extends Tool {
   TranslateTextTool(this._aiProvider);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'translate_text',
         description:
             'دەق وەرگێڕێتەوە بۆ زمانی مەبەست بە رێگەی AI. '
@@ -52,7 +52,7 @@ class TranslateTextTool extends Tool {
             'Translate text to a target language using the AI model. '
             'The output is whatever the AI produces; no post-processing.',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'text',
             type: 'string',
@@ -75,7 +75,7 @@ class TranslateTextTool extends Tool {
             hintText: 'ckb',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.network,
             isRequired: true,
@@ -89,7 +89,7 @@ class TranslateTextTool extends Tool {
         requiresConfirmation: false,
         tags: ['device', 'translate', 'language', 'وەرگێڕان'],
         icon: 'translate',
-        timeout: const Duration(seconds: 30),
+        timeout: Duration(seconds: 30),
         riskLevel: ToolRiskLevel.low,
       );
 
@@ -138,7 +138,7 @@ class TranslateTextTool extends Tool {
       final response = await _aiProvider.complete(request);
 
       if (response.text.trim().isEmpty) {
-        return ToolResult.failure(
+        return const ToolResult.failure(
           'AI returned empty translation. '
           '— AI وەرگێڕانێکی بەتاڵی گەڕاند.',
           errorCode: 'emptyResponse',

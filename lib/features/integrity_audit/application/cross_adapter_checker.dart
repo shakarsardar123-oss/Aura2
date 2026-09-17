@@ -12,13 +12,6 @@
 library;
 
 import '../domain/models/integrity_verdict.dart';
-import '../domain/models/compatibility_report.dart';
-import '../domain/services/integrity_verification_service.dart';
-import '../domain/services/step_compatibility_service.dart';
-import '../domain/repositories/step_22_introspection_repository.dart';
-import '../domain/repositories/step_23_introspection_repository.dart';
-import '../domain/repositories/step_24_introspection_repository.dart';
-import '../domain/repositories/step_25_introspection_repository.dart';
 
 /// Describes a specific interface drift between two steps.
 class InterfaceDrift {

@@ -587,7 +587,7 @@ void main() {
     final sub = notifier.stream.listen((s) => states.add(s));
 
     notifier.registerTool(makeDefinition(toolId: 'stream_tool'));
-    await Future.delayed(Duration(milliseconds: 50));
+    await Future.delayed(const Duration(milliseconds: 50));
 
     expect(states.isNotEmpty, true);
     expect(states.last.definitions.length, 2);

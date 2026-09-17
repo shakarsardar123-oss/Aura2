@@ -9,7 +9,6 @@
 ///   - FAIL CLOSED: if tool doesn't support offline, deny
 library;
 
-import '../domain/models/tool_input.dart';
 import '../domain/models/tool_output.dart';
 import '../domain/models/tool_execution_context.dart';
 import '../domain/services/tool_interface.dart';

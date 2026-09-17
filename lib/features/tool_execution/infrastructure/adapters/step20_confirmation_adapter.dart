@@ -69,7 +69,7 @@ class ConfirmationResultBridge {
 
   /// Confirmation service unavailable — FAIL CLOSED.
   factory ConfirmationResultBridge.unavailable() =>
-      ConfirmationResultBridge(
+      const ConfirmationResultBridge(
         confirmed: false,
         reason: 'Confirmation service unavailable',
         source: ConfirmationSource.unavailable,

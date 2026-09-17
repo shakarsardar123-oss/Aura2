@@ -16,13 +16,13 @@ void main() {
     // Drift #1: AuditRepository.record() async/sync mismatch
     // ============================================================
     test('DRIFT #1: AuditRepository.record() — Step23=Future<void> vs Step25=void', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'AuditRepository',
         methodName: 'record',
         returnType: 'Future<void>',
         isAsync: true,
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'AuditRepository',
         methodName: 'record',
         returnType: 'void',
@@ -37,13 +37,13 @@ void main() {
     // Drift #2: AuditRepository.forRequest() async/sync mismatch
     // ============================================================
     test('DRIFT #2: AuditRepository.forRequest() — Step23=Future<List> vs Step25=List', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'AuditRepository',
         methodName: 'forRequest',
         returnType: 'Future<List>',
         isAsync: true,
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'AuditRepository',
         methodName: 'forRequest',
         returnType: 'List',
@@ -68,13 +68,13 @@ void main() {
     // Drift #4: ConnectivityRepository.isOnline() async/sync mismatch
     // ============================================================
     test('DRIFT #4: ConnectivityRepository.isOnline() — Step23=Future<bool> vs Step25=bool', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'ConnectivityRepository',
         methodName: 'isOnline',
         returnType: 'Future<bool>',
         isAsync: true,
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'ConnectivityRepository',
         methodName: 'isOnline',
         returnType: 'bool',
@@ -87,12 +87,12 @@ void main() {
     // Drift #5: PermissionRepository check/request param style mismatch
     // ============================================================
     test('DRIFT #5: PermissionRepository.check()/request() — Step23 named vs Step25 positional', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'PermissionRepository',
         methodName: 'check',
         paramStyle: ParamStyle.named,
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'PermissionRepository',
         methodName: 'check',
         paramStyle: ParamStyle.positional,
@@ -106,12 +106,12 @@ void main() {
     // Drift #6: RecoveryRepository.classifyAndStrategize() param default mismatch
     // ============================================================
     test('DRIFT #6: RecoveryRepository.classifyAndStrategize() — Step23 required int retryAttempt vs Step25 int retryAttempt=0', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'RecoveryRepository',
         methodName: 'classifyAndStrategize',
         requiredParams: ['retryAttempt'],
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'RecoveryRepository',
         methodName: 'classifyAndStrategize',
         optionalParams: ['retryAttempt'],
@@ -137,12 +137,12 @@ void main() {
     // Drift #8: ToolRegistryRepository.discover() nullable mismatch
     // ============================================================
     test('DRIFT #8: ToolRegistryRepository.discover() — Step23 String? category vs Step25 String category', () {
-      final step23 = MethodSignature(
+      const step23 = MethodSignature(
         className: 'ToolRegistryRepository',
         methodName: 'discover',
         nullableParams: ['category'],
       );
-      final step25 = MethodSignature(
+      const step25 = MethodSignature(
         className: 'ToolRegistryRepository',
         methodName: 'discover',
         nullableParams: [],
@@ -234,8 +234,8 @@ void main() {
     // ============================================================
     test('Step 23 uses named params; Step 25 sometimes uses positional params', () {
       // This is a systematic drift pattern, not a single method
-      final step23ParamStyle = ParamStyle.named;
-      final step25ParamStyle = ParamStyle.positional;
+      const step23ParamStyle = ParamStyle.named;
+      const step25ParamStyle = ParamStyle.positional;
       expect(step23ParamStyle, isNot(equals(step25ParamStyle)));
     });
 
@@ -244,7 +244,7 @@ void main() {
     // ============================================================
     test('Step 23 has zero test files — test coverage gap', () {
       // Step 23 has NO test files at all
-      final step23TestCount = 0;
+      const step23TestCount = 0;
       expect(step23TestCount, equals(0));
       // This is a documented gap, not something we fix in Step 26
     });
@@ -253,7 +253,7 @@ void main() {
     // Overall cross-adapter verdict
     // ============================================================
     test('FAIL-CLOSED: 12 documented drifts → Step 23 vs Step 25 incompatible', () {
-      final documentedDriftCount = 12;
+      const documentedDriftCount = 12;
       // FAIL-CLOSED: any drift → incompatibility
       expect(documentedDriftCount, greaterThan(0));
       // With 12 drifts, Step 23 and Step 25 cannot be fully integrated

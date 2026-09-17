@@ -5,7 +5,6 @@
 /// FAIL-CLOSED: severity never below [AuditSeverity.medium] for any drift.
 library;
 
-import 'integrity_verdict.dart';
 
 /// A single audit finding from the Step 26 QA process.
 ///

@@ -125,7 +125,7 @@ class SttAudioInputRepository implements AudioInputRepository {
 
   @override
   Stream<AudioSegment> audioSegmentStream(String sessionId) {
-    return _segmentControllers[sessionId]?.stream ?? Stream.empty();
+    return _segmentControllers[sessionId]?.stream ?? const Stream.empty();
   }
 
   @override

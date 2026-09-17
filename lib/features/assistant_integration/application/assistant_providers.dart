@@ -8,8 +8,6 @@ import '../../../core/agent/agent_engine.dart';
 import '../../../core/voice_screen/voice_screen_service.dart';
 import '../../../services/voice/voice_service.dart';
 import '../domain/assistant_service.dart';
-import '../domain/entities/assistant_status.dart';
-import '../domain/models/assistant_state.dart';
 import 'assistant_controller.dart';
 
 /// Provider creator signature — matches how Riverpod providers are

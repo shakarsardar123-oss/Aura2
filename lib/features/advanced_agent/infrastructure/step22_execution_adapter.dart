@@ -38,7 +38,7 @@ class Step22ExecutionAdapter implements ToolExecutionRepository {
   }) async {
     // FAIL-CLOSED: unavailable → failure result
     if (!_available) {
-      return ExecutionResult(
+      return const ExecutionResult(
         success: false,
         error: 'Tool execution unavailable — failing closed.',
       );
@@ -46,7 +46,7 @@ class Step22ExecutionAdapter implements ToolExecutionRepository {
 
     // FAIL-CLOSED: cancelled → failure result
     if (_cancelled) {
-      return ExecutionResult(
+      return const ExecutionResult(
         success: false,
         error: 'Execution was cancelled.',
       );
@@ -54,7 +54,7 @@ class Step22ExecutionAdapter implements ToolExecutionRepository {
 
     // FAIL-CLOSED: empty toolId or action → failure
     if (toolId.isEmpty || action.isEmpty) {
-      return ExecutionResult(
+      return const ExecutionResult(
         success: false,
         error: 'Missing toolId or action — failing closed.',
       );
@@ -62,7 +62,7 @@ class Step22ExecutionAdapter implements ToolExecutionRepository {
 
     // In production, delegates to Step 22's ToolExecutionProvider.
     // For structural validation, returns fail-closed result.
-    return ExecutionResult(
+    return const ExecutionResult(
       success: false,
       error: 'No execution backend wired — failing closed.',
     );

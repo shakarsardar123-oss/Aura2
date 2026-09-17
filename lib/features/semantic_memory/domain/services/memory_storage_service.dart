@@ -1,7 +1,6 @@
 import 'package:aura_assistant/core/errors/result.dart';
 import '../models/memory_entry.dart';
 import '../models/memory_failure.dart';
-import '../models/memory_type.dart';
 
 abstract class MemoryStorageService {
   Future<Result<MemoryEntry, MemoryFailure>> store(MemoryEntry entry);

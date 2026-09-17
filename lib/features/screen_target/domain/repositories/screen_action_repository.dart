@@ -6,7 +6,6 @@
 library;
 
 import '../models/screen_target.dart';
-import '../models/correction_action.dart';
 
 /// Result of a screen action operation.
 enum ScreenActionResult {

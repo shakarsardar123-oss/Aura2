@@ -36,7 +36,7 @@ void main() {
     });
 
     test('masked value does NOT equal the original key', () {
-      final key = 'sk-test-abcdef123456';
+      const key = 'sk-test-abcdef123456';
       final masked = ApiKeyMasker.mask(key);
       expect(masked, isNot(equals(key)));
     });
@@ -58,7 +58,7 @@ void main() {
     });
 
     test('no partial key exposure for keys > 4 chars — only last 4 visible', () {
-      final key = 'sk-proj-super-secret-key-12345';
+      const key = 'sk-proj-super-secret-key-12345';
       final masked = ApiKeyMasker.mask(key);
       expect(masked, '••••••••2345');
       expect(masked, isNot(contains('sk-proj')));

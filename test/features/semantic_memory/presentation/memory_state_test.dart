@@ -144,13 +144,13 @@ void main() {
     });
 
     test('copyWith clearSearchQuery clears query', () {
-      final state = MemoryState(searchQuery: 'test');
+      const state = MemoryState(searchQuery: 'test');
       final cleared = state.copyWith(clearSearchQuery: true);
       expect(cleared.searchQuery, isNull);
     });
 
     test('copyWith clearTypeFilter clears filter', () {
-      final state = MemoryState(typeFilter: MemoryType.task);
+      const state = MemoryState(typeFilter: MemoryType.task);
       final cleared = state.copyWith(clearTypeFilter: true);
       expect(cleared.typeFilter, isNull);
     });
@@ -177,10 +177,10 @@ void main() {
       const noQuery = MemoryState();
       expect(noQuery.isSearching, isFalse);
 
-      final withQuery = MemoryState(searchQuery: 'test');
+      const withQuery = MemoryState(searchQuery: 'test');
       expect(withQuery.isSearching, isTrue);
 
-      final emptyQuery = MemoryState(searchQuery: '');
+      const emptyQuery = MemoryState(searchQuery: '');
       expect(emptyQuery.isSearching, isFalse);
     });
 
@@ -188,7 +188,7 @@ void main() {
       const noFilter = MemoryState();
       expect(noFilter.isFiltering, isFalse);
 
-      final withFilter = MemoryState(typeFilter: MemoryType.task);
+      const withFilter = MemoryState(typeFilter: MemoryType.task);
       expect(withFilter.isFiltering, isTrue);
     });
 
@@ -219,8 +219,8 @@ void main() {
     });
 
     test('inequality when fields differ', () {
-      final a = MemoryState(isLoading: false);
-      final b = MemoryState(isLoading: true);
+      const a = MemoryState(isLoading: false);
+      const b = MemoryState(isLoading: true);
       expect(a, isNot(equals(b)));
     });
   });

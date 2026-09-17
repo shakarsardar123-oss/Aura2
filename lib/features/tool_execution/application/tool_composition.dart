@@ -10,10 +10,8 @@
 ///   - FAIL CLOSED: any failure in chain stops execution
 library;
 
-import '../domain/models/tool_input.dart';
 import '../domain/models/tool_output.dart';
 import '../domain/models/tool_execution_context.dart';
-import '../domain/services/tool_interface.dart';
 import '../infrastructure/executors/tool_executor_registry.dart';
 
 class ToolCompositionService {
@@ -58,9 +56,7 @@ class ToolCompositionService {
       }
 
       // Pass output data to next tool in chain
-      if (lastOutput.data != null) {
-        currentParams = Map<String, dynamic>.from(lastOutput.data as Map);
-      }
+      currentParams = Map<String, dynamic>.from(lastOutput.data as Map);
     }
 
     return lastOutput ?? ToolOutput.empty(toolId: 'composition');

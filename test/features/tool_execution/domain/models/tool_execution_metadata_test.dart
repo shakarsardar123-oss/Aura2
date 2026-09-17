@@ -56,10 +56,10 @@ void main() {
         executionId: 'exec-003',
         toolId: 'voice',
       );
-      meta.setPhaseDuration(ToolExecutionPhase.execution, Duration(milliseconds: 150));
+      meta.setPhaseDuration(ToolExecutionPhase.execution, const Duration(milliseconds: 150));
       expect(
         meta.getPhaseDuration(ToolExecutionPhase.execution),
-        equals(Duration(milliseconds: 150)),
+        equals(const Duration(milliseconds: 150)),
       );
     });
 

@@ -25,13 +25,13 @@ void main() {
     // TriggerRepository interface consistency
     // ============================================================
     test('TriggerRepository.fire() interface is consistent between Step 24 and Step 25', () {
-      final step24Fire = MethodSignature(
+      const step24Fire = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'fire',
         returnType: 'Future<TriggerResult>',
         isAsync: true,
       );
-      final step25Fire = MethodSignature(
+      const step25Fire = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'fire',
         returnType: 'Future<TriggerResult>',
@@ -42,13 +42,13 @@ void main() {
     });
 
     test('TriggerRepository.register() interface is consistent', () {
-      final step24Register = MethodSignature(
+      const step24Register = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'register',
         returnType: 'Future<void>',
         isAsync: true,
       );
-      final step25Register = MethodSignature(
+      const step25Register = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'register',
         returnType: 'Future<void>',
@@ -58,13 +58,13 @@ void main() {
     });
 
     test('TriggerRepository.listRegistered() interface is consistent', () {
-      final step24List = MethodSignature(
+      const step24List = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'listRegistered',
         returnType: 'Future<List>',
         isAsync: true,
       );
-      final step25List = MethodSignature(
+      const step25List = MethodSignature(
         className: 'TriggerRepository',
         methodName: 'listRegistered',
         returnType: 'Future<List>',
@@ -86,32 +86,32 @@ void main() {
     // FAIL-CLOSED: trigger path integrity
     // ============================================================
     test('FAIL-CLOSED: if trigger interface unreachable → verdict denied', () {
-      final triggerAvailable = false;
-      final verdict = triggerAvailable ? 'compatible' : 'denied';
+      const triggerAvailable = false;
+      const verdict = triggerAvailable ? 'compatible' : 'denied';
       expect(verdict, equals('denied'));
     });
 
     test('FAIL-CLOSED: unknown trigger state → denied', () {
-      final triggerState = 'unknown';
-      final resolved = triggerState == 'unknown' ? 'denied' : triggerState;
+      const triggerState = 'unknown';
+      const resolved = triggerState == 'unknown' ? 'denied' : triggerState;
       expect(resolved, equals('denied'));
     });
 
     test('FAIL-CLOSED: error in trigger execution → denied', () {
-      final triggerState = 'error';
-      final resolved = triggerState == 'error' ? 'denied' : triggerState;
+      const triggerState = 'error';
+      const resolved = triggerState == 'error' ? 'denied' : triggerState;
       expect(resolved, equals('denied'));
     });
 
     test('FAIL-CLOSED: trigger unavailable → denied', () {
-      final triggerState = 'unavailable';
-      final resolved = triggerState == 'unavailable' ? 'denied' : triggerState;
+      const triggerState = 'unavailable';
+      const resolved = triggerState == 'unavailable' ? 'denied' : triggerState;
       expect(resolved, equals('denied'));
     });
 
     test('FAIL-CLOSED: trigger canSkip → shouldAbort (NEVER skip)', () {
-      final canSkip = true;
-      final decision = canSkip ? 'shouldAbort' : 'shouldAbort'; // FAIL-CLOSED: always abort
+      const canSkip = true;
+      const decision = canSkip ? 'shouldAbort' : 'shouldAbort'; // FAIL-CLOSED: always abort
       expect(decision, equals('shouldAbort'));
     });
 
@@ -125,7 +125,7 @@ void main() {
     });
 
     test('RTL-first locale is Kurdish Sorani for trigger audit', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 

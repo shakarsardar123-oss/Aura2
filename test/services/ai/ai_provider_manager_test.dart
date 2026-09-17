@@ -105,10 +105,10 @@ void main() {
 }
 
 class _FakeAIProvider implements AIProvider {
-  @override
+  
   final String id;
 
-  @override
+  
   String get displayName => 'Fake Provider';
 
   final List<String> _supportedModels;
@@ -118,18 +118,18 @@ class _FakeAIProvider implements AIProvider {
     required List<String> supportedModels,
   }) : _supportedModels = supportedModels;
 
-  @override
+  
   List<String> get supportedModels => _supportedModels;
 
-  @override
+  
   bool supportsModel(String modelId) => _supportedModels.contains(modelId);
 
-  @override
+  
   Future<AIResponse> complete(AIRequest request) {
     throw UnimplementedError();
   }
 
-  @override
+  
   Stream<AIResponse> streamComplete(AIRequest request) {
     throw UnimplementedError();
   }

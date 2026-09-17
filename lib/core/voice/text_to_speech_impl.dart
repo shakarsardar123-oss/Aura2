@@ -117,7 +117,7 @@ class TextToSpeechServiceImpl implements TextToSpeechService {
     _startLevelEnvelope();
     final result = await _tts.speak(text);
     if (result != 1) {
-      throw VoiceFailure(
+      throw const VoiceFailure(
         message: 'TTS failed to speak',
         code: 'TTS_SPEAK_FAILED',
       );

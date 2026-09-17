@@ -20,9 +20,7 @@ import '../domain/models/security_failure.dart';
 import '../domain/models/security_state.dart';
 import '../domain/models/security_verdict.dart';
 import '../domain/services/secret_scanner_service.dart';
-import '../domain/services/secure_logging_service.dart';
 import '../domain/services/sensitive_data_redactor.dart';
-import '../domain/services/security_audit_service.dart';
 import 'security_policy.dart';
 
 /// Abstract security controller — the main orchestrator.

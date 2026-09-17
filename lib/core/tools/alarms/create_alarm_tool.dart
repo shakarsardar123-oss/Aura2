@@ -13,7 +13,7 @@ class CreateAlarmTool extends Tool {
   final AlarmToolGateway _gateway;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'create_alarm',
         description: 'Create a new wake verification alarm with a specified time, label, and optional verification settings.',
         category: 'alarms',

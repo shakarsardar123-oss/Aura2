@@ -15,7 +15,6 @@ library;
 
 import '../domain/models/audit_finding.dart';
 import '../domain/models/fail_closed_invariant.dart';
-import '../domain/services/fail_closed_audit_service.dart';
 
 /// Result of a FAIL-CLOSED regression check for a single step.
 class FailClosedRegressionResult {

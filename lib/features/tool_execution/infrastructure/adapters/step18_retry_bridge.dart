@@ -50,7 +50,7 @@ class RetryPolicyBridge {
     this.maxTotalRetries = 10,
     ExponentialBackoffConfigBridge? backoffConfig,
     Set<RecoveryFailurePhaseBridge>? retryablePhases,
-  })  : backoffConfig = backoffConfig ?? ExponentialBackoffConfigBridge(),
+  })  : backoffConfig = backoffConfig ?? const ExponentialBackoffConfigBridge(),
         retryablePhases =
             retryablePhases ?? _defaultRetryablePhases;
 

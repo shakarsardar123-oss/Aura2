@@ -132,7 +132,7 @@ class ReactionKeywordHintRegistry {
 /// Extensible — more can be added without code changes.
 final List<ReactionKeywordHint> defaultCkbHints = [
   // Help / assistance
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'یارمەتی',
     language: 'ckb',
     category: 'agent',
@@ -140,7 +140,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.15,
   ),
   // Greeting
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'سڵاو',
     language: 'ckb',
     category: 'personality',
@@ -148,7 +148,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.2,
   ),
   // Error / problem
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'کێشە',
     language: 'ckb',
     category: 'error',
@@ -156,7 +156,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.15,
   ),
   // Thanks / gratitude
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'سوپاس',
     language: 'ckb',
     category: 'personality',
@@ -164,7 +164,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.2,
   ),
   // Search / query
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'گەڕان',
     language: 'ckb',
     category: 'agent',
@@ -172,7 +172,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.1,
   ),
   // Yes / confirmation
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'بەڵێ',
     language: 'ckb',
     category: 'agent',
@@ -180,7 +180,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.15,
   ),
   // No / denial
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'نەخێر',
     language: 'ckb',
     category: 'agent',
@@ -188,7 +188,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.1,
   ),
   // How much / quantity
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'چەند',
     language: 'ckb',
     category: 'agent',
@@ -196,7 +196,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.1,
   ),
   // Good / nice
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'باش',
     language: 'ckb',
     category: 'personality',
@@ -204,7 +204,7 @@ final List<ReactionKeywordHint> defaultCkbHints = [
     boost: 0.15,
   ),
   // Wait
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'چاوەڕوانبە',
     language: 'ckb',
     category: 'agent',
@@ -215,56 +215,56 @@ final List<ReactionKeywordHint> defaultCkbHints = [
 
 /// Default English (en) keyword hints for AURA.
 final List<ReactionKeywordHint> defaultEnHints = [
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'help',
     language: 'en',
     category: 'agent',
     tags: ['feedback'],
     boost: 0.15,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'hello',
     language: 'en',
     category: 'personality',
     tags: ['personality'],
     boost: 0.2,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'error',
     language: 'en',
     category: 'error',
     tags: ['error'],
     boost: 0.15,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'thanks',
     language: 'en',
     category: 'personality',
     tags: ['personality', 'confirmation'],
     boost: 0.2,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'search',
     language: 'en',
     category: 'agent',
     tags: ['progress'],
     boost: 0.1,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'yes',
     language: 'en',
     category: 'agent',
     tags: ['confirmation'],
     boost: 0.15,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'no',
     language: 'en',
     category: 'agent',
     tags: ['feedback'],
     boost: 0.1,
   ),
-  ReactionKeywordHint(
+  const ReactionKeywordHint(
     keyword: 'wait',
     language: 'en',
     category: 'agent',

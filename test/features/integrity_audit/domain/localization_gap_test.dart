@@ -159,9 +159,8 @@ class LocalizationGap {
     this.issueDescription = '',
     this.expectedPlaceholders = 0,
     this.actualPlaceholders = 0,
-    required this.locale,
-    this.isBlocking = true, // FAIL-CLOSED: all gaps are blocking
-  });
+    required this.locale, // FAIL-CLOSED: all gaps are blocking
+  }) : isBlocking = true;
 
   factory LocalizationGap.missingKey({
     required String step,

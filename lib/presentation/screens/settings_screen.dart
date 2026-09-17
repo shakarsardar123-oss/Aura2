@@ -37,7 +37,7 @@ class SettingsScreen extends ConsumerWidget {
             // Requirement: #000000 pure black for AMOLED screens
 
             // ── Wireframe constellation ──
-            WireframeBackground(
+            const WireframeBackground(
               opacity: 0.4,
               nodeCount: 18,
               lineDistance: 100,
@@ -72,13 +72,13 @@ class SettingsScreen extends ConsumerWidget {
                       SliverToBoxAdapter(
                         child: _SectionHeader(title: l10n.assistantIdentity),
                       ),
-                      SliverToBoxAdapter(child: NameEditor()),
+                      SliverToBoxAdapter(child: const NameEditor()),
 
                       // ── Appearance Section ──
                       SliverToBoxAdapter(
                         child: _SectionHeader(title: l10n.appearance),
                       ),
-                      SliverToBoxAdapter(child: ThemeSelector()),
+                      SliverToBoxAdapter(child: const ThemeSelector()),
                       SliverToBoxAdapter(child: SizedBox(height: 12)),
 
                       // Language selection
@@ -93,7 +93,7 @@ class SettingsScreen extends ConsumerWidget {
 
                       // ── AI Provider / API key Section ──
                       SliverToBoxAdapter(
-                        child: _SectionHeader(title: 'AI provider'),
+                        child: const _SectionHeader(title: 'AI provider'),
                       ),
                       SliverToBoxAdapter(
                         child: Padding(

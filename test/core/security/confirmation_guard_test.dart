@@ -185,7 +185,7 @@ void main() {
 
     group('verifyActionHash', () {
       test('returns true when hash matches', () {
-        final toolName = 'my_tool';
+        const toolName = 'my_tool';
         final args = {'key': 'value'};
         final hash = ConfirmationGuard.computeActionHash(toolName, args);
         final req = ToolConfirmationRequest(
@@ -382,7 +382,7 @@ void main() {
 
       test('computes correct action hash', () {
         final guard = makeGuard();
-        final toolName = 'my_tool';
+        const toolName = 'my_tool';
         final args = {'key': 'val'};
         final expectedHash = ConfirmationGuard.computeActionHash(toolName, args);
         final result = guard.requestConfirmation(
@@ -474,7 +474,7 @@ void main() {
 
       test('returns true when latest entry is accepted and hash matches', () {
         final guard = makeGuard();
-        final toolName = 'my_tool';
+        const toolName = 'my_tool';
         final args = {'key': 'val'};
         guard.requestConfirmation(
           toolName: toolName,
@@ -523,7 +523,7 @@ void main() {
         final guard = makeGuard();
         // Manually add an expired entry to history
         final expiredTime = DateTime.now().subtract(const Duration(minutes: 2));
-        final toolName = 'my_tool';
+        const toolName = 'my_tool';
         final args = {'key': 'val'};
         final hash = ConfirmationGuard.computeActionHash(toolName, args);
         final req = ToolConfirmationRequest(

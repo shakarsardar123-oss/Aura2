@@ -222,10 +222,8 @@ class FailClosedInvariant {
     required this.step,
     required this.className,
     required this.locale,
-    this.isEnforced = true,
     this.allowsSkip = false,
-    this.violationResult = 'denied',
-  });
+  }) : isEnforced = true : violationResult = 'denied';
 
   factory FailClosedInvariant.unknownDenied({
     required InvariantLayer layer,

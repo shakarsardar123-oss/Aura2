@@ -45,13 +45,13 @@ class FakeVoiceService implements VoiceService {
   /// The onRecognized callback saved from startListening.
   void Function(String text)? _savedOnRecognized;
   
-  @override
+  
   VoiceState get state => _state;
   
-  @override
+  
   Stream<VoiceState> get stateStream => _stateController.stream;
   
-  @override
+  
   Future<void> startListening({
     required void Function(String text) onRecognized,
     String locale = 'ku',
@@ -69,14 +69,14 @@ class FakeVoiceService implements VoiceService {
     _savedOnRecognized?.call(text);
   }
   
-  @override
+  
   Future<void> stopListening() async {
     methodCalls.add('stopListening');
     _state = VoiceState.idle;
     _stateController.add(_state);
   }
   
-  @override
+  
   Future<void> speak(String text, {String locale = 'ku'}) async {
     methodCalls.add('speak:$text');
     _state = VoiceState.speaking;
@@ -89,7 +89,7 @@ class FakeVoiceService implements VoiceService {
     _stateController.add(_state);
   }
   
-  @override
+  
   Future<void> stopSpeaking() async {
     methodCalls.add('stopSpeaking');
     _state = VoiceState.idle;
@@ -114,7 +114,7 @@ class FakeAgentProcessor implements AgentProcessor {
     stepsCompleted: 1,
   );
   
-  @override
+  
   Future<AgentResult> run({
     required String userInput,
     required AgentContext context,
@@ -135,7 +135,7 @@ class FakeMemoryService implements MemoryService {
   bool throwOnCreate = false;
   bool throwOnAddMessage = false;
   
-  @override
+  
   Future<String> createConversation({String? title, String? agentId}) async {
     methodCalls.add('createConversation');
     if (throwOnCreate) throw Exception('DB failed');
@@ -143,13 +143,13 @@ class FakeMemoryService implements MemoryService {
     return _conversationId!;
   }
   
-  @override
+  
   Future<List<String>> getConversationIds({int limit = 50, int offset = 0}) async {
     methodCalls.add('getConversationIds');
     return _conversationId != null ? [_conversationId!] : [];
   }
   
-  @override
+  
   Future<void> addMessage({
     required String conversationId,
     required String role,
@@ -166,13 +166,13 @@ class FakeMemoryService implements MemoryService {
     ));
   }
   
-  @override
+  
   Future<List<MessageEntity>> getMessages(String conversationId) async {
     methodCalls.add('getMessages');
     return List.from(_messages);
   }
   
-  @override
+  
   Future<void> deleteConversation(String conversationId) async {
     methodCalls.add('deleteConversation');
     _messages.clear();
@@ -261,14 +261,14 @@ void main() {
         fakeVoice.simulateRecognition('سڵاو');
         
         // Allow async processing to complete.
-        await Future.delayed(Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 100));
         
         // After recognition: should have transitioned through PROCESSING, SPEAKING.
         expect(states, contains(LiveModeState.processing));
         expect(states, contains(LiveModeState.speaking));
         
         // After speak completes: should return to LISTENING.
-        await Future.delayed(Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 100));
         expect(orchestrator.state, LiveModeState.listening);
         
         // AgentProcessor should have been called.
@@ -296,7 +296,7 @@ void main() {
         // Second recognition immediately (before first finishes processing).
         fakeVoice.simulateRecognition('دووەم');
         
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
         
         // Only the first should be processed; the second is blocked by _isProcessingRequest.
         expect(fakeEngine.runCalls.length, 1);
@@ -318,7 +318,7 @@ void main() {
         // Simulate empty recognition.
         fakeVoice.simulateRecognition('');
         
-        await Future.delayed(Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 100));
         
         // AgentProcessor should NOT be called.
         expect(fakeEngine.runCalls.length, 0);
@@ -339,9 +339,9 @@ void main() {
         await orchestrator.startSession();
         
         // Error → retry loop. Let it run through 3 errors.
-        await Future.delayed(Duration(milliseconds: 700));
-        await Future.delayed(Duration(milliseconds: 700));
-        await Future.delayed(Duration(milliseconds: 700));
+        await Future.delayed(const Duration(milliseconds: 700));
+        await Future.delayed(const Duration(milliseconds: 700));
+        await Future.delayed(const Duration(milliseconds: 700));
         
         // After 3 errors: should have reached ERROR state.
         expect(states, contains(LiveModeState.error));
@@ -365,7 +365,7 @@ void main() {
         // Simulate recognition.
         fakeVoice.simulateRecognition('تاقیکردنەوە');
         
-        await Future.delayed(Duration(milliseconds: 200));
+        await Future.delayed(const Duration(milliseconds: 200));
         
         // Verify: stopListening appears before speak in the call sequence.
         final stopIndex = fakeVoice.methodCalls.indexOf('stopListening');

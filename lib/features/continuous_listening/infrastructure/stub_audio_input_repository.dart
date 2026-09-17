@@ -30,7 +30,7 @@ class StubAudioInputRepository implements AudioInputRepository {
       AudioInputResult.unavailable;
 
   @override
-  Stream<AudioSegment> audioSegmentStream(String sessionId) => Stream.empty();
+  Stream<AudioSegment> audioSegmentStream(String sessionId) => const Stream.empty();
 
   @override
   Future<ListeningState> getCurrentState(String sessionId) async =>

@@ -27,7 +27,7 @@ class WifiControlTool extends Tool {
   WifiControlTool(this._channel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'wifi_control',
         description:
             'دۆخی وایفای بخوێنیتەوە یان چالاکی/ناچالاکی بکەیت. '
@@ -36,7 +36,7 @@ class WifiControlTool extends Tool {
             'toggle opens the Wi-Fi settings panel instead of changing '
             'the state directly.',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'action',
             type: 'string',
@@ -51,7 +51,7 @@ class WifiControlTool extends Tool {
             hintText: 'state',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -65,7 +65,7 @@ class WifiControlTool extends Tool {
         requiresConfirmation: true,
         tags: ['device', 'wifi', 'toggle', 'وایفای'],
         icon: 'wifi',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.medium,
       );
 

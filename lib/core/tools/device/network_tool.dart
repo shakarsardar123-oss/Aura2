@@ -24,7 +24,7 @@ class NetworkTool extends Tool {
   NetworkTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'network',
         description:
             'زانیاری تۆڕ وەربگرە '
@@ -33,8 +33,8 @@ class NetworkTool extends Tool {
             'Get network connectivity information including '
             'connection status, type (Wi-Fi, mobile data), and network name.',
         category: 'device',
-        parameters: const [],
-        permissionRequirements: const [
+        parameters: [],
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.network,
             isRequired: true,
@@ -52,7 +52,7 @@ class NetworkTool extends Tool {
           'پەیوەندی',
         ],
         icon: 'wifi',
-        timeout: const Duration(seconds: 10),
+        timeout: Duration(seconds: 10),
         riskLevel: ToolRiskLevel.none,
       );
 

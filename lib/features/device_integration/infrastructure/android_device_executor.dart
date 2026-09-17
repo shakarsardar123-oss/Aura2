@@ -80,7 +80,7 @@ class AndroidDeviceExecutor {
       );
     }
     final result = await _deviceChannel.launchApp(packageName);
-    if (result.isSuccess) return Result.success(null);
+    if (result.isSuccess) return const Result.success(null);
     return Result.failure(
       DeviceIntegrationFailure.execution(
         result.errorMessage ?? 'launchApp failed for $packageName',

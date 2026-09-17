@@ -86,21 +86,21 @@ void main() {
     // Stage 5: Step 26 (Integrity Audit) verdict compilation
     // ============================================================
     test('Step 26 verdict: 12 drifts between Step 23 and Step 25 → incompatible', () {
-      final driftCount = 12;
-      final threshold = 0; // FAIL-CLOSED: any drift → incompatible
-      final verdict = driftCount > threshold ? 'incompatible' : 'compatible';
+      const driftCount = 12;
+      const threshold = 0; // FAIL-CLOSED: any drift → incompatible
+      const verdict = driftCount > threshold ? 'incompatible' : 'compatible';
       expect(verdict, equals('incompatible'));
     });
 
     test('Step 26 verdict: Step 22 to Step 25 execution path → drift detected', () {
-      final hasDrift = true; // ExecutionResult model differs
-      final verdict = hasDrift ? 'drift_detected' : 'compatible';
+      const hasDrift = true; // ExecutionResult model differs
+      const verdict = hasDrift ? 'drift_detected' : 'compatible';
       expect(verdict, equals('drift_detected'));
     });
 
     test('Step 26 verdict: Step 24 to Step 25 trigger bridge → compatible', () {
-      final hasDrift = false; // TriggerRepository adopted consistently
-      final verdict = hasDrift ? 'drift_detected' : 'compatible';
+      const hasDrift = false; // TriggerRepository adopted consistently
+      const verdict = hasDrift ? 'drift_detected' : 'compatible';
       expect(verdict, equals('compatible'));
     });
 
@@ -108,26 +108,26 @@ void main() {
     // FAIL-CLOSED: pipeline failure at any stage → overall denied
     // ============================================================
     test('FAIL-CLOSED: Stage 1 (Step 22) failure → overall denied', () {
-      final stage1Result = 'failure';
-      final overall = stage1Result == 'failure' ? 'denied' : 'pending';
+      const stage1Result = 'failure';
+      const overall = stage1Result == 'failure' ? 'denied' : 'pending';
       expect(overall, equals('denied'));
     });
 
     test('FAIL-CLOSED: Stage 2 (Step 23) failure → overall denied', () {
-      final stage2Result = 'error';
-      final overall = stage2Result == 'error' ? 'denied' : 'pending';
+      const stage2Result = 'error';
+      const overall = stage2Result == 'error' ? 'denied' : 'pending';
       expect(overall, equals('denied'));
     });
 
     test('FAIL-CLOSED: Stage 3 (Step 24) failure → overall denied', () {
-      final stage3Result = 'unavailable';
-      final overall = stage3Result == 'unavailable' ? 'denied' : 'pending';
+      const stage3Result = 'unavailable';
+      const overall = stage3Result == 'unavailable' ? 'denied' : 'pending';
       expect(overall, equals('denied'));
     });
 
     test('FAIL-CLOSED: Stage 4 (Step 25) failure → overall denied', () {
-      final stage4Result = 'unknown';
-      final overall = stage4Result == 'unknown' ? 'denied' : 'pending';
+      const stage4Result = 'unknown';
+      const overall = stage4Result == 'unknown' ? 'denied' : 'pending';
       expect(overall, equals('denied'));
     });
 
@@ -135,8 +135,8 @@ void main() {
     // FAIL-CLOSED: any stage canSkip → shouldAbort
     // ============================================================
     test('FAIL-CLOSED: pipeline canSkip at any stage → shouldAbort', () {
-      final canSkip = true;
-      final decision = 'shouldAbort'; // FAIL-CLOSED: always abort
+      const canSkip = true;
+      const decision = 'shouldAbort'; // FAIL-CLOSED: always abort
       expect(decision, equals('shouldAbort'));
     });
 
@@ -161,13 +161,13 @@ void main() {
     // Localization completeness in pipeline
     // ============================================================
     test('RTL-first locale is Kurdish Sorani throughout pipeline', () {
-      final pipelineLocale = 'ku';
+      const pipelineLocale = 'ku';
       expect(pipelineLocale, equals('ku'));
     });
 
     test('FAIL-CLOSED: localization gap in pipeline → integration blocked', () {
-      final hasLocalizationGap = true;
-      final verdict = hasLocalizationGap ? 'denied' : 'granted';
+      const hasLocalizationGap = true;
+      const verdict = hasLocalizationGap ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
@@ -198,7 +198,7 @@ void main() {
     test('Steps 15-25 source files are never modified by Step 26', () {
       final step26Files = ['integrity_verdict.dart', 'compatibility_report.dart', 'fail_closed_invariant.dart'];
       // Step 26 only adds new files in lib/features/integrity_audit/
-      final modifiesPriorSteps = false;
+      const modifiesPriorSteps = false;
       expect(modifiesPriorSteps, isFalse);
     });
 
@@ -206,9 +206,9 @@ void main() {
     // Overall pipeline verdict: denied (due to 12 drifts)
     // ============================================================
     test('FAIL-CLOSED: overall pipeline verdict is denied (12 drifts exist)', () {
-      final totalDrifts = 12;
-      final totalGaps = 0; // hypothetical
-      final overallVerdict = (totalDrifts > 0 || totalGaps > 0) ? 'denied' : 'granted';
+      const totalDrifts = 12;
+      const totalGaps = 0; // hypothetical
+      const overallVerdict = (totalDrifts > 0 || totalGaps > 0) ? 'denied' : 'granted';
       expect(overallVerdict, equals('denied'));
     });
   });

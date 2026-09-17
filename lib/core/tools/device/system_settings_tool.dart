@@ -75,7 +75,7 @@ class SystemSettingsTool extends Tool {
   SystemSettingsTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'system_settings',
         description:
             'پانێلی ڕێکخستنەکانی سیستەم بکەرەوە (وایفای، بلوتوز، تەواوی شاشە، …). '
@@ -83,7 +83,7 @@ class SystemSettingsTool extends Tool {
             'Open an Android system settings panel '
             '(e.g. wifi, bluetooth, display, sound, battery).',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'setting',
             type: 'string',
@@ -113,7 +113,7 @@ class SystemSettingsTool extends Tool {
             keyboardType: 'text',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -134,7 +134,7 @@ class SystemSettingsTool extends Tool {
           'سیستەم',
         ],
         icon: 'settings',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.low,
       );
 

@@ -9,7 +9,6 @@
 library;
 
 import '../domain/models/tool_output.dart';
-import '../domain/models/tool_input.dart';
 
 class ToolOutputNormalizer {
   /// Sensitive key patterns to detect in output data.

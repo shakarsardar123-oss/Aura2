@@ -7,7 +7,6 @@
 library;
 
 import '../models/device_connection_state.dart';
-import '../models/device_command.dart';
 
 /// Result of a raw transport operation.
 class TransportResult {

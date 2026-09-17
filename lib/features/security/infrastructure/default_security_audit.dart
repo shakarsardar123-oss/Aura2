@@ -200,7 +200,7 @@ class DefaultSecurityAuditService implements SecurityAuditService {
       ));
     } catch (_) {
       // FAIL CLOSED: return empty summary on error
-      return Success(AuditSummary(
+      return Success(const AuditSummary(
         totalEvents: 0,
       ));
     }

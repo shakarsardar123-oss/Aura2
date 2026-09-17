@@ -226,8 +226,8 @@ class _OverlayPainter extends CustomPainter {
 
     // Draw arrowhead.
     final angle = math.atan2(end.dy - start.dy, end.dx - start.dx);
-    final headLen = 12.0;
-    final headAngle = math.pi / 6;
+    const headLen = 12.0;
+    const headAngle = math.pi / 6;
 
     canvas.drawLine(
       end,

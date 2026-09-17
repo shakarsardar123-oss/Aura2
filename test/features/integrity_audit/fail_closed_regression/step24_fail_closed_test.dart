@@ -15,31 +15,31 @@ void main() {
     // Core FAIL-CLOSED invariants
     // ============================================================
     test('unknown trigger state → denied', () {
-      final state = TriggerState.unknown;
+      const state = TriggerState.unknown;
       final verdict = resolveTriggerState(state);
       expect(verdict, equals('denied'));
     });
 
     test('error trigger state → denied', () {
-      final state = TriggerState.error;
+      const state = TriggerState.error;
       final verdict = resolveTriggerState(state);
       expect(verdict, equals('denied'));
     });
 
     test('unavailable trigger state → denied', () {
-      final state = TriggerState.unavailable;
+      const state = TriggerState.unavailable;
       final verdict = resolveTriggerState(state);
       expect(verdict, equals('denied'));
     });
 
     test('denied trigger state → denied (closed)', () {
-      final state = TriggerState.denied;
+      const state = TriggerState.denied;
       final verdict = resolveTriggerState(state);
       expect(verdict, equals('denied'));
     });
 
     test('granted trigger state → granted', () {
-      final state = TriggerState.granted;
+      const state = TriggerState.granted;
       final verdict = resolveTriggerState(state);
       expect(verdict, equals('granted'));
     });
@@ -48,14 +48,14 @@ void main() {
     // canSkip → shouldAbort (NEVER skip)
     // ============================================================
     test('canSkip=true → shouldAbort (NEVER skip trigger)', () {
-      final canSkip = true;
-      final decision = 'shouldAbort'; // always abort
+      const canSkip = true;
+      const decision = 'shouldAbort'; // always abort
       expect(decision, equals('shouldAbort'));
     });
 
     test('canSkip=false → shouldAbort (NEVER skip trigger)', () {
-      final canSkip = false;
-      final decision = 'shouldAbort';
+      const canSkip = false;
+      const decision = 'shouldAbort';
       expect(decision, equals('shouldAbort'));
     });
 
@@ -63,26 +63,26 @@ void main() {
     // TriggerRepository FAIL-CLOSED invariants
     // ============================================================
     test('TriggerRepository.fire() failure → denied', () {
-      final fireResult = 'failure';
-      final verdict = fireResult == 'failure' ? 'denied' : 'granted';
+      const fireResult = 'failure';
+      const verdict = fireResult == 'failure' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('TriggerRepository.fire() error → denied', () {
-      final fireResult = 'error';
-      final verdict = fireResult == 'error' ? 'denied' : 'granted';
+      const fireResult = 'error';
+      const verdict = fireResult == 'error' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('TriggerRepository unavailable → denied', () {
-      final available = false;
-      final verdict = available ? 'granted' : 'denied';
+      const available = false;
+      const verdict = available ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
     test('TriggerRepository.register() error → denied', () {
-      final registerResult = 'error';
-      final verdict = registerResult == 'error' ? 'denied' : 'granted';
+      const registerResult = 'error';
+      const verdict = registerResult == 'error' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
@@ -105,14 +105,14 @@ void main() {
     // Trigger bridge to Step 25 FAIL-CLOSED
     // ============================================================
     test('trigger bridge to Step 25 unknown → denied', () {
-      final bridgeState = 'unknown';
-      final verdict = bridgeState == 'unknown' ? 'denied' : 'granted';
+      const bridgeState = 'unknown';
+      const verdict = bridgeState == 'unknown' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('trigger bridge to Step 25 unavailable → denied', () {
-      final bridgeState = 'unavailable';
-      final verdict = bridgeState == 'unavailable' ? 'denied' : 'granted';
+      const bridgeState = 'unavailable';
+      const verdict = bridgeState == 'unavailable' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
@@ -120,7 +120,7 @@ void main() {
     // RTL-first locale enforcement
     // ============================================================
     test('Step 24 locale defaults to Kurdish Sorani', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 
@@ -128,7 +128,7 @@ void main() {
     // No hardcoded secrets in trigger path
     // ============================================================
     test('trigger path never contains hardcoded secrets', () {
-      final triggerId = 'trg_abc123';
+      const triggerId = 'trg_abc123';
       final hasSecret = triggerId.contains('password') ||
           triggerId.contains('secret') ||
           triggerId.contains('token');

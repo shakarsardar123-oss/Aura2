@@ -87,8 +87,8 @@ class ActionVerifier {
       DeviceAction action, VerificationParams params) async {
     switch (params.method) {
       case VerificationMethod.none:
-        return Result.success(
-          const VerificationResult(passed: true, confidence: 0.9),
+        return const Result.success(
+          VerificationResult(passed: true, confidence: 0.9),
         );
 
       case VerificationMethod.pixelChange:
@@ -126,8 +126,8 @@ class ActionVerifier {
       // pass with moderate confidence.
       final frame = await screenCapture.capture();
       await screenUnderstanding.analyze(frame);
-      return Result.success(
-        const VerificationResult(passed: true, confidence: 0.7),
+      return const Result.success(
+        VerificationResult(passed: true, confidence: 0.7),
       );
     } catch (e) {
       return Result.failure(
@@ -208,7 +208,7 @@ class ActionVerifier {
     try {
       // Search for any target at the expected location.
       final targets = await screenSearch.search(
-        TargetQuery(label: 'target'),
+        const TargetQuery(label: 'target'),
       );
 
       // If any target is found, the appear check passes.

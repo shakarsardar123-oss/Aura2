@@ -27,7 +27,7 @@ class ScreenGestureTool extends Tool {
   ScreenGestureTool(this._channel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'screen_gesture',
         description:
             'جوڵەی شاشە ئەنجام بدە (پەنجەدان، پەنجەی درێژ، سوایپ) '
@@ -36,7 +36,7 @@ class ScreenGestureTool extends Tool {
             'Dispatch a screen gesture (tap, long_press, swipe) through the '
             'AURA accessibility service. Requires the service to be enabled.',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'gesture',
             type: 'string',
@@ -88,7 +88,7 @@ class ScreenGestureTool extends Tool {
             keyboardType: 'number',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -102,7 +102,7 @@ class ScreenGestureTool extends Tool {
         requiresConfirmation: true,
         tags: ['device', 'gesture', 'accessibility', 'tap', 'swipe', 'جوڵە'],
         icon: 'touch_app',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.high,
       );
 
@@ -161,7 +161,7 @@ class ScreenGestureTool extends Tool {
       }
       final enabled = (avail.data?['enabled'] as bool?) ?? false;
       if (!enabled) {
-        return ToolResult.failure(
+        return const ToolResult.failure(
           'خزمەتگوزاری دەستپێگەیشتن چالاک نییە. '
           '— The accessibility service is not enabled.',
           errorCode: 'accessibilityDisabled',

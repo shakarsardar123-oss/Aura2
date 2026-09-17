@@ -89,7 +89,7 @@ class UrlLaunchTool extends Tool {
   UrlLaunchTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'url_launch',
         description:
             'بەستەرێک بکەرەوە لە وێبگەرەکەدا (تەنها http/https). '
@@ -97,7 +97,7 @@ class UrlLaunchTool extends Tool {
             'Open a URL in the default browser '
             '(only http and https schemes are allowed).',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'url',
             type: 'string',
@@ -113,7 +113,7 @@ class UrlLaunchTool extends Tool {
             keyboardType: 'url',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -135,7 +135,7 @@ class UrlLaunchTool extends Tool {
           'بکەرەوە',
         ],
         icon: 'open_in_browser',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.low,
       );
 

@@ -31,7 +31,7 @@ class BluetoothControlTool extends Tool {
   BluetoothControlTool(this._channel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'bluetooth_control',
         description:
             'دۆخی بلوتوز بخوێنیتەوە یان چالاکی/ناچالاکی بکەیت. '
@@ -40,7 +40,7 @@ class BluetoothControlTool extends Tool {
             'On Android 13+ the toggle opens the settings panel instead '
             'of changing the state directly.',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'action',
             type: 'string',
@@ -55,7 +55,7 @@ class BluetoothControlTool extends Tool {
             hintText: 'state',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -69,7 +69,7 @@ class BluetoothControlTool extends Tool {
         requiresConfirmation: true,
         tags: ['device', 'bluetooth', 'toggle', 'بلوتوز'],
         icon: 'bluetooth',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.medium,
       );
 

@@ -154,7 +154,7 @@ class GeminiProvider implements AIProvider {
   /// Build the system instruction from the agent config.
   Map<String, dynamic>? _buildSystemInstruction(AIRequest request) {
     // Always ensure AURA identity is preserved
-    final baseIdentity =
+    const baseIdentity =
         'من ئەورای تایبەتی تۆم. وەڵامی کوردی سۆرانی بدەرەوە.';
     final systemPrompt = request.agentConfig.systemPrompt;
     if (systemPrompt.isEmpty && baseIdentity.isEmpty) return null;

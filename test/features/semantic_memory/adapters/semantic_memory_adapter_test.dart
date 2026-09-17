@@ -56,8 +56,8 @@ class PolicyCheckResult {
 
 class MemoryPolicy {
   PolicyCheckResult check(String content) {
-    if (content.toLowerCase().contains('password')) return PolicyCheckResult(isAllowed: false, reason: 'password');
-    return PolicyCheckResult(isAllowed: true);
+    if (content.toLowerCase().contains('password')) return const PolicyCheckResult(isAllowed: false, reason: 'password');
+    return const PolicyCheckResult(isAllowed: true);
   }
 }
 
@@ -190,7 +190,7 @@ class SemanticMemoryAdapter {
     switch (toolName) {
       case 'memory_remember':
         final content = params['content'] as String?;
-        if (content == null || content.isEmpty) return MemoryToolResult(success: false, message: 'Content required');
+        if (content == null || content.isEmpty) return const MemoryToolResult(success: false, message: 'Content required');
         final policyResult = _policy.check(content);
         if (!policyResult.isAllowed) return MemoryToolResult(success: false, message: 'Policy violation: ${policyResult.reason}');
         final type = _parseType(params['type'] as String?);
@@ -202,7 +202,7 @@ class SemanticMemoryAdapter {
 
       case 'memory_recall':
         final query = params['query'] as String?;
-        if (query == null || query.isEmpty) return MemoryToolResult(success: false, message: 'Query required');
+        if (query == null || query.isEmpty) return const MemoryToolResult(success: false, message: 'Query required');
         final topK = int.tryParse(params['topK']?.toString() ?? '5') ?? 5;
         final result = _manager.recall(query, topK: topK);
         return result.isSuccess
@@ -211,7 +211,7 @@ class SemanticMemoryAdapter {
 
       case 'memory_forget':
         final id = params['id'] as String?;
-        if (id == null || id.isEmpty) return MemoryToolResult(success: false, message: 'ID required');
+        if (id == null || id.isEmpty) return const MemoryToolResult(success: false, message: 'ID required');
         final result = _manager.forget(id);
         return result.isSuccess
           ? MemoryToolResult(success: true, message: 'Forgot: $id')
@@ -219,7 +219,7 @@ class SemanticMemoryAdapter {
 
       case 'memory_update':
         final id = params['id'] as String?;
-        if (id == null || id.isEmpty) return MemoryToolResult(success: false, message: 'ID required');
+        if (id == null || id.isEmpty) return const MemoryToolResult(success: false, message: 'ID required');
         final content = params['content'] as String?;
         final importance = params['importance'] != null ? double.tryParse(params['importance'].toString()) : null;
         final type = params['type'] != null ? _parseType(params['type'] as String?) : null;

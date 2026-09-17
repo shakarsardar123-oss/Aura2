@@ -57,4 +57,14 @@ final class _IntegrationFailure extends MemoryFailure {
 
 final class _UnknownFailure extends MemoryFailure {
   const _UnknownFailure(String message, [Object? cause]) : super._(message, cause);
+  @override
+  Future<Result<MemoryEntry, MemoryFailure>> recall(String id) async {
+    // Implement recall logic
+  }
+
+  @override
+  Future<Result<List<MemoryEntry>, MemoryFailure>> search(String query) async {
+    // Implement search logic
+  }
+
 }

@@ -15,7 +15,7 @@ class PermissionService {
       final status = await permission.request();
 
       if (status.isGranted) {
-        return Result.success(true);
+        return const Result.success(true);
       }
 
       if (status.isPermanentlyDenied) {

@@ -100,7 +100,7 @@ class DefaultSensitiveDataRedactor implements SensitiveDataRedactor {
       ));
     } catch (e) {
       // FAIL CLOSED: on error, over-redact to full placeholder
-      return Success(RedactionResult(
+      return Success(const RedactionResult(
         redactedContent: '[CONTENT REDACTED: ERROR]',
         redactionCount: 1,
         redactedCategories: [SensitiveDataCategory.unknown],

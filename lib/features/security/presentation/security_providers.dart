@@ -121,7 +121,7 @@ final securitySecureStorageProvider =
 /// Security config provider.
 final securityConfigProvider = StateProvider<SecurityConfig>(
   name: SecurityProviderNames.securityConfig,
-  (ref) => SecurityConfig(),
+  (ref) => const SecurityConfig(),
 );
 
 /// Security state notifier provider.

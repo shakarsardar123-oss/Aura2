@@ -47,7 +47,7 @@ class SearchEngine implements ScreenSearchService {
         status: ScreenSearchStatus.error,
         errorMessage: 'Search query cannot be empty with no filters',
       ));
-      return Result.failure(const ScreenSearchFailure(
+      return const Result.failure(ScreenSearchFailure(
         message: 'Search query cannot be empty with no filters',
         phase: ScreenSearchPhase.queryParsing,
       ));
@@ -85,7 +85,7 @@ class SearchEngine implements ScreenSearchService {
         _updateState(_state.copyWith(
           status: ScreenSearchStatus.cancelled,
         ));
-        return Result.failure(const ScreenSearchFailure(
+        return const Result.failure(ScreenSearchFailure(
           message: 'Search was cancelled',
           phase: ScreenSearchPhase.cancelled,
         ));

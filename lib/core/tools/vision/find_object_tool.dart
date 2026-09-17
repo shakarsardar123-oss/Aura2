@@ -15,7 +15,7 @@ class FindObjectTool extends Tool {
   FindObjectTool(this._visionService);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'find_object',
         description:
             'Find a specific object in an image and return its location as a bounding box.',
@@ -56,10 +56,10 @@ class FindObjectTool extends Tool {
     final objectName = args.get<String>('object_name');
 
     if (imageBase64.isEmpty) {
-      return ToolResult.failure('image_base64 cannot be empty');
+      return const ToolResult.failure('image_base64 cannot be empty');
     }
     if (objectName.isEmpty) {
-      return ToolResult.failure('object_name cannot be empty');
+      return const ToolResult.failure('object_name cannot be empty');
     }
 
     try {

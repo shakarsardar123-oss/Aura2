@@ -43,5 +43,5 @@ class StubOverlayRendererRepository implements OverlayRendererRepository {
   Future<OverlayVisibility> getVisibility() async => OverlayVisibility.unknown;
 
   @override
-  Stream<SubtitleOverlayState> overlayStateStream() => Stream.empty();
+  Stream<SubtitleOverlayState> overlayStateStream() => const Stream.empty();
 }

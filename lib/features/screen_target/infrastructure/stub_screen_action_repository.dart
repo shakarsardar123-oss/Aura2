@@ -4,7 +4,6 @@
 /// FAIL-CLOSED stub: all operations return denied/unverified.
 library;
 
-import '../domain/models/correction_action.dart';
 import '../domain/models/screen_target.dart';
 import '../domain/repositories/screen_action_repository.dart';
 

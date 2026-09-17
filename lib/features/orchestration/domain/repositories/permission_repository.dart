@@ -33,5 +33,5 @@ class PermissionVerdict {
       PermissionVerdict(granted: false, reason: reason, shouldOpenSettings: shouldOpenSettings);
 
   factory PermissionVerdict.granted() =>
-      PermissionVerdict(granted: true);
+      const PermissionVerdict(granted: true);
 }

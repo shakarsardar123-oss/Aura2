@@ -53,7 +53,7 @@ class CancellationToken {
 
   /// Throw if cancelled. Useful for cooperative checks.
   void throwIfCancelled() {
-    if (_isCancelled) throw ToolExecutionCancelledException();
+    if (_isCancelled) throw const ToolExecutionCancelledException();
   }
 
   /// Create an already-cancelled token.

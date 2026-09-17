@@ -15,7 +15,7 @@ class DeviceInfoTool extends Tool {
   DeviceInfoTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'device_info',
         description:
             'زانیاری ئامێر و سیستەمی کارپێکردر وەربگرە '
@@ -24,13 +24,13 @@ class DeviceInfoTool extends Tool {
             'Get hardware and operating system information about the device '
             '(brand, model, Android version, SDK level, etc.).',
         category: 'device',
-        parameters: const [],
-        permissionRequirements: const [],
+        parameters: [],
+        permissionRequirements: [],
         isDangerous: false,
         requiresConfirmation: false,
         tags: ['device', 'info', 'hardware', 'system', 'ئامێر', 'زانیاری'],
         icon: 'phone_android',
-        timeout: const Duration(seconds: 10),
+        timeout: Duration(seconds: 10),
         riskLevel: ToolRiskLevel.none,
       );
 

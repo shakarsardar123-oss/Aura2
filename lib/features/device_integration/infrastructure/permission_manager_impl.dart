@@ -73,5 +73,5 @@ class StubPermissionManager implements PermissionManager {
 
   @override
   Future<Result<void, DeviceIntegrationFailure>> openSettings() async =>
-      Result.success(null);
+      const Result.success(null);
 }

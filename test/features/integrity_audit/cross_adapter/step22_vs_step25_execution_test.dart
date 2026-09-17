@@ -39,8 +39,8 @@ void main() {
     test('ToolRegistryRepository.discover() nullable category drift (Step 22 origin)', () {
       // Step 22 defines discover with nullable category
       // Step 25 uses non-nullable category
-      final step22CategoryNullable = true; // String?
-      final step25CategoryNullable = false; // String
+      const step22CategoryNullable = true; // String?
+      const step25CategoryNullable = false; // String
       expect(step22CategoryNullable, isNot(equals(step25CategoryNullable)));
     });
 
@@ -68,19 +68,19 @@ void main() {
     });
 
     test('FAIL-CLOSED: if Step 22 interface unreachable → verdict denied', () {
-      final step22Available = false; // simulate unavailable
-      final verdict = step22Available ? 'compatible' : 'denied';
+      const step22Available = false; // simulate unavailable
+      const verdict = step22Available ? 'compatible' : 'denied';
       expect(verdict, equals('denied'));
     });
 
     test('FAIL-CLOSED: if Step 25 adapter does not implement Step 22 interface → denied', () {
-      final implementsAllMethods = false; // known drift exists
-      final verdict = implementsAllMethods ? 'compatible' : 'denied';
+      const implementsAllMethods = false; // known drift exists
+      const verdict = implementsAllMethods ? 'compatible' : 'denied';
       expect(verdict, equals('denied'));
     });
 
     test('RTL-first locale is Kurdish Sorani for execution audit', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 
@@ -88,20 +88,20 @@ void main() {
     // Step 22 FAIL-CLOSED invariants through execution path
     // ============================================================
     test('Step 22 unknown state through execution path → denied', () {
-      final unknownState = 'unknown';
-      final resolved = unknownState == 'unknown' ? 'denied' : unknownState;
+      const unknownState = 'unknown';
+      const resolved = unknownState == 'unknown' ? 'denied' : unknownState;
       expect(resolved, equals('denied'));
     });
 
     test('Step 22 error state through execution path → denied', () {
-      final errorState = 'error';
-      final resolved = errorState == 'error' ? 'denied' : errorState;
+      const errorState = 'error';
+      const resolved = errorState == 'error' ? 'denied' : errorState;
       expect(resolved, equals('denied'));
     });
 
     test('Step 22 unavailable state through execution path → denied', () {
-      final unavailableState = 'unavailable';
-      final resolved = unavailableState == 'unavailable' ? 'denied' : unavailableState;
+      const unavailableState = 'unavailable';
+      const resolved = unavailableState == 'unavailable' ? 'denied' : unavailableState;
       expect(resolved, equals('denied'));
     });
   });

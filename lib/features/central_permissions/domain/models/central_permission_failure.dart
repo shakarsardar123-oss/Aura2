@@ -119,6 +119,7 @@ class CentralPermissionFailure {
 // ── Private subtypes ────────────────────────────────────────────────
 
 mixin _PermissionCarryingFailure on CentralPermissionFailure {
+  @override
   DevicePermission get permission;
 }
 

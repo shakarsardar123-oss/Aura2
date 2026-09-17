@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   group('CompatibilityReport', () {
     test('failClosed factory creates denied report when critical drifts exist', () {
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_23',
         targetStep: 'step_25',
         totalInterfaces: 12,
@@ -26,7 +26,7 @@ void main() {
     });
 
     test('compatible report has zero drifts', () {
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_22',
         targetStep: 'step_25',
         totalInterfaces: 8,
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('RTL-first locale is Kurdish Sorani', () {
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_24',
         targetStep: 'step_25',
         totalInterfaces: 5,
@@ -54,7 +54,7 @@ void main() {
 
     test('aggregated verdicts reflect FAIL-CLOSED for unknown', () {
       // FAIL-CLOSED: unknown verdict in aggregation → denied
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_23',
         targetStep: 'step_25',
         totalInterfaces: 1,
@@ -70,7 +70,7 @@ void main() {
     test('zero compatible count with no drifts is FAIL-CLOSED denied', () {
       // FAIL-CLOSED: if total > 0 but compatible = 0 and drift = 0,
       // something is wrong → denied
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_23',
         targetStep: 'step_25',
         totalInterfaces: 5,
@@ -85,7 +85,7 @@ void main() {
     });
 
     test('compatibility percentage is correctly calculated', () {
-      final report = CompatibilityReport(
+      const report = CompatibilityReport(
         sourceStep: 'step_22',
         targetStep: 'step_25',
         totalInterfaces: 10,

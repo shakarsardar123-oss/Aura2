@@ -183,7 +183,7 @@ class FloatingAuraStateNotifier extends StateNotifier<FloatingAuraState> {
         status: FloatingAuraOverlayStatus.error,
         lastError: 'SYSTEM_ALERT_WINDOW permission blocked by security policy',
       );
-      return Result.failure(
+      return const Result.failure(
         FloatingAuraOverlayFailure(
           message:
               'SYSTEM_ALERT_WINDOW permission blocked by security policy',
@@ -225,7 +225,7 @@ class FloatingAuraStateNotifier extends StateNotifier<FloatingAuraState> {
         status: FloatingAuraOverlayStatus.error,
         lastError: 'SYSTEM_ALERT_WINDOW permission not granted',
       );
-      return Result.failure(
+      return const Result.failure(
         FloatingAuraOverlayFailure(
           message: 'SYSTEM_ALERT_WINDOW permission not granted',
           phase: FloatingAuraOverlayPhase.showOverlay,

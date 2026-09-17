@@ -114,7 +114,7 @@ abstract class AgentExecutionAdapter {
   // ─── Tool definitions ──────────────────────────────────────────
 
   static List<AgentToolDef> get allDefinitions => [
-        AgentToolDef(
+        const AgentToolDef(
           name: injectRecoveryContext,
           description:
               'Inject a recovery context into the recovery subsystem. '
@@ -131,14 +131,14 @@ abstract class AgentExecutionAdapter {
             ),
           ],
         ),
-        AgentToolDef(
+        const AgentToolDef(
           name: cancelRecovery,
           description:
               'Cancel all ongoing recovery operations. '
               'Triggers graceful shutdown of retry/replanning cycles.',
           parameters: [],
         ),
-        AgentToolDef(
+        const AgentToolDef(
           name: checkRetryPolicy,
           description:
               'Check whether a given failure phase is retryable '
@@ -153,7 +153,7 @@ abstract class AgentExecutionAdapter {
             ),
           ],
         ),
-        AgentToolDef(
+        const AgentToolDef(
           name: recover,
           description:
               'Start the recovery process for a failed step. '
@@ -180,7 +180,7 @@ abstract class AgentExecutionAdapter {
             ),
           ],
         ),
-        AgentToolDef(
+        const AgentToolDef(
           name: getRecoveryState,
           description:
               'Retrieve the current recovery state including '
@@ -310,13 +310,6 @@ class AgentExecutionAdapterImpl extends AgentExecutionAdapter {
       rawError ?? Exception('Unknown error'),
       action: action,
     );
-
-    if (result == null) {
-      return const AgentToolResult(
-        success: false,
-        message: 'Recovery returned null — coordinator not initialized.',
-      );
-    }
 
     return result.isSuccess
         ? AgentToolResult(

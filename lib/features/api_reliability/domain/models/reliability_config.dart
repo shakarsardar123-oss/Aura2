@@ -77,7 +77,7 @@ class ReliabilityConfig {
     this.verdict = ReliabilityVerdict.unknown,
   });
 
-  factory ReliabilityConfig.unknown() => ReliabilityConfig(
+  factory ReliabilityConfig.unknown() => const ReliabilityConfig(
     configId: '__unknown__',
     apiName: '__unknown__',
     verdict: ReliabilityVerdict.unknown,

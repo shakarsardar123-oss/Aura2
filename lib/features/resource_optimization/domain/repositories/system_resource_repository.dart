@@ -6,7 +6,6 @@
 library;
 
 import '../models/resource_state.dart';
-import '../models/battery_optimization_profile.dart';
 
 /// Result of a system resource operation.
 enum SystemResourceResult {

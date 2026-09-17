@@ -120,7 +120,7 @@ class WakeCameraService {
         );
       }
 
-      return FaceDetectionResult(faceDetected: false, faceCount: 0);
+      return const FaceDetectionResult(faceDetected: false, faceCount: 0);
     } catch (e) {
       return FaceDetectionResult(
         faceDetected: false,
@@ -167,7 +167,7 @@ class WakeCameraService {
               faceCount: faces.length,
               trackingId: faces.first.trackingId,
             )
-          : FaceDetectionResult(faceDetected: false, faceCount: 0);
+          : const FaceDetectionResult(faceDetected: false, faceCount: 0);
 
       _resultController?.add(result);
     } catch (e) {

@@ -26,7 +26,7 @@ void main() {
     // FAIL-CLOSED: missing keys
     // ============================================================
     test('FAIL-CLOSED: missing key for Step 22 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'missingKey',
         step: 'step_22',
         key: 'tool.execute.title',
@@ -36,7 +36,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: missing key for Step 23 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'missingKey',
         step: 'step_23',
         key: 'audit.record.message',
@@ -46,7 +46,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: missing key for Step 24 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'missingKey',
         step: 'step_24',
         key: 'trigger.fire.label',
@@ -56,7 +56,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: missing key for Step 25 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'missingKey',
         step: 'step_25',
         key: 'agent.intent.label',
@@ -69,7 +69,7 @@ void main() {
     // FAIL-CLOSED: English leaks in Kurdish Sorani strings
     // ============================================================
     test('FAIL-CLOSED: English leak in Step 22 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'englishLeak',
         step: 'step_22',
         key: 'tool.execute.result',
@@ -80,7 +80,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: English leak in Step 23 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'englishLeak',
         step: 'step_23',
         key: 'audit.record.result',
@@ -91,7 +91,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: English leak in Step 24 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'englishLeak',
         step: 'step_24',
         key: 'trigger.fire.result',
@@ -102,7 +102,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: English leak in Step 25 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'englishLeak',
         step: 'step_25',
         key: 'agent.plan.result',
@@ -116,7 +116,7 @@ void main() {
     // FAIL-CLOSED: RTL issues
     // ============================================================
     test('FAIL-CLOSED: RTL issue in Step 22 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'rtlIssue',
         step: 'step_22',
         key: 'tool.execute.label',
@@ -127,7 +127,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: RTL issue in Step 23 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'rtlIssue',
         step: 'step_23',
         key: 'audit.record.label',
@@ -138,7 +138,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: RTL issue in Step 24 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'rtlIssue',
         step: 'step_24',
         key: 'trigger.fire.label',
@@ -149,7 +149,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: RTL issue in Step 25 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'rtlIssue',
         step: 'step_25',
         key: 'agent.intent.label',
@@ -163,7 +163,7 @@ void main() {
     // FAIL-CLOSED: format string mismatches
     // ============================================================
     test('FAIL-CLOSED: format mismatch in Step 22 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'formatStringMismatch',
         step: 'step_22',
         key: 'tool.execute.count',
@@ -175,7 +175,7 @@ void main() {
     });
 
     test('FAIL-CLOSED: format mismatch in Step 25 → blocking gap', () {
-      final gap = StubLocalizationGap(
+      const gap = StubLocalizationGap(
         gapType: 'formatStringMismatch',
         step: 'step_25',
         key: 'agent.confirm.count',
@@ -212,8 +212,8 @@ void main() {
     });
 
     test('FAIL-CLOSED: any gap across any step → integration blocked', () {
-      final hasAnyGap = true; // if any gap exists at all
-      final verdict = hasAnyGap ? 'blocked' : 'clear';
+      const hasAnyGap = true; // if any gap exists at all
+      const verdict = hasAnyGap ? 'blocked' : 'clear';
       expect(verdict, equals('blocked'));
     });
 
@@ -222,8 +222,8 @@ void main() {
     // ============================================================
     test('FAIL-CLOSED: English fallback for Kurdish Sorani → gap', () {
       // If a 'ku' string falls back to English, that's a gap
-      final fallbackToEnglish = true;
-      final verdict = fallbackToEnglish ? 'gap' : 'complete';
+      const fallbackToEnglish = true;
+      const verdict = fallbackToEnglish ? 'gap' : 'complete';
       expect(verdict, equals('gap'));
     });
   });

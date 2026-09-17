@@ -178,7 +178,7 @@ class Step20DiscoveryAdapter {
         query: 'available',
       );
     } catch (e) {
-      return DiscoveryResult(
+      return const DiscoveryResult(
         tools: [],
         totalMatches: 0,
         query: 'available',
@@ -206,7 +206,7 @@ class Step20DiscoveryAdapter {
         query: 'needsAttention',
       );
     } catch (e) {
-      return DiscoveryResult(
+      return const DiscoveryResult(
         tools: [],
         totalMatches: 0,
         query: 'needsAttention',

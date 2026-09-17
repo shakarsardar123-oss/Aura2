@@ -173,5 +173,17 @@ class LocalMemoryStorageService implements MemoryStorageService {
     }
     _store.clear();
     return Result.success(null);
+class LocalMemoryStorageService implements MemoryStorageService {
+  @override
+  Future<Result<MemoryEntry, MemoryFailure>> recall(String id) async {
+    // Implement recall logic
+  }
+
+  @override
+  Future<Result<List<MemoryEntry>, MemoryFailure>> search(String query) async {
+    // Implement search logic
+  }
+}
+
   }
 }

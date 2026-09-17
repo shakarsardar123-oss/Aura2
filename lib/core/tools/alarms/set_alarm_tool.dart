@@ -13,7 +13,7 @@ class SetAlarmTool extends Tool {
   final AlarmToolGateway _gateway;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'set_alarm',
         description: 'Quickly set a one-shot alarm by specifying time and optional label. '
             'Use this for simple voice or chat requests like "set alarm for 7:30" '
@@ -42,7 +42,7 @@ class SetAlarmTool extends Tool {
     final label = args.getOrElse<String>('label', '');
 
     if (timeStr.isEmpty) {
-      return ToolResult.failure('time is required');
+      return const ToolResult.failure('time is required');
     }
 
     // Parse HH:MM or HH:MM AM/PM patterns.

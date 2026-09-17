@@ -15,7 +15,7 @@ class AnalyzeVisionTool extends Tool {
   AnalyzeVisionTool(this._visionService);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'analyze_vision',
         description:
             'Analyze an image using AI vision. Detects objects, scenes, text, and provides descriptions with locations.',
@@ -56,7 +56,7 @@ class AnalyzeVisionTool extends Tool {
     final prompt = args.getString('prompt');
 
     if (imageBase64.isEmpty) {
-      return ToolResult.failure('image_base64 cannot be empty');
+      return const ToolResult.failure('image_base64 cannot be empty');
     }
 
     try {

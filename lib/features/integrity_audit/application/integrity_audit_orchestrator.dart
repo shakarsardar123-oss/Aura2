@@ -14,7 +14,6 @@ library;
 import '../domain/models/integrity_verdict.dart';
 import '../domain/models/compatibility_report.dart';
 import '../domain/models/audit_finding.dart';
-import '../domain/models/fail_closed_invariant.dart';
 import '../domain/models/localization_gap.dart';
 import '../domain/services/integrity_verification_service.dart';
 import '../domain/services/step_compatibility_service.dart';

@@ -35,7 +35,7 @@ void main() {
         executionId: 'exec-003',
         toolId: 'device',
         caller: 'test',
-        timeout: Duration(milliseconds: -1),
+        timeout: const Duration(milliseconds: -1),
       );
       expect(context.isTimedOut, isTrue);
     });

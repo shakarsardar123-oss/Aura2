@@ -11,7 +11,7 @@ class ListAlarmsTool extends Tool {
   final AlarmToolGateway _gateway;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'list_alarms',
         description: 'List all configured wake verification alarms with their times, labels, and verification modes.',
         category: 'alarms',

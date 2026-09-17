@@ -263,7 +263,7 @@ class ToolInputValidator {
   ) {
     final result = <String, dynamic>{};
     for (final entry in map.entries) {
-      final key = entry.key as String;
+      final key = entry.key;
       final path = prefix.isEmpty ? key : '$prefix.$key';
       result[key] = _sanitizeValue(entry.value, path, onModified);
     }

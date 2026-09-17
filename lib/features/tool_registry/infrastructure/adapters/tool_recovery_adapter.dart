@@ -104,7 +104,7 @@ class DefaultToolRecoveryAdapter implements ToolRecoveryAdapter {
     switch (phase) {
       case ToolFailurePhase.permission:
         // Permission failures: suggest re-requesting permissions.
-        return ToolRecoveryOutcome(
+        return const ToolRecoveryOutcome(
           recovered: false,
           recoveryStrategy: 'requestPermission',
           message: 'Permission failure – try requesting permissions again',
@@ -112,7 +112,7 @@ class DefaultToolRecoveryAdapter implements ToolRecoveryAdapter {
 
       case ToolFailurePhase.confirmation:
         // Confirmation failures: suggest re-prompting.
-        return ToolRecoveryOutcome(
+        return const ToolRecoveryOutcome(
           recovered: false,
           recoveryStrategy: 'reconfirm',
           message: 'Confirmation denied – user may re-initiate',
@@ -120,7 +120,7 @@ class DefaultToolRecoveryAdapter implements ToolRecoveryAdapter {
 
       case ToolFailurePhase.execution:
         // Execution failures: suggest retry.
-        return ToolRecoveryOutcome(
+        return const ToolRecoveryOutcome(
           recovered: false,
           recoveryStrategy: 'retry',
           message: 'Execution failed – retry may succeed',
@@ -128,7 +128,7 @@ class DefaultToolRecoveryAdapter implements ToolRecoveryAdapter {
 
       case ToolFailurePhase.offline:
         // Offline failures: suggest waiting for connectivity.
-        return ToolRecoveryOutcome(
+        return const ToolRecoveryOutcome(
           recovered: false,
           recoveryStrategy: 'waitForConnectivity',
           message: 'Tool unavailable offline – wait for connectivity',

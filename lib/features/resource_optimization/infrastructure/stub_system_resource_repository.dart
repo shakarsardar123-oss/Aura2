@@ -33,5 +33,5 @@ class StubSystemResourceRepository implements SystemResourceRepository {
   Future<ResourceState> getFullState() async => ResourceState.critical;
 
   @override
-  Stream<ResourceState> resourceStateStream() => Stream.empty();
+  Stream<ResourceState> resourceStateStream() => const Stream.empty();
 }

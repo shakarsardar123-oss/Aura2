@@ -24,27 +24,27 @@ class MemoryPolicy {
 
   PolicyCheckResult check(String content) {
     if (_passwordPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains password/credential');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains password/credential');
     }
     if (_apiKeyPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains API key');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains API key');
     }
     if (_tokenPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains auth token');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains auth token');
     }
     if (_creditCardPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains credit card number');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains credit card number');
     }
     if (_ssnPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains SSN');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains SSN');
     }
     if (_hexSecretPattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains secret/private key');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains secret/private key');
     }
     if (_base64Pattern.hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains base64 encoded credential');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains base64 encoded credential');
     }
-    return PolicyCheckResult(isAllowed: true);
+    return const PolicyCheckResult(isAllowed: true);
   }
 }
 

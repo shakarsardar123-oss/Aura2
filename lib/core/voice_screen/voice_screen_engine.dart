@@ -17,16 +17,13 @@ import '../errors/result.dart';
 import '../floating_aura/floating_aura_overlay_position.dart';
 import '../floating_aura/floating_aura_service.dart';
 import '../permissions/permission_service.dart';
-import '../screen_capture/screen_capture_result.dart';
 import '../screen_capture/screen_capture_service.dart';
 import '../screen_search/search_result.dart';
 import '../screen_search/search_service.dart';
-import '../screen_understanding/screen_understanding_result.dart';
 import '../screen_understanding/screen_understanding_service.dart';
 import '../security/security_policy.dart';
 import '../../services/voice/voice_service.dart';
 import 'voice_screen_constants.dart';
-import 'voice_screen_failure.dart';
 import 'voice_screen_service.dart';
 import 'voice_screen_state.dart';
 
@@ -114,7 +111,7 @@ class VoiceScreenEngine implements VoiceScreenService {
   ]) async {
     // ── Concurrency guard ──────────────────────────────────────────
     if (_active) {
-      return Result.failure(VoiceScreenFailure(
+      return const Result.failure(VoiceScreenFailure(
         message: 'An interaction is already active',
         code: 'CONCURRENT_CONFLICT',
         phase: VoiceScreenPhase.concurrentConflict,
@@ -254,7 +251,7 @@ class VoiceScreenEngine implements VoiceScreenService {
       ));
     }
 
-    return Result.success(null);
+    return const Result.success(null);
   }
 
   @override
@@ -262,7 +259,7 @@ class VoiceScreenEngine implements VoiceScreenService {
     String text,
   ) async {
     if (!_active) {
-      return Result.failure(VoiceScreenFailure(
+      return const Result.failure(VoiceScreenFailure(
         message: 'No active interaction to process text for',
         code: 'NO_ACTIVE_INTERACTION',
         phase: VoiceScreenPhase.lifecycle,
@@ -274,7 +271,7 @@ class VoiceScreenEngine implements VoiceScreenService {
   @override
   Future<Result<void, VoiceScreenFailure>> cancelCurrentInteraction() async {
     if (!_active) {
-      return Result.success(null);
+      return const Result.success(null);
     }
 
     _cancelled = true;
@@ -306,7 +303,7 @@ class VoiceScreenEngine implements VoiceScreenService {
 
     _setState(state.copyWith(
       status: VoiceScreenStatus.cancelled,
-      failure: VoiceScreenFailure(
+      failure: const VoiceScreenFailure(
         message: 'Interaction cancelled',
         code: 'CANCELLED',
         phase: VoiceScreenPhase.cancelled,
@@ -314,7 +311,7 @@ class VoiceScreenEngine implements VoiceScreenService {
     ));
 
     _active = false;
-    return Result.success(null);
+    return const Result.success(null);
   }
 
   @override
@@ -495,7 +492,7 @@ class VoiceScreenEngine implements VoiceScreenService {
 
     // ── Complete ────────────────────────────────────────────────────
     await _completeSuccessfully(context, gen);
-    return Result.success(null);
+    return const Result.success(null);
   }
 
   /// Build a [SearchQuery] from the recognized text and pending query.
@@ -541,7 +538,7 @@ class VoiceScreenEngine implements VoiceScreenService {
 
   /// Cancelled failure with standard message.
   VoiceScreenFailure _cancelledFailure() {
-    return VoiceScreenFailure(
+    return const VoiceScreenFailure(
       message: 'Interaction was cancelled',
       code: 'CANCELLED',
       phase: VoiceScreenPhase.cancelled,

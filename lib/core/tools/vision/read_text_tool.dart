@@ -14,7 +14,7 @@ class ReadTextTool extends Tool {
   ReadTextTool(this._visionService);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'read_text',
         description:
             'Read and extract text from an image (OCR). Returns recognized text content and locations.',
@@ -55,7 +55,7 @@ class ReadTextTool extends Tool {
     final languageHint = args.getString('language_hint');
 
     if (imageBase64.isEmpty) {
-      return ToolResult.failure('image_base64 cannot be empty');
+      return const ToolResult.failure('image_base64 cannot be empty');
     }
 
     try {

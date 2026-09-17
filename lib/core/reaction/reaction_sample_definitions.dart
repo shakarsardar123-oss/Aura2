@@ -18,13 +18,13 @@ import 'reaction_visual_style.dart';
 /// The canonical sample reactions for Step 2 development.
 final List<Reaction> sampleReactions = [
   // ── Voice state reactions ──
-  Reaction(
+  const Reaction(
     id: 'listening_ear',
-    type: const EmojiReactionType('👂'),
+    type: EmojiReactionType('👂'),
     trigger: ReactionTrigger.voiceState,
     priority: 0.7,
     weight: 1.0,
-    cooldown: const Duration(seconds: 15),
+    cooldown: Duration(seconds: 15),
     l10nKey: 'reaction_listening',
     category: ReactionCategories.voice,
     tags: [ReactionTags.feedback],
@@ -32,13 +32,13 @@ final List<Reaction> sampleReactions = [
     payload: {'emoji': '👂'},
     visualStyle: ReactionVisualStyle.emoji,
   ),
-  Reaction(
+  const Reaction(
     id: 'speaking_mouth',
-    type: const EmojiReactionType('💬'),
+    type: EmojiReactionType('💬'),
     trigger: ReactionTrigger.voiceState,
     priority: 0.7,
     weight: 1.0,
-    cooldown: const Duration(seconds: 15),
+    cooldown: Duration(seconds: 15),
     l10nKey: 'reaction_speaking',
     category: ReactionCategories.voice,
     tags: [ReactionTags.feedback],
@@ -48,13 +48,13 @@ final List<Reaction> sampleReactions = [
   ),
 
   // ── Agent state reactions ──
-  Reaction(
+  const Reaction(
     id: 'thinking_gear',
-    type: const EmojiReactionType('⚙️'),
+    type: EmojiReactionType('⚙️'),
     trigger: ReactionTrigger.agentState,
     priority: 0.6,
     weight: 1.0,
-    cooldown: const Duration(seconds: 20),
+    cooldown: Duration(seconds: 20),
     l10nKey: 'reaction_processing',
     category: ReactionCategories.agent,
     tags: [ReactionTags.progress],
@@ -62,13 +62,13 @@ final List<Reaction> sampleReactions = [
     payload: {'emoji': '⚙️'},
     visualStyle: ReactionVisualStyle.emoji,
   ),
-  Reaction(
+  const Reaction(
     id: 'complete_check',
-    type: const TextReactionType(),
+    type: TextReactionType(),
     trigger: ReactionTrigger.agentState,
     priority: 0.8,
     weight: 1.2,
-    cooldown: const Duration(seconds: 30),
+    cooldown: Duration(seconds: 30),
     l10nKey: 'reaction_completed',
     urgency: ReactionUrgency.normal,
     tone: ReactionTone.positive,
@@ -80,13 +80,13 @@ final List<Reaction> sampleReactions = [
   ),
 
   // ── Error event reactions ──
-  Reaction(
+  const Reaction(
     id: 'error_alert',
-    type: const EmojiReactionType('⚠️'),
+    type: EmojiReactionType('⚠️'),
     trigger: ReactionTrigger.errorEvent,
     priority: 0.9,
     weight: 1.5,
-    cooldown: const Duration(seconds: 10),
+    cooldown: Duration(seconds: 10),
     l10nKey: 'reaction_error',
     urgency: ReactionUrgency.high,
     tone: ReactionTone.soothing,
@@ -97,13 +97,13 @@ final List<Reaction> sampleReactions = [
   ),
 
   // ── Tool execution reactions ──
-  Reaction(
+  const Reaction(
     id: 'tool_wrench',
-    type: const EmojiReactionType('🔧'),
+    type: EmojiReactionType('🔧'),
     trigger: ReactionTrigger.toolExecution,
     priority: 0.5,
     weight: 1.0,
-    cooldown: const Duration(seconds: 20),
+    cooldown: Duration(seconds: 20),
     l10nKey: 'reaction_tool_running',
     category: ReactionCategories.tool,
     tags: [ReactionTags.progress],
@@ -112,13 +112,13 @@ final List<Reaction> sampleReactions = [
   ),
 
   // ── Wake event reactions ──
-  Reaction(
+  const Reaction(
     id: 'wake_sparkle',
-    type: const EmojiReactionType('✨'),
+    type: EmojiReactionType('✨'),
     trigger: ReactionTrigger.wakeEvent,
     priority: 0.9,
     weight: 2.0,
-    cooldown: const Duration(seconds: 60),
+    cooldown: Duration(seconds: 60),
     l10nKey: 'reaction_wake',
     tone: ReactionTone.positive,
     category: ReactionCategories.personality,
@@ -128,13 +128,13 @@ final List<Reaction> sampleReactions = [
   ),
 
   // ── Idle timeout reactions ──
-  Reaction(
+  const Reaction(
     id: 'idle_hint_bulb',
-    type: const EmojiReactionType('💡'),
+    type: EmojiReactionType('💡'),
     trigger: ReactionTrigger.idleTimeout,
     priority: 0.3,
     weight: 0.5,
-    cooldown: const Duration(minutes: 5),
+    cooldown: Duration(minutes: 5),
     l10nKey: 'reaction_idle_hint',
     tone: ReactionTone.neutral,
     category: ReactionCategories.idle,
@@ -149,13 +149,13 @@ final List<Reaction> sampleReactions = [
 /// style rotation and variation.
 final List<Reaction> step4SampleReactions = [
   // ── Pixel-art style reactions ──
-  Reaction(
+  const Reaction(
     id: 'pixel_listening',
-    type: const EmojiReactionType('🎵'),
+    type: EmojiReactionType('🎵'),
     trigger: ReactionTrigger.voiceState,
     priority: 0.5,
     weight: 0.8,
-    cooldown: const Duration(seconds: 20),
+    cooldown: Duration(seconds: 20),
     l10nKey: 'reaction_pixel_listening',
     category: ReactionCategories.voice,
     tags: [ReactionTags.feedback, 'pixel'],
@@ -163,13 +163,13 @@ final List<Reaction> step4SampleReactions = [
     visualStyle: ReactionVisualStyle.pixelArt,
     payload: {'emoji': '🎵', 'visualStyle': 'pixel_art'},
   ),
-  Reaction(
+  const Reaction(
     id: 'pixel_complete',
-    type: const TextReactionType(),
+    type: TextReactionType(),
     trigger: ReactionTrigger.agentState,
     priority: 0.6,
     weight: 0.9,
-    cooldown: const Duration(seconds: 25),
+    cooldown: Duration(seconds: 25),
     l10nKey: 'reaction_pixel_complete',
     tone: ReactionTone.positive,
     category: ReactionCategories.agent,
@@ -180,13 +180,13 @@ final List<Reaction> step4SampleReactions = [
   ),
 
   // ── ASCII-art style reactions ──
-  Reaction(
+  const Reaction(
     id: 'ascii_processing',
-    type: const TerminalReactionType(),
+    type: TerminalReactionType(),
     trigger: ReactionTrigger.agentState,
     priority: 0.5,
     weight: 0.7,
-    cooldown: const Duration(seconds: 20),
+    cooldown: Duration(seconds: 20),
     l10nKey: 'reaction_ascii_processing',
     tone: ReactionTone.neutral,
     category: ReactionCategories.agent,
@@ -197,13 +197,13 @@ final List<Reaction> step4SampleReactions = [
   ),
 
   // ── Code style reactions ──
-  Reaction(
+  const Reaction(
     id: 'code_tool_exec',
-    type: const CodeReactionType('dart'),
+    type: CodeReactionType('dart'),
     trigger: ReactionTrigger.toolExecution,
     priority: 0.4,
     weight: 0.6,
-    cooldown: const Duration(seconds: 25),
+    cooldown: Duration(seconds: 25),
     l10nKey: 'reaction_code_tool',
     tone: ReactionTone.technical,
     category: ReactionCategories.tool,
@@ -213,13 +213,13 @@ final List<Reaction> step4SampleReactions = [
   ),
 
   // ── Meme style reactions ──
-  Reaction(
+  const Reaction(
     id: 'meme_wake',
-    type: const HumorReactionType(),
+    type: HumorReactionType(),
     trigger: ReactionTrigger.wakeEvent,
     priority: 0.7,
     weight: 1.5,
-    cooldown: const Duration(seconds: 60),
+    cooldown: Duration(seconds: 60),
     l10nKey: 'reaction_meme_wake',
     tone: ReactionTone.humorous,
     category: ReactionCategories.personality,
@@ -229,13 +229,13 @@ final List<Reaction> step4SampleReactions = [
   ),
 
   // ── Idle reactions with different styles for variation ──
-  Reaction(
+  const Reaction(
     id: 'idle_ascii_hint',
-    type: const TextReactionType(),
+    type: TextReactionType(),
     trigger: ReactionTrigger.idleTimeout,
     priority: 0.3,
     weight: 0.4,
-    cooldown: const Duration(minutes: 5),
+    cooldown: Duration(minutes: 5),
     l10nKey: 'reaction_idle_ascii_hint',
     tone: ReactionTone.neutral,
     category: ReactionCategories.idle,

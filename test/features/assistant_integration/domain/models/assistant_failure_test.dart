@@ -49,7 +49,7 @@ void main() {
     });
 
     test('invocationParseFailed sets invocation phase', () {
-      final cause = FormatException('bad data');
+      const cause = FormatException('bad data');
       final failure = AssistantFailure.invocationParseFailed(cause);
       expect(failure.phase, AssistantPhase.invocation);
     });

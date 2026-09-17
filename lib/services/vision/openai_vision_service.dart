@@ -52,7 +52,7 @@ class OpenAIVisionService implements VisionService {
     required String imageBase64,
     String? prompt,
   }) async {
-    final systemPrompt = '''You are a helpful vision assistant. Analyze the provided image and give a comprehensive description.
+    const systemPrompt = '''You are a helpful vision assistant. Analyze the provided image and give a comprehensive description.
 Identify all objects, people, text, and scene elements.
 For each detected item, provide its location using normalized bounding box coordinates (0.0–1.0).
 Respond in JSON format:
@@ -162,7 +162,7 @@ Respond in JSON:
   Future<VisionResult> describeScene({
     required String imageBase64,
   }) async {
-    final systemPrompt = '''You are a scene description assistant. Describe the overall scene in the image.
+    const systemPrompt = '''You are a scene description assistant. Describe the overall scene in the image.
 Respond in JSON:
 {
   "description": "overall description",

@@ -15,36 +15,36 @@ import 'package:aura_assistant/features/continuous_listening/infrastructure/live
 import 'package:aura_assistant/features/continuous_listening/domain/models/segmentation_config.dart';
 
 class _FakeVoiceService implements VoiceService {
-  @override
+  
   VoiceState get state => VoiceState.idle;
-  @override
+  
   Stream<VoiceState> get stateStream => const Stream.empty();
-  @override
+  
   Future<void> speak(String text, {String locale = 'ku'}) async {}
-  @override
+  
   Future<void> stopSpeaking() async {}
-  @override
+  
   Future<void> startListening({required void Function(String text) onRecognized, String locale = 'ku'}) async {}
-  @override
+  
   Future<void> stopListening() async {}
 }
 
 class _FakeAgentProcessor implements AgentProcessor {
-  @override
+  
   Future<AgentResult> run({required String userInput, required AgentContext context}) async =>
       const AgentResult.success(response: 'چاو', stepsCompleted: 1);
 }
 
 class _FakeMemoryService implements MemoryService {
-  @override
+  
   Future<String> createConversation({String? title, String? agentId}) async => 'conv_test';
-  @override
+  
   Future<List<String>> getConversationIds({int limit = 50, int offset = 0}) async => [];
-  @override
+  
   Future<void> addMessage({required String conversationId, required String role, required String content, String? parentMessageId}) async {}
-  @override
+  
   Future<List<MessageEntity>> getMessages(String conversationId) async => [];
-  @override
+  
   Future<void> deleteConversation(String conversationId) async {}
 }
 

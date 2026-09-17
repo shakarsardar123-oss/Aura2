@@ -10,9 +10,6 @@
 ///   - FAIL CLOSED: if no safe tool found, return null
 library;
 
-import '../domain/models/tool_input.dart';
-import '../domain/models/tool_output.dart';
-import '../domain/models/tool_execution_context.dart';
 import '../domain/services/tool_interface.dart';
 import '../infrastructure/executors/tool_executor_registry.dart';
 

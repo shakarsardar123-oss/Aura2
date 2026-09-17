@@ -72,7 +72,7 @@ class AppLaunchTool extends Tool {
   AppLaunchTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'app_launch',
         description:
             'ئەپێک بکەرەوە بە ناوی پاکێجەکەی. '
@@ -80,7 +80,7 @@ class AppLaunchTool extends Tool {
             'Launch an application by its Android package name '
             '(e.g. com.android.chrome, com.whatsapp).',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'packageName',
             type: 'string',
@@ -96,7 +96,7 @@ class AppLaunchTool extends Tool {
             keyboardType: 'text',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -118,7 +118,7 @@ class AppLaunchTool extends Tool {
           'بکەرەوە',
         ],
         icon: 'launch',
-        timeout: const Duration(seconds: 15),
+        timeout: Duration(seconds: 15),
         riskLevel: ToolRiskLevel.low,
       );
 

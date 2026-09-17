@@ -8,7 +8,6 @@
 ///   - FAIL CLOSED: unknown tools are registered as UnknownToolHandler
 library;
 
-import '../domain/services/tool_interface.dart';
 import 'executors/tool_executor_registry.dart';
 import 'executors/device_tool.dart';
 import 'executors/screen_tool.dart';

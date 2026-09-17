@@ -9,7 +9,6 @@ import 'package:aura_assistant/core/errors/result.dart';
 import '../models/security_audit_entry.dart';
 import '../models/security_config.dart';
 import '../models/security_failure.dart';
-import '../models/security_state.dart';
 
 /// Log entry severity.
 enum LogSeverity {

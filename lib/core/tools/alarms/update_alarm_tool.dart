@@ -13,7 +13,7 @@ class UpdateAlarmTool extends Tool {
   final AlarmToolGateway _gateway;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'update_alarm',
         description: 'Update settings of an existing alarm such as time, label, verification mode, or repeat days.',
         category: 'alarms',
@@ -77,7 +77,7 @@ class UpdateAlarmTool extends Tool {
     final alarmId = args.get<String>('alarm_id');
 
     if (alarmId.isEmpty) {
-      return ToolResult.failure('alarm_id is required');
+      return const ToolResult.failure('alarm_id is required');
     }
 
     final updates = <String, dynamic>{};
@@ -100,7 +100,7 @@ class UpdateAlarmTool extends Tool {
     }
 
     if (updates.isEmpty) {
-      return ToolResult.failure('No fields provided to update');
+      return const ToolResult.failure('No fields provided to update');
     }
 
     final existing = await _gateway.findAlarm(alarmId);

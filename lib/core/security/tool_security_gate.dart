@@ -439,7 +439,7 @@ class ToolSecurityGate {
     ToolDefinition definition,
   ) async {
     if (definition.permissionRequirements.isEmpty) {
-      return PermissionCheckResult(
+      return const PermissionCheckResult(
         overallStatus: ToolPermissionStatus.granted,
         permissionStatuses: {},
       );
@@ -451,7 +451,7 @@ class ToolSecurityGate {
 
     if (requiredPermissions.isEmpty) {
       // All permissions are null (implicitly granted or unsupported).
-      return PermissionCheckResult(
+      return const PermissionCheckResult(
         overallStatus: ToolPermissionStatus.granted,
         permissionStatuses: {},
       );

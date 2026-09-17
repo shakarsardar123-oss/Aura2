@@ -15,31 +15,31 @@ void main() {
     // Core FAIL-CLOSED invariants
     // ============================================================
     test('unknown execution state → denied', () {
-      final state = ExecutionState.unknown;
+      const state = ExecutionState.unknown;
       final verdict = resolveState(state);
       expect(verdict, equals('denied'));
     });
 
     test('error execution state → denied', () {
-      final state = ExecutionState.error;
+      const state = ExecutionState.error;
       final verdict = resolveState(state);
       expect(verdict, equals('denied'));
     });
 
     test('unavailable execution state → denied', () {
-      final state = ExecutionState.unavailable;
+      const state = ExecutionState.unavailable;
       final verdict = resolveState(state);
       expect(verdict, equals('denied'));
     });
 
     test('denied execution state → denied (closed)', () {
-      final state = ExecutionState.denied;
+      const state = ExecutionState.denied;
       final verdict = resolveState(state);
       expect(verdict, equals('denied'));
     });
 
     test('granted execution state → granted (open)', () {
-      final state = ExecutionState.granted;
+      const state = ExecutionState.granted;
       final verdict = resolveState(state);
       expect(verdict, equals('granted'));
     });
@@ -48,14 +48,14 @@ void main() {
     // canSkip → shouldAbort (NEVER skip)
     // ============================================================
     test('canSkip=true → shouldAbort (NEVER skip)', () {
-      final canSkip = true;
-      final decision = canSkip ? 'shouldAbort' : 'shouldAbort'; // always abort
+      const canSkip = true;
+      const decision = canSkip ? 'shouldAbort' : 'shouldAbort'; // always abort
       expect(decision, equals('shouldAbort'));
     });
 
     test('canSkip=false → shouldAbort (NEVER skip)', () {
-      final canSkip = false;
-      final decision = 'shouldAbort'; // always abort regardless
+      const canSkip = false;
+      const decision = 'shouldAbort'; // always abort regardless
       expect(decision, equals('shouldAbort'));
     });
 
@@ -63,7 +63,7 @@ void main() {
     // ToolExecutionRepository FAIL-CLOSED invariants
     // ============================================================
     test('tool execution denied → wasDenied=true', () {
-      final result = StubExecutionResult(
+      const result = StubExecutionResult(
         succeeded: false,
         wasDenied: true,
         wasCancelled: false,
@@ -73,7 +73,7 @@ void main() {
     });
 
     test('tool execution cancelled → wasCancelled=true', () {
-      final result = StubExecutionResult(
+      const result = StubExecutionResult(
         succeeded: false,
         wasDenied: false,
         wasCancelled: true,
@@ -83,7 +83,7 @@ void main() {
     });
 
     test('tool execution success → succeeded=true, wasDenied=false', () {
-      final result = StubExecutionResult(
+      const result = StubExecutionResult(
         succeeded: true,
         wasDenied: false,
         wasCancelled: false,
@@ -96,16 +96,16 @@ void main() {
     // Step 22-specific regression: ToolRegistry risk level
     // ============================================================
     test('high-risk tool without confirmation → denied', () {
-      final riskLevel = 'high';
-      final confirmed = false;
-      final verdict = (riskLevel == 'high' && !confirmed) ? 'denied' : 'granted';
+      const riskLevel = 'high';
+      const confirmed = false;
+      const verdict = (riskLevel == 'high' && !confirmed) ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('high-risk tool with confirmation → granted', () {
-      final riskLevel = 'high';
-      final confirmed = true;
-      final verdict = (riskLevel == 'high' && !confirmed) ? 'denied' : 'granted';
+      const riskLevel = 'high';
+      const confirmed = true;
+      const verdict = (riskLevel == 'high' && !confirmed) ? 'denied' : 'granted';
       expect(verdict, equals('granted'));
     });
 
@@ -113,7 +113,7 @@ void main() {
     // RTL-first locale enforcement
     // ============================================================
     test('Step 22 locale defaults to Kurdish Sorani', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 
@@ -121,7 +121,7 @@ void main() {
     // Regression: never expose secrets in execution result
     // ============================================================
     test('execution result never contains hardcoded secrets', () {
-      final result = StubExecutionResult(
+      const result = StubExecutionResult(
         succeeded: true,
         wasDenied: false,
         wasCancelled: false,

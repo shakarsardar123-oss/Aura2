@@ -6,7 +6,6 @@
 /// Added supportedModels list, allowsCustomModel, icon property alias.
 library;
 
-import '../../services/ai/ai_provider.dart';
 import 'connection_type.dart';
 
 /// A provider preset (template) for the provider picker UI.

@@ -9,11 +9,9 @@
 ///   - FAIL CLOSED: background errors default to failClosed
 library;
 
-import '../domain/models/tool_input.dart';
 import '../domain/models/tool_output.dart';
 import '../domain/models/tool_execution_context.dart';
 import '../domain/models/exceptions.dart';
-import '../domain/services/tool_interface.dart';
 import '../infrastructure/executors/tool_executor_registry.dart';
 import '../infrastructure/cancellation_token.dart';
 
@@ -59,7 +57,7 @@ class BackgroundExecutionService {
         return ToolOutput.cancelled(toolId: toolId, message: 'Background execution cancelled via token');
       }
 
-      return result as ToolOutput;
+      return result;
     } catch (e) {
       if (e is ToolExecutionCancelledException) {
         return ToolOutput.cancelled(toolId: toolId);

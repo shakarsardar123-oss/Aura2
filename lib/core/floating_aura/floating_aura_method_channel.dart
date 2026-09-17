@@ -52,7 +52,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
           status: FloatingAuraOverlayStatus.error,
           lastError: 'Permission request returned null',
         );
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'Permission request returned null',
             phase: FloatingAuraOverlayPhase.requestPermission,
@@ -71,7 +71,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
       );
 
       if (!granted) {
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'SYSTEM_ALERT_WINDOW permission denied',
             phase: FloatingAuraOverlayPhase.requestPermission,
@@ -128,7 +128,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
       );
 
       if (result == null) {
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'hasPermission returned null',
             phase: FloatingAuraOverlayPhase.requestPermission,
@@ -158,7 +158,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
         status: FloatingAuraOverlayStatus.error,
         lastError: 'SYSTEM_ALERT_WINDOW permission not granted',
       );
-      return Result.failure(
+      return const Result.failure(
         FloatingAuraOverlayFailure(
           message: 'SYSTEM_ALERT_WINDOW permission not granted',
           phase: FloatingAuraOverlayPhase.showOverlay,
@@ -179,7 +179,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
           status: FloatingAuraOverlayStatus.error,
           lastError: 'Show overlay returned null',
         );
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'Show overlay returned null',
             phase: FloatingAuraOverlayPhase.showOverlay,
@@ -298,7 +298,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
       );
 
       if (result == null) {
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'Toggle panel returned null',
             phase: FloatingAuraOverlayPhase.togglePanel,
@@ -328,7 +328,7 @@ class FloatingAuraMethodChannel implements FloatingAuraService {
       );
 
       if (result == null) {
-        return Result.failure(
+        return const Result.failure(
           FloatingAuraOverlayFailure(
             message: 'isOverlayVisible returned null',
             phase: FloatingAuraOverlayPhase.showOverlay,

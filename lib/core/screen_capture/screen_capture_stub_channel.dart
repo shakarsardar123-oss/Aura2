@@ -38,7 +38,7 @@ class ScreenCaptureStubChannel implements ScreenCaptureService {
       status: ScreenCaptureStatus.error,
       lastError: 'Screen capture is not supported on this platform',
     );
-    return Result.failure(
+    return const Result.failure(
       ScreenCaptureFailure(
         message: 'Screen capture is not supported on this platform',
         phase: ScreenCapturePhase.requestProjection,
@@ -57,7 +57,7 @@ class ScreenCaptureStubChannel implements ScreenCaptureService {
 
   @override
   Future<Result<CapturedFrame, ScreenCaptureFailure>> captureSingleFrame() async {
-    return Result.failure(
+    return const Result.failure(
       ScreenCaptureFailure(
         message: 'Screen capture is not supported on this platform',
         phase: ScreenCapturePhase.readFrame,

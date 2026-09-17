@@ -53,7 +53,7 @@ class ToolOutputNormalizer {
     }
 
     // ─── Suggestions for failures ───────────────────────────────────────
-    if (result.isFailure && (result.suggestions?.isEmpty ?? true)) {
+    if (result.isFailure && (result.suggestions.isEmpty ?? true)) {
       result = result.copyWith(
         suggestions: _generateSuggestions(result),
       );
@@ -66,7 +66,7 @@ class ToolOutputNormalizer {
 
   ToolOutput _redactSensitiveData(ToolOutput output) {
     final data = output.data;
-    if (data == null || data.isEmpty) return output;
+    if (data.isEmpty) return output;
 
     final redacted = _redactMap(data);
     final hadSensitive = _hasSensitiveKeys(data);

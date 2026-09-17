@@ -5,7 +5,6 @@
 /// UNKNOWN = DENY, ERROR = DENY, UNAVAILABLE = DENY.
 
 import '../../domain/value_objects/trigger_type.dart';
-import '../../domain/value_objects/trigger_state.dart';
 import '../../domain/entities/trigger_request.dart';
 import '../../domain/entities/trigger_result.dart';
 

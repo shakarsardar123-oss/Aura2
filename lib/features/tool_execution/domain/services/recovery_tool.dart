@@ -8,10 +8,8 @@
 /// FAIL CLOSED: recovery failures default to failClosed.
 library;
 
-import '../models/tool_input.dart';
 import '../models/tool_output.dart';
 import '../models/tool_execution_context.dart';
-import '../models/exceptions.dart';
 
 class RecoveryTool {
   final int maxRetries;

@@ -74,7 +74,7 @@ void main() {
 
     test('FAIL-CLOSED: unknown severity must be treated as critical', () {
       // FAIL-CLOSED: unknown severity → critical
-      final finding = AuditFinding(
+      const finding = AuditFinding(
         category: AuditCategory.interfaceDrift,
         severity: AuditSeverity.critical,
         step: 'step_23',

@@ -25,13 +25,13 @@ class FeedbackTrackingVoiceService implements VoiceService {
   final _stateController = StreamController<VoiceState>.broadcast();
   void Function(String)? _savedOnRecognized;
   
-  @override
+  
   VoiceState get state => _state;
   
-  @override
+  
   Stream<VoiceState> get stateStream => _stateController.stream;
   
-  @override
+  
   Future<void> startListening({
     required void Function(String text) onRecognized,
     String locale = 'ku',
@@ -42,24 +42,24 @@ class FeedbackTrackingVoiceService implements VoiceService {
     _savedOnRecognized = onRecognized;
   }
   
-  @override
+  
   Future<void> stopListening() async {
     callLog.add('stopListening');
     _state = VoiceState.idle;
     _stateController.add(_state);
   }
   
-  @override
+  
   Future<void> speak(String text, {String locale = 'ku'}) async {
     callLog.add('speak:$text');
     _state = VoiceState.speaking;
     _stateController.add(_state);
-    await Future.delayed(Duration(milliseconds: 10));
+    await Future.delayed(const Duration(milliseconds: 10));
     _state = VoiceState.idle;
     _stateController.add(_state);
   }
   
-  @override
+  
   Future<void> stopSpeaking() async {
     callLog.add('stopSpeaking');
     _state = VoiceState.idle;
@@ -77,22 +77,22 @@ class FeedbackTrackingVoiceService implements VoiceService {
 }
 
 class _FakeAgentProcessor implements AgentProcessor {
-  @override
+  
   Future<AgentResult> run({required String userInput, required AgentContext context}) async {
     return const AgentResult.success(response: 'وەڵام', stepsCompleted: 1);
   }
 }
 
 class _FakeMemoryService implements MemoryService {
-  @override
+  
   Future<String> createConversation({String? title, String? agentId}) async => 'conv_test';
-  @override
+  
   Future<List<String>> getConversationIds({int limit = 50, int offset = 0}) async => [];
-  @override
+  
   Future<void> addMessage({required String conversationId, required String role, required String content, String? parentMessageId}) async {}
-  @override
+  
   Future<List<MessageEntity>> getMessages(String conversationId) async => [];
-  @override
+  
   Future<void> deleteConversation(String conversationId) async {}
 }
 
@@ -114,7 +114,7 @@ void main() {
       voice.simulateRecognition('سڵاو');
       
       // Wait for async processing to complete
-      await Future.delayed(Duration(milliseconds: 200));
+      await Future.delayed(const Duration(milliseconds: 200));
       
       // Verify: stopListening must appear BEFORE speak in the call log
       final stopIndex = voice.callLog.indexWhere((e) => e == 'stopListening');
@@ -138,7 +138,7 @@ void main() {
       voice.callLog.clear();
       
       voice.simulateRecognition('سڵاو');
-      await Future.delayed(Duration(milliseconds: 300));
+      await Future.delayed(const Duration(milliseconds: 300));
       
       // After full cycle: stopListening → speak → startListening
       expect(voice.callLog, contains('startListening'),

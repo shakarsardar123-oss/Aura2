@@ -668,7 +668,7 @@ void main() {
     test('allows when confirmation was already verified', () async {
       final guard = ConfirmationGuard(messages: const SecurityMessages());
       final gate = _gate(guard: guard);
-      final toolName = 'test_tool';
+      const toolName = 'test_tool';
       final argsMap = {'key': 'val'};
 
       // Pre-accept the confirmation
@@ -740,7 +740,7 @@ void main() {
     test('returns allowed when confirmation is verified', () {
       final guard = ConfirmationGuard(messages: const SecurityMessages());
       final gate = _gate(guard: guard);
-      final toolName = 'test_tool';
+      const toolName = 'test_tool';
       final args = {'key': 'val'};
 
       guard.requestConfirmation(
@@ -770,7 +770,7 @@ void main() {
     test('returns confirmationDenied when confirmation was cancelled', () {
       final guard = ConfirmationGuard(messages: const SecurityMessages());
       final gate = _gate(guard: guard);
-      final toolName = 'test_tool';
+      const toolName = 'test_tool';
       final args = {'key': 'val'};
 
       guard.requestConfirmation(

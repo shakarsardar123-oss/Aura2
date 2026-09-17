@@ -230,7 +230,7 @@ void main() {
     test('FAIL-CLOSED: TriggerResultVO unknown category → denied', () {
       // TriggerResultVO.fromName with unknown string → denied
       // This validates the value object level fail-closed
-      final TriggerResultVO = null; // Placeholder: actual import validates fromName→denied
+      const TriggerResultVO = null; // Placeholder: actual import validates fromName→denied
       // Verified in trigger_result_vo_test.dart
     });
 

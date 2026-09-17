@@ -17,7 +17,7 @@ class OpenCameraTool extends Tool {
   final VisionCameraService _cameraService;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'open_camera',
         description:
             'Open the live vision camera. Activates the camera preview for AI-powered visual analysis.',
@@ -61,7 +61,7 @@ class OpenCameraTool extends Tool {
     }
 
     if (controller == null || !_cameraService.isInitialized) {
-      return ToolResult.failure(
+      return const ToolResult.failure(
         'Camera could not be opened. No usable camera was initialized '
         '(device may have no camera, or access was refused).',
         errorCode: 'CAMERA_UNAVAILABLE',

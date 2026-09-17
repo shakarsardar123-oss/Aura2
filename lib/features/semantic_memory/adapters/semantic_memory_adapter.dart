@@ -12,8 +12,6 @@
 /// Kurdish-first, local-first, privacy-conscious.
 library;
 
-import '../domain/models/memory_entry.dart';
-import '../domain/models/memory_failure.dart';
 import '../domain/models/memory_type.dart';
 import '../application/memory_manager.dart';
 import '../application/memory_policy.dart';
@@ -92,13 +90,13 @@ abstract class SemanticMemoryAdapter {
   // ─── Tool definitions ────────────────────────────────────────────
 
   /// Definition for the remember tool.
-  static MemoryToolDef get rememberDefinition => MemoryToolDef(
+  static MemoryToolDef get rememberDefinition => const MemoryToolDef(
         name: rememberTool,
         description:
             'Store a new piece of information in the user\'s semantic memory. '
             'Use this when the user explicitly asks you to remember something, '
             'or shares a preference, fact, or instruction worth keeping.',
-        parameters: const [
+        parameters: [
           MemoryToolParam(
             name: 'content',
             description: 'The information to remember.',
@@ -120,13 +118,13 @@ abstract class SemanticMemoryAdapter {
       );
 
   /// Definition for the recall tool.
-  static MemoryToolDef get recallDefinition => MemoryToolDef(
+  static MemoryToolDef get recallDefinition => const MemoryToolDef(
         name: recallTool,
         description:
             'Search the user\'s semantic memory for information relevant '
             'to a query. Use this when the user asks about their preferences, '
             'past conversations, or previously stored information.',
-        parameters: const [
+        parameters: [
           MemoryToolParam(
             name: 'query',
             description: 'The search query.',
@@ -141,12 +139,12 @@ abstract class SemanticMemoryAdapter {
       );
 
   /// Definition for the forget tool.
-  static MemoryToolDef get forgetDefinition => MemoryToolDef(
+  static MemoryToolDef get forgetDefinition => const MemoryToolDef(
         name: forgetTool,
         description:
             'Remove a specific memory from the user\'s semantic memory. '
             'Use this when the user explicitly asks you to forget something.',
-        parameters: const [
+        parameters: [
           MemoryToolParam(
             name: 'id',
             description: 'The ID of the memory to forget.',
@@ -155,13 +153,13 @@ abstract class SemanticMemoryAdapter {
       );
 
   /// Definition for the update tool.
-  static MemoryToolDef get updateDefinition => MemoryToolDef(
+  static MemoryToolDef get updateDefinition => const MemoryToolDef(
         name: updateTool,
         description:
             'Update an existing memory in the user\'s semantic memory. '
             'Use this when the user wants to correct or modify previously '
             'stored information.',
-        parameters: const [
+        parameters: [
           MemoryToolParam(
             name: 'id',
             description: 'The ID of the memory to update.',
@@ -174,12 +172,12 @@ abstract class SemanticMemoryAdapter {
       );
 
   /// Definition for the list tool.
-  static MemoryToolDef get listDefinition => MemoryToolDef(
+  static MemoryToolDef get listDefinition => const MemoryToolDef(
         name: listTool,
         description:
             'List all memories or filter by type. Use this when the user '
             'wants to see what information is stored in their semantic memory.',
-        parameters: const [
+        parameters: [
           MemoryToolParam(
             name: 'type',
             description: 'Optional type filter: userPreference, personalFact, '

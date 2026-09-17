@@ -139,7 +139,7 @@ class ToolExecutorRegistry {
       }
       // Check tool has non-empty ID
       if (tool.id.isEmpty) {
-        issues.add(ValidationIssue(
+        issues.add(const ValidationIssue(
           severity: 'error',
           message: 'Tool has empty id',
         ));

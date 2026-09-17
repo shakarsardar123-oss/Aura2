@@ -21,12 +21,10 @@
 /// FAIL CLOSED: any gate failure = deny/failClosed output.
 library;
 
-import '../domain/models/tool_input.dart';
 import '../domain/models/tool_output.dart';
 import '../domain/models/tool_execution_context.dart';
 import '../domain/models/tool_execution_metadata.dart';
 import '../domain/models/exceptions.dart';
-import '../domain/services/tool_interface.dart';
 import 'executors/tool_executor_registry.dart';
 import 'tool_input_validator.dart';
 import 'tool_output_normalizer.dart';

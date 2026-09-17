@@ -78,9 +78,9 @@ class RecoveryStateNotifier extends StateNotifier<RecoveryState> {
 
   /// Initialize the coordinator with dependencies.
   void initialize() {
-    final classifier = const DefaultRecoveryFailureClassifier();
+    const classifier = DefaultRecoveryFailureClassifier();
     final executor = DefaultRecoveryExecutor();
-    final engine = DefaultReplanningEngine(classifier: classifier);
+    const engine = DefaultReplanningEngine(classifier: classifier);
 
     _coordinator = RecoveryCoordinator(
       classifier: classifier,

@@ -15,31 +15,31 @@ void main() {
     // Core FAIL-CLOSED invariants
     // ============================================================
     test('unknown orchestration state → denied', () {
-      final state = OrchestrationState.unknown;
+      const state = OrchestrationState.unknown;
       final verdict = resolveOrchestrationState(state);
       expect(verdict, equals('denied'));
     });
 
     test('error orchestration state → denied', () {
-      final state = OrchestrationState.error;
+      const state = OrchestrationState.error;
       final verdict = resolveOrchestrationState(state);
       expect(verdict, equals('denied'));
     });
 
     test('unavailable orchestration state → denied', () {
-      final state = OrchestrationState.unavailable;
+      const state = OrchestrationState.unavailable;
       final verdict = resolveOrchestrationState(state);
       expect(verdict, equals('denied'));
     });
 
     test('denied orchestration state → denied (closed)', () {
-      final state = OrchestrationState.denied;
+      const state = OrchestrationState.denied;
       final verdict = resolveOrchestrationState(state);
       expect(verdict, equals('denied'));
     });
 
     test('granted orchestration state → granted', () {
-      final state = OrchestrationState.granted;
+      const state = OrchestrationState.granted;
       final verdict = resolveOrchestrationState(state);
       expect(verdict, equals('granted'));
     });
@@ -48,14 +48,14 @@ void main() {
     // canSkip → shouldAbort (NEVER skip)
     // ============================================================
     test('canSkip=true → shouldAbort (NEVER skip)', () {
-      final canSkip = true;
-      final decision = 'shouldAbort'; // always abort
+      const canSkip = true;
+      const decision = 'shouldAbort'; // always abort
       expect(decision, equals('shouldAbort'));
     });
 
     test('canSkip=false → shouldAbort (NEVER skip)', () {
-      final canSkip = false;
-      final decision = 'shouldAbort';
+      const canSkip = false;
+      const decision = 'shouldAbort';
       expect(decision, equals('shouldAbort'));
     });
 
@@ -63,14 +63,14 @@ void main() {
     // AuditRepository FAIL-CLOSED invariants
     // ============================================================
     test('audit record failure → denied', () {
-      final recordResult = 'failure';
-      final verdict = recordResult == 'failure' ? 'denied' : 'granted';
+      const recordResult = 'failure';
+      const verdict = recordResult == 'failure' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('audit unavailable → denied', () {
-      final auditAvailable = false;
-      final verdict = auditAvailable ? 'granted' : 'denied';
+      const auditAvailable = false;
+      const verdict = auditAvailable ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
@@ -98,8 +98,8 @@ void main() {
     // ConnectivityRepository FAIL-CLOSED invariants
     // ============================================================
     test('ConnectivityRepository.isOnline()=false → offline → denied for cloud ops', () {
-      final isOnline = false;
-      final verdict = isOnline ? 'granted' : 'denied';
+      const isOnline = false;
+      const verdict = isOnline ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
@@ -107,15 +107,15 @@ void main() {
     // RecoveryRepository FAIL-CLOSED invariants
     // ============================================================
     test('RecoveryRepository.classifyAndStrategize() error → denied', () {
-      final classifyResult = 'error';
-      final verdict = classifyResult == 'error' ? 'denied' : 'granted';
+      const classifyResult = 'error';
+      const verdict = classifyResult == 'error' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('RecoveryRepository retry exhausted → abort (not skip)', () {
-      final maxRetries = 3;
-      final currentAttempt = 3;
-      final decision = currentAttempt >= maxRetries ? 'abort' : 'retry';
+      const maxRetries = 3;
+      const currentAttempt = 3;
+      const decision = currentAttempt >= maxRetries ? 'abort' : 'retry';
       expect(decision, equals('abort'));
     });
 
@@ -123,7 +123,7 @@ void main() {
     // Step 23 test coverage gap (documented, not fixed in Step 26)
     // ============================================================
     test('Step 23 has zero test files — documented test gap', () {
-      final step23TestCount = 0;
+      const step23TestCount = 0;
       expect(step23TestCount, equals(0));
     });
 
@@ -131,7 +131,7 @@ void main() {
     // RTL-first locale enforcement
     // ============================================================
     test('Step 23 locale defaults to Kurdish Sorani', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 
@@ -188,5 +188,5 @@ class StubConfirmationVerdict {
       StubConfirmationVerdict._(obtained: true, mode: mode, isDenied: false);
 
   factory StubConfirmationVerdict.unknown() =>
-      StubConfirmationVerdict._(obtained: false, isDenied: true); // FAIL-CLOSED
+      const StubConfirmationVerdict._(obtained: false, isDenied: true); // FAIL-CLOSED
 }

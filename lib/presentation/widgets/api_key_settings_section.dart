@@ -331,7 +331,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // ── Provider Picker ──
-        _FieldLabel(label: 'دابینکەری AI'),
+        const _FieldLabel(label: 'دابینکەری AI'),
         const SizedBox(height: 8),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -370,7 +370,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
         const SizedBox(height: 16),
 
         // ── API Key Field ──
-        _FieldLabel(label: 'کلیلی API'),
+        const _FieldLabel(label: 'کلیلی API'),
         const SizedBox(height: 8),
         GlassTextField(
           controller: _apiKeyController,
@@ -418,7 +418,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
         const SizedBox(height: 16),
 
         // ── Base URL Field ──
-        _FieldLabel(label: 'ناونیشانی بنەڕەتی'),
+        const _FieldLabel(label: 'ناونیشانی بنەڕەتی'),
         const SizedBox(height: 8),
         GlassTextField(
           controller: _baseUrlController,
@@ -431,7 +431,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
         const SizedBox(height: 16),
 
         // ── Model Dropdown / Custom Input ──
-        _FieldLabel(label: 'مۆدێل'),
+        const _FieldLabel(label: 'مۆدێل'),
         const SizedBox(height: 8),
         if (_currentModelOptions.isNotEmpty &&
             !(_selectedPreset?.allowsCustomModel == true &&

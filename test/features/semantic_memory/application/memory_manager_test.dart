@@ -63,12 +63,12 @@ class MemoryPolicy {
   PolicyCheckResult check(String content) {
     // Simplified policy: reject passwords, API keys
     if (content.toLowerCase().contains('password')) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains password');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains password');
     }
     if (RegExp(r'(?i)api[_\s-]?key').hasMatch(content)) {
-      return PolicyCheckResult(isAllowed: false, reason: 'Contains API key');
+      return const PolicyCheckResult(isAllowed: false, reason: 'Contains API key');
     }
-    return PolicyCheckResult(isAllowed: true);
+    return const PolicyCheckResult(isAllowed: true);
   }
 }
 

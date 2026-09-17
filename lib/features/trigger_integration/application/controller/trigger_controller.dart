@@ -10,10 +10,8 @@
 /// and forwards to the Step 23 orchestration pipeline.
 
 import '../../domain/value_objects/trigger_type.dart';
-import '../../domain/value_objects/trigger_state.dart';
 import '../../domain/entities/trigger_request.dart';
 import '../../domain/entities/trigger_result.dart';
-import '../../domain/repositories/trigger_authorization_repository.dart';
 import '../router/trigger_router.dart';
 import '../authorization/trigger_authorization_service.dart';
 import '../normalization/trigger_normalization_service.dart';

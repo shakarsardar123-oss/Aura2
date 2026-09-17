@@ -25,7 +25,7 @@ class ResourceOptimizationTool extends Tool {
   ResourceOptimizationTool(this._channel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'resource_optimization',
         description:
             'بەکارهێنانی رام بخوێنیتەوە یان پاککردنەوەی بیرگە ئەنجام بدە. '
@@ -33,7 +33,7 @@ class ResourceOptimizationTool extends Tool {
             'Read RAM usage (action=status) or run a real memory-optimization '
             'pass (action=optimize) and report the verified freed bytes.',
         category: 'device',
-        parameters: const [
+        parameters: [
           ToolArgumentDef(
             name: 'action',
             type: 'string',
@@ -48,7 +48,7 @@ class ResourceOptimizationTool extends Tool {
             hintText: 'status',
           ),
         ],
-        permissionRequirements: const [
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.system,
             isRequired: true,
@@ -62,7 +62,7 @@ class ResourceOptimizationTool extends Tool {
         requiresConfirmation: false,
         tags: ['device', 'memory', 'ram', 'optimize', 'رام', 'پاککردنەوە'],
         icon: 'memory',
-        timeout: const Duration(seconds: 20),
+        timeout: Duration(seconds: 20),
         riskLevel: ToolRiskLevel.low,
       );
 
@@ -71,7 +71,7 @@ class ResourceOptimizationTool extends Tool {
     final action = arguments.getOrElse<String>('action', 'status');
 
     if (action != 'status' && action != 'optimize') {
-      return ToolResult.failure(
+      return const ToolResult.failure(
         'action must be status or optimize. '
         '— کردار دەبێت status یان optimize بێت.',
         errorCode: 'invalidArguments',

@@ -20,11 +20,11 @@ void main() {
 
     test('denied is the fail-closed default', () {
       // FAIL-CLOSED: any unknown state must map to denied
-      final unknownStatus = IntegrityStatus.unknown;
+      const unknownStatus = IntegrityStatus.unknown;
       // In FAIL-CLOSED: unknown is NEVER an acceptable final state
       expect(unknownStatus == IntegrityStatus.denied, isFalse);
       // But unknown MUST be resolved to denied
-      final resolved = unknownStatus == IntegrityStatus.unknown
+      const resolved = unknownStatus == IntegrityStatus.unknown
           ? IntegrityStatus.denied
           : unknownStatus;
       expect(resolved, equals(IntegrityStatus.denied));

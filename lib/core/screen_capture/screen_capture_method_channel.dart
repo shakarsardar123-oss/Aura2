@@ -70,7 +70,7 @@ class ScreenCaptureMethodChannel implements ScreenCaptureService {
           status: ScreenCaptureStatus.error,
           lastError: 'Projection request returned null',
         );
-        return Result.failure(
+        return const Result.failure(
           ScreenCaptureFailure(
             message: 'Projection request returned null',
             phase: ScreenCapturePhase.requestProjection,
@@ -84,7 +84,7 @@ class ScreenCaptureMethodChannel implements ScreenCaptureService {
           status: ScreenCaptureStatus.error,
           lastError: 'MediaProjection permission denied by user',
         );
-        return Result.failure(
+        return const Result.failure(
           ScreenCaptureFailure(
             message: 'MediaProjection permission denied by user',
             phase: ScreenCapturePhase.requestProjection,
@@ -103,7 +103,7 @@ class ScreenCaptureMethodChannel implements ScreenCaptureService {
           status: ScreenCaptureStatus.error,
           lastError: 'Start capture returned null',
         );
-        return Result.failure(
+        return const Result.failure(
           ScreenCaptureFailure(
             message: 'Start capture returned null',
             phase: ScreenCapturePhase.setupVirtualDisplay,
@@ -217,7 +217,7 @@ class ScreenCaptureMethodChannel implements ScreenCaptureService {
       );
 
       if (frameData == null) {
-        return Result.failure(
+        return const Result.failure(
           ScreenCaptureFailure(
             message: 'Single frame capture returned null',
             phase: ScreenCapturePhase.readFrame,
@@ -233,7 +233,7 @@ class ScreenCaptureMethodChannel implements ScreenCaptureService {
       final formatName = frameData['pixelFormat'] as String? ?? 'rgba';
 
       if (rawBytes == null || width == 0 || height == 0) {
-        return Result.failure(
+        return const Result.failure(
           ScreenCaptureFailure(
             message: 'Incomplete frame data from platform',
             phase: ScreenCapturePhase.readFrame,

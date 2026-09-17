@@ -71,7 +71,7 @@ class MemoryPolicy {
         return PolicyCheckResult(isAllowed: false, reason: 'Sensitive data detected: ${pattern.pattern}');
       }
     }
-    return PolicyCheckResult(isAllowed: true);
+    return const PolicyCheckResult(isAllowed: true);
   }
 }
 

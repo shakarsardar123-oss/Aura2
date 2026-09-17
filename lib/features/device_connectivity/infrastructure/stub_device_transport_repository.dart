@@ -20,13 +20,13 @@ class StubDeviceTransportRepository implements DeviceTransportRepository {
 
   @override
   Future<TransportResult> establishConnection(String deviceId) async =>
-      TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
+      const TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
 
   @override
   Future<TransportResult> terminateConnection(String connectionId) async =>
-      TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
+      const TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
 
   @override
   Future<TransportResult> sendRaw(String connectionId, Map<String, dynamic> payload) async =>
-      TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
+      const TransportResult(success: false, errorMessage: 'Stub: transport unavailable');
 }

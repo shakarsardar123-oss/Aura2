@@ -178,7 +178,7 @@ class DefaultSecretScanner implements SecretScannerService {
       ));
     } catch (e) {
       // FAIL CLOSED: on error, treat content as containing secrets
-      return Success(SecretScanResult(
+      return Success(const SecretScanResult(
         hasSecrets: true,
         redactedContent: '[CONTENT BLOCKED: SCAN ERROR]',
         isInconclusive: true,

@@ -16,7 +16,7 @@ class LocateTargetTool extends Tool {
   LocateTargetTool(this._visionService);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'locate_target',
         description:
             'Locate a specific target in an image and return its position with visual overlay instructions (box, circle, arrow, or point).',
@@ -66,10 +66,10 @@ class LocateTargetTool extends Tool {
     final overlayStyleStr = args.getOrElse<String>('overlay_style', 'rect');
 
     if (imageBase64.isEmpty) {
-      return ToolResult.failure('image_base64 cannot be empty');
+      return const ToolResult.failure('image_base64 cannot be empty');
     }
     if (targetDescription.isEmpty) {
-      return ToolResult.failure('target_description cannot be empty');
+      return const ToolResult.failure('target_description cannot be empty');
     }
 
     // Map overlay style string to enum.

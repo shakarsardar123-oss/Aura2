@@ -173,6 +173,7 @@ class AgentEngine implements AgentProcessor {
   ///
   /// Falls back to the Phase 1–3 iterative AI↔tool loop when
   /// LLM-guided planning returns an empty plan.
+  @override
   Future<AgentResult> run({
     required String userInput,
     required AgentContext context,

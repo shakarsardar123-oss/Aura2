@@ -25,12 +25,12 @@ class _TransitionVoiceService implements VoiceService {
   void Function(String text)? _savedOnRecognized;
   final List<String> calls = [];
 
-  @override
+  
   VoiceState get state => _state;
-  @override
+  
   Stream<VoiceState> get stateStream => _stateController.stream;
 
-  @override
+  
   Future<void> startListening({
     required void Function(String text) onRecognized,
     String locale = 'ku',
@@ -43,14 +43,14 @@ class _TransitionVoiceService implements VoiceService {
 
   void simulateFinalResult(String text) => _savedOnRecognized?.call(text);
 
-  @override
+  
   Future<void> stopListening() async {
     calls.add('stop');
     _state = VoiceState.idle;
     _stateController.add(_state);
   }
 
-  @override
+  
   Future<void> speak(String text, {String locale = 'ku'}) async {
     calls.add('speak');
     _state = VoiceState.speaking;
@@ -60,7 +60,7 @@ class _TransitionVoiceService implements VoiceService {
     _stateController.add(_state);
   }
 
-  @override
+  
   Future<void> stopSpeaking() async {
     calls.add('stopSpeak');
     _state = VoiceState.idle;
@@ -72,7 +72,7 @@ class _TransitionAgentProcessor implements AgentProcessor {
   int runCount = 0;
   String? lastInput;
 
-  @override
+  
   Future<AgentResult> run({required String userInput, required AgentContext context}) async {
     runCount++;
     lastInput = userInput;
@@ -81,15 +81,15 @@ class _TransitionAgentProcessor implements AgentProcessor {
 }
 
 class _TransitionMemoryService implements MemoryService {
-  @override
+  
   Future<String> createConversation({String? title, String? agentId}) async => 'conv_1';
-  @override
+  
   Future<List<String>> getConversationIds({int limit = 50, int offset = 0}) async => [];
-  @override
+  
   Future<void> addMessage({required String conversationId, required String role, required String content, String? parentMessageId}) async {}
-  @override
+  
   Future<List<MessageEntity>> getMessages(String conversationId) async => [];
-  @override
+  
   Future<void> deleteConversation(String conversationId) async {}
 }
 
@@ -316,7 +316,7 @@ void main() {
 
 /// AgentProcessor that always fails — for retry limit testing.
 class _FailingAgentProcessor implements AgentProcessor {
-  @override
+  
   Future<AgentResult> run({required String userInput, required AgentContext context}) async {
     return const AgentResult.failure(errorMessage: 'هەڵەی تاقیکردنەوە');
   }

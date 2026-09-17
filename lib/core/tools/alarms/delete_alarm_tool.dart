@@ -11,7 +11,7 @@ class DeleteAlarmTool extends Tool {
   final AlarmToolGateway _gateway;
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'delete_alarm',
         description: 'Delete an existing wake verification alarm by its ID.',
         category: 'alarms',
@@ -30,7 +30,7 @@ class DeleteAlarmTool extends Tool {
     final alarmId = args.get<String>('alarm_id');
 
     if (alarmId.isEmpty) {
-      return ToolResult.failure('alarm_id is required');
+      return const ToolResult.failure('alarm_id is required');
     }
 
     final existing = await _gateway.findAlarm(alarmId);

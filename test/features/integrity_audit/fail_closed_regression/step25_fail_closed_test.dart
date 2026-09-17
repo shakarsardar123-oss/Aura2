@@ -15,31 +15,31 @@ void main() {
     // Core FAIL-CLOSED invariants
     // ============================================================
     test('unknown agent state → denied', () {
-      final state = AgentState.unknown;
+      const state = AgentState.unknown;
       final verdict = resolveAgentState(state);
       expect(verdict, equals('denied'));
     });
 
     test('error agent state → denied', () {
-      final state = AgentState.error;
+      const state = AgentState.error;
       final verdict = resolveAgentState(state);
       expect(verdict, equals('denied'));
     });
 
     test('unavailable agent state → denied', () {
-      final state = AgentState.unavailable;
+      const state = AgentState.unavailable;
       final verdict = resolveAgentState(state);
       expect(verdict, equals('denied'));
     });
 
     test('denied agent state → denied (closed)', () {
-      final state = AgentState.denied;
+      const state = AgentState.denied;
       final verdict = resolveAgentState(state);
       expect(verdict, equals('denied'));
     });
 
     test('granted agent state → granted', () {
-      final state = AgentState.granted;
+      const state = AgentState.granted;
       final verdict = resolveAgentState(state);
       expect(verdict, equals('granted'));
     });
@@ -48,14 +48,14 @@ void main() {
     // canSkip → shouldAbort (NEVER skip)
     // ============================================================
     test('canSkip=true → shouldAbort (NEVER skip agent action)', () {
-      final canSkip = true;
-      final decision = 'shouldAbort'; // always abort
+      const canSkip = true;
+      const decision = 'shouldAbort'; // always abort
       expect(decision, equals('shouldAbort'));
     });
 
     test('canSkip=false → shouldAbort (NEVER skip agent action)', () {
-      final canSkip = false;
-      final decision = 'shouldAbort';
+      const canSkip = false;
+      const decision = 'shouldAbort';
       expect(decision, equals('shouldAbort'));
     });
 
@@ -63,26 +63,26 @@ void main() {
     // AgentEngineRepository FAIL-CLOSED invariants
     // ============================================================
     test('AgentEngineRepository.parseIntent() error → denied', () {
-      final parseResult = 'error';
-      final verdict = parseResult == 'error' ? 'denied' : 'granted';
+      const parseResult = 'error';
+      const verdict = parseResult == 'error' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('AgentEngineRepository.parseIntent() unknown → denied', () {
-      final parseResult = 'unknown';
-      final verdict = parseResult == 'unknown' ? 'denied' : 'granted';
+      const parseResult = 'unknown';
+      const verdict = parseResult == 'unknown' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('AgentEngineRepository.generatePlan() failure → denied', () {
-      final planResult = 'failure';
-      final verdict = planResult == 'failure' ? 'denied' : 'granted';
+      const planResult = 'failure';
+      const verdict = planResult == 'failure' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('AgentEngineRepository unavailable → denied', () {
-      final available = false;
-      final verdict = available ? 'granted' : 'denied';
+      const available = false;
+      const verdict = available ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
@@ -90,14 +90,14 @@ void main() {
     // TriggerRepository FAIL-CLOSED (bridged from Step 24)
     // ============================================================
     test('TriggerRepository.fire() failure → denied in Step 25 context', () {
-      final triggerResult = 'failure';
-      final verdict = triggerResult == 'failure' ? 'denied' : 'granted';
+      const triggerResult = 'failure';
+      const verdict = triggerResult == 'failure' ? 'denied' : 'granted';
       expect(verdict, equals('denied'));
     });
 
     test('TriggerRepository unavailable in Step 25 → denied', () {
-      final available = false;
-      final verdict = available ? 'granted' : 'denied';
+      const available = false;
+      const verdict = available ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
@@ -105,8 +105,8 @@ void main() {
     // AuditRepository.isAvailable() FAIL-CLOSED (Step 25 addition)
     // ============================================================
     test('AuditRepository.isAvailable()=false → denied', () {
-      final isAvailable = false;
-      final verdict = isAvailable ? 'granted' : 'denied';
+      const isAvailable = false;
+      const verdict = isAvailable ? 'granted' : 'denied';
       expect(verdict, equals('denied'));
     });
 
@@ -114,14 +114,14 @@ void main() {
     // ConfirmationVerdict FAIL-CLOSED (Step 25 variant)
     // ============================================================
     test('ConfirmationVerdict not obtained → denied', () {
-      final verdict = Step25ConfirmationVerdict(obtained: false, mode: '', reason: 'not_obtained');
+      const verdict = Step25ConfirmationVerdict(obtained: false, mode: '', reason: 'not_obtained');
       expect(verdict.obtained, isFalse);
       final decision = verdict.obtained ? 'granted' : 'denied';
       expect(decision, equals('denied'));
     });
 
     test('ConfirmationVerdict obtained → granted', () {
-      final verdict = Step25ConfirmationVerdict(obtained: true, mode: 'explicit', reason: '');
+      const verdict = Step25ConfirmationVerdict(obtained: true, mode: 'explicit', reason: '');
       final decision = verdict.obtained ? 'granted' : 'denied';
       expect(decision, equals('granted'));
     });
@@ -132,15 +132,15 @@ void main() {
     test('RecoveryAction.skip → shouldAbort (FAIL-CLOSED: never actually skip)', () {
       // Step 25 adds 'skip' to RecoveryAction enum, but FAIL-CLOSED means
       // we never actually skip — skip → shouldAbort
-      final action = 'skip';
-      final decision = action == 'skip' ? 'shouldAbort' : action;
+      const action = 'skip';
+      const decision = action == 'skip' ? 'shouldAbort' : action;
       expect(decision, equals('shouldAbort'));
     });
 
     test('RecoveryAction.retry exhausted → abort', () {
-      final maxRetries = 3;
-      final currentRetry = 3;
-      final decision = currentRetry >= maxRetries ? 'abort' : 'retry';
+      const maxRetries = 3;
+      const currentRetry = 3;
+      const decision = currentRetry >= maxRetries ? 'abort' : 'retry';
       expect(decision, equals('abort'));
     });
 
@@ -148,7 +148,7 @@ void main() {
     // RTL-first locale enforcement
     // ============================================================
     test('Step 25 locale defaults to Kurdish Sorani', () {
-      final locale = 'ku';
+      const locale = 'ku';
       expect(locale, equals('ku'));
     });
 
@@ -156,7 +156,7 @@ void main() {
     // No hardcoded secrets in agent path
     // ============================================================
     test('agent path never contains hardcoded secrets', () {
-      final agentId = 'agent_xyz789';
+      const agentId = 'agent_xyz789';
       final hasSecret = agentId.contains('password') ||
           agentId.contains('secret') ||
           agentId.contains('token');

@@ -16,7 +16,7 @@ class BatteryTool extends Tool {
   BatteryTool(this._deviceChannel);
 
   @override
-  ToolDefinition get definition => ToolDefinition(
+  ToolDefinition get definition => const ToolDefinition(
         name: 'battery',
         description:
             'زانیاری باتری وەربگرە '
@@ -25,8 +25,8 @@ class BatteryTool extends Tool {
             'Get battery information including level, charging status, '
             'and charging type (AC, USB, wireless).',
         category: 'device',
-        parameters: const [],
-        permissionRequirements: const [
+        parameters: [],
+        permissionRequirements: [
           ToolPermissionRequirement(
             permission: ToolPermission.battery,
             isRequired: true,
@@ -36,7 +36,7 @@ class BatteryTool extends Tool {
         requiresConfirmation: false,
         tags: ['device', 'battery', 'power', 'charging', 'باتری', 'بارکردن'],
         icon: 'battery_std',
-        timeout: const Duration(seconds: 10),
+        timeout: Duration(seconds: 10),
         riskLevel: ToolRiskLevel.none,
       );
 
