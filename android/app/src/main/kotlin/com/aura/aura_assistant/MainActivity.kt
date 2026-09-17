@@ -4,7 +4,7 @@ import android.Manifest
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.app.ActivityManager
 import android.app.AlarmManager
-import android.app.RoleManager
+import android.app.role.RoleManager
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.content.Context
