@@ -8,6 +8,7 @@ library;
 
 import '../models/memory_entry.dart';
 import '../models/memory_type.dart';
+import '../models/memory_failure.dart';
 
 /// Abstract repository for semantic memory operations.
 ///
