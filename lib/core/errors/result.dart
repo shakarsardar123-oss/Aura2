@@ -1,31 +1,31 @@
-sealed class Result<S, F> {
+sealed class Result<T, F> {
   const Result();
 
-  const factory Result.success(S value) = SuccessResult<S, F>;
-  const factory Result.failure(F failure) = FailureResult<S, F>;
-  const factory Result.error(F failure) = FailureResult<S, F>;
+  const factory Result.success(T value) = SuccessResult<T, F>;
+  const factory Result.failure(F failure) = FailureResult<T, F>;
+  const factory Result.error(F failure) = FailureResult<T, F>;
 
   R fold<R>({
-    required R Function(S value) onSuccess,
+    required R Function(T value) onSuccess,
     required R Function(F failure) onFailure,
   }) {
-    if (this is SuccessResult<S, F>) {
-      return onSuccess((this as SuccessResult<S, F>).value);
-    } else if (this is FailureResult<S, F>) {
-      return onFailure((this as FailureResult<S, F>).failure);
+    if (this is SuccessResult<T, F>) {
+      return onSuccess((this as SuccessResult<T, F>).value);
+    } else if (this is FailureResult<T, F>) {
+      return onFailure((this as FailureResult<T, F>).failure);
     }
     throw StateError('Unknown Result type');
   }
 }
 
-final class SuccessResult<S, F> extends Result<S, F> {
+final class SuccessResult<T, F> extends Result<T, F> {
   const SuccessResult(this.value);
-  final S value;
+  final T value;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SuccessResult<S, F> &&
+      other is SuccessResult<T, F> &&
           runtimeType == other.runtimeType &&
           value == other.value;
 
@@ -36,14 +36,14 @@ final class SuccessResult<S, F> extends Result<S, F> {
   String toString() => 'Result.success($value)';
 }
 
-final class FailureResult<S, F> extends Result<S, F> {
+final class FailureResult<T, F> extends Result<T, F> {
   const FailureResult(this.failure);
   final F failure;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is FailureResult<S, F> &&
+      other is FailureResult<T, F> &&
           runtimeType == other.runtimeType &&
           failure == other.failure;
 
@@ -54,12 +54,12 @@ final class FailureResult<S, F> extends Result<S, F> {
   String toString() => 'Result.failure($failure)';
 }
 
-extension ResultAccessors<S, F> on Result<S, F> {
-  bool get isSuccess => this is SuccessResult<S, F>;
-  bool get isFailure => this is FailureResult<S, F>;
+extension ResultAccessors<T, F> on Result<T, F> {
+  bool get isSuccess => this is SuccessResult<T, F>;
+  bool get isFailure => this is FailureResult<T, F>;
   bool get isError => isFailure;
 
-  S? get valueOrNull => fold(
+  T? get valueOrNull => fold(
         onSuccess: (v) => v,
         onFailure: (_) => null,
       );
@@ -69,6 +69,6 @@ extension ResultAccessors<S, F> on Result<S, F> {
         onFailure: (f) => f,
       );
 
-  S? get value => valueOrNull;
+  T? get value => valueOrNull;
   F? get error => failureOrNull;
 }
