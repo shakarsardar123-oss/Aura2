@@ -1,101 +1,52 @@
-import 'failures.dart';
+/// A minimal Result/Either type used across the domain layer to represent
+/// an operation that either succeeds with a value of type [T] or fails
+/// with a failure of type [F].
 sealed class Result<T, F> {
   const Result();
 
-  const factory Result.success(T value) = SuccessResult<T, F>;
-  const factory Result.failure(F failure) = FailureResult<T, F>;
-  const factory Result.error(F failure) = FailureResult<T, F>;
-
-  R fold<R>({
-    required R Function(T value) onSuccess,
-    required R Function(F failure) onFailure,
-  }) {
-    if (this is SuccessResult<T, F>) {
-      return onSuccess((this as SuccessResult<T, F>).value);
-    } else if (this is FailureResult<T, F>) {
-      return onFailure((this as FailureResult<T, F>).failure);
-    }
-    throw StateError('Unknown Result type');
-  }
+  const factory Result.success(T value) = Success<T, F>;
+  const factory Result.failure(F failure) = Failure<T, F>;
+  const factory Result.error(F failure) = Failure<T, F>;
 }
 
-final class SuccessResult<T, F> extends Result<T, F> {
-  const SuccessResult(this.value);
+class Success<T, F> extends Result<T, F> {
+  const Success(this.value) : super();
   final T value;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SuccessResult<T, F> &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
-
-  @override
-  int get hashCode => value.hashCode;
-
-  @override
-  String toString() => 'Result.success($value)';
 }
 
-final class FailureResult<T, F> extends Result<T, F> {
-  const FailureResult(this.failure);
+class Failure<T, F> extends Result<T, F> {
+  const Failure(this.failure) : super();
   final F failure;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FailureResult<T, F> &&
-          runtimeType == other.runtimeType &&
-          failure == other.failure;
-
-  @override
-  int get hashCode => failure.hashCode;
-
-  @override
-  String toString() => 'Result.failure($failure)';
 }
 
 extension ResultAccessors<T, F> on Result<T, F> {
-  bool get isSuccess => this is SuccessResult<T, F>;
-  bool get isFailure => this is FailureResult<T, F>;
-  bool get isError => isFailure;
+  bool get isSuccess => this is Success<T, F>;
+  bool get isError => this is Failure<T, F>;
 
-  T? get valueOrNull => fold(
-        onSuccess: (v) => v,
-        onFailure: (_) => null,
-      );
+  T? get value => switch (this) {
+        Success<T, F> success => success.value,
+        Failure<T, F> _ => null,
+      };
 
-  F? get failureOrNull => fold(
-        onSuccess: (_) => null,
-        onFailure: (f) => f,
-      );
+  F? get error => switch (this) {
+        Success<T, F> _ => null,
+        Failure<T, F> failure => failure.failure,
+      };
 
-  T? get value => valueOrNull;
-  F? get error => failureOrNull;
-}
-
-/// Convenience: pattern-match on a [Result] with named callbacks.
-extension ResultWhen<T, F> on Result<T, F> {
-  R when<R>({
-    required R Function(T value) success,
-    required R Function(F failure) failure,
+  W when<W>({
+    required W Function(T value) success,
+    required W Function(F failure) failure,
   }) {
-    return fold(onSuccess: success, onFailure: failure);
+    return switch (this) {
+      Success<T, F> s => success(s.value),
+      Failure<T, F> f => failure(f.failure),
+    };
   }
-}
 
-/// Convenience: unwrap a [Result], falling back to [orElse] on failure.
-extension ResultGetOrElse<T, F> on Result<T, F> {
   T getOrElse(T Function() orElse) {
-    return fold(onSuccess: (v) => v, onFailure: (_) => orElse());
+    return switch (this) {
+      Success<T, F> s => s.value,
+      Failure<T, F> _ => orElse(),
+    };
   }
-}
-
-/// Shorthand for constructing a successful [Result] without the
-/// `Result.success(...)` prefix — inferred from the call-site context.
-Result<T, F> Success<T, F>(T value) => Result<T, F>.success(value);
-
-/// Wraps any [Failure] subtype into a failed [Result] of type [T].
-extension FailureToResult<F extends Failure> on F {
-  Result<T, F> asFailure<T>() => Result<T, F>.failure(this);
 }
