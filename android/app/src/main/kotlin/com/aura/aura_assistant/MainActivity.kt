@@ -315,10 +315,6 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-            else -> result.notImplemented()
-        }
-    }
-
     // ═══════════════════════════════════════════════════════════════
     // 5.  SYSTEM CONTROL CHANNEL  (Phase 6)
     //     com.aura.aura_assistant/system_control
