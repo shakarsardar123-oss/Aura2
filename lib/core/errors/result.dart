@@ -1,3 +1,4 @@
+import 'failures.dart';
 sealed class Result<T, F> {
   const Result();
 
