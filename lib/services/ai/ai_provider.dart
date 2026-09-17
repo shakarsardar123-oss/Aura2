@@ -19,6 +19,21 @@ abstract class AIProvider {
   bool supportsModel(String modelId) => supportedModels.contains(modelId);
 
   /// Performs a single completion request.
+  /// Retrieves the stored API key for this provider.
+  Future<String?> getApiKey();
+
+  /// Stores the API key for this provider.
+  Future<void> setApiKey(String key);
+
+  /// Deletes the stored API key for this provider.
+  Future<void> deleteApiKey();
+
+  /// Retrieves the stored base URL for this provider.
+  Future<String> getBaseUrl();
+
+  /// Stores a custom base URL for this provider.
+  Future<void> setBaseUrl(String url);
+
   Future<AIResponse> complete(AIRequest request);
 
   /// Performs a streaming completion request.
