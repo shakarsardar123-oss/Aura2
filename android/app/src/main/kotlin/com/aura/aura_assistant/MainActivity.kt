@@ -800,7 +800,7 @@ class MainActivity : FlutterActivity() {
             startActivity(intent)
         } else {
             // Fallback: open voice input settings
-            val intent = Intent(Settings.ACTION_VOICE_INPUT_OUTPUT_SETTINGS).apply {
+            val intent = Intent(Settings.ACTION_VOICE_INPUT_SETTINGS).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             startActivity(intent)
@@ -824,8 +824,8 @@ class MainActivity : FlutterActivity() {
                 else -> "unknown"
             },
             "callingPackage" to intent.getStringExtra(Intent.EXTRA_ASSIST_PACKAGE),
-            "assistUri" to (intent.getParcelableExtra<Uri>(Intent.EXTRA_ASSIST_URI)?.toString()
-                ?: intent.getStringExtra(Intent.EXTRA_ASSIST_URI)),
+            "assistUri" to (intent.getParcelableExtra<Uri>("android.intent.extra.ASSIST_URI")?.toString()
+                ?: intent.getStringExtra("android.intent.extra.ASSIST_URI")),
             "assistContext" to intent.getStringExtra(Intent.EXTRA_ASSIST_CONTEXT)
         )
     }
