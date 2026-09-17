@@ -1,4 +1,3 @@
-import 'package:aura_assistant/core/errors/result.dart';
 /// memory_failure.dart
 /// AURA Assistant – Step 17: Semantic Memory
 ///
@@ -8,6 +7,7 @@ import 'package:aura_assistant/core/errors/result.dart';
 ///   - No sealed class (Dart 3 pattern matches but project uses private constructor pattern)
 /// Kurdish-first, local-first, privacy-conscious.
 library;
+import 'package:aura_assistant/core/errors/result.dart';
 
 /// Phases of the semantic memory lifecycle where a failure may occur.
 enum MemoryFailurePhase {
@@ -48,183 +48,93 @@ mixin _MemoryFailureFields on Object {
 }
 
 /// Private subtype: store failure.
-class _StoreFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _StoreFailure extends MemoryFailure {
   _StoreFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: recall failure.
-class _RecallFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _RecallFailure extends MemoryFailure {
   _RecallFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: search failure.
-class _SearchFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _SearchFailure extends MemoryFailure {
   _SearchFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: update failure.
-class _UpdateFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _UpdateFailure extends MemoryFailure {
   _UpdateFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: forget failure.
-class _ForgettingFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _ForgettingFailure extends MemoryFailure {
   _ForgettingFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: embedding failure.
-class _EmbeddingFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _EmbeddingFailure extends MemoryFailure {
   _EmbeddingFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: policy failure.
-class _PolicyFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _PolicyFailure extends MemoryFailure {
   _PolicyFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: integration failure.
-class _IntegrationFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _IntegrationFailure extends MemoryFailure {
   _IntegrationFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Private subtype: unknown failure.
-class _UnknownFailure
-    with _MemoryFailureFields {
-  @override
-  final MemoryFailurePhase phase;
-  @override
-  final String message;
-  @override
-  final String? action;
-  @override
-  final Object? cause;
-
+class _UnknownFailure extends MemoryFailure {
   _UnknownFailure({
-    required this.phase,
-    required this.message,
-    this.action,
-    this.cause,
-  });
+    required MemoryFailurePhase phase,
+    required String message,
+    String? action,
+    Object? cause,
+  }) : super._(phase: phase, message: message, action: action, cause: cause);
 }
 
 /// Failure type for the semantic memory subsystem.

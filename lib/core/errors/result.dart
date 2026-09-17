@@ -20,6 +20,9 @@ sealed class Result<S, F> {
   /// Convenience factory for the failure branch.
   const factory Result.failure(F failure) = FailureResult<S, F>;
 
+  /// Alias for [Result.failure], used throughout the existing codebase.
+  const factory Result.error(F failure) = FailureResult<S, F>;
+
   /// Whether this result represents a successful outcome.
   bool get isSuccess;
 
@@ -140,4 +143,13 @@ extension ResultAccessors<S, F> on Result<S, F> {
         onSuccess: (_) => null,
         onFailure: (f) => f,
       );
+
+  /// Alias for [isFailure], used throughout the existing codebase.
+  bool get isError => isFailure;
+
+  /// Alias for [failureOrNull], used throughout the existing codebase.
+  F? get error => failureOrNull;
+
+  /// Alias for [valueOrNull], used throughout the existing codebase.
+  S? get value => valueOrNull;
 }

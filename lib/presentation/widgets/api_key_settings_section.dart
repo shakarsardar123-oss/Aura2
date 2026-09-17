@@ -1,4 +1,3 @@
-import 'dart:convert';
 /// api_key_settings_section.dart
 /// AURA Assistant – P1+P2 Fix: Provider-Agnostic API Settings
 ///
@@ -8,6 +7,7 @@ import 'dart:convert';
 /// - Supports both Gemini and OpenAI key storage.
 /// - Test connection adapted per provider (Gemini: native API, OpenAI: models endpoint).
 library;
+import 'dart:convert';
 
 import 'dart:io';
 

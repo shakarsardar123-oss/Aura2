@@ -1,4 +1,3 @@
-export '../models/memory_type.dart' show MemoryType;
 /// memory_storage_service.dart
 /// AURA Assistant – Step 17: Semantic Memory
 ///
@@ -6,6 +5,7 @@ export '../models/memory_type.dart' show MemoryType;
 /// Follows the abstract service pattern from CentralPermissionService.
 /// Kurdish-first, local-first, privacy-conscious.
 library;
+export '../models/memory_type.dart' show MemoryType;
 
 import '../models/memory_entry.dart';
 import '../models/memory_failure.dart';
