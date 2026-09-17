@@ -1,3 +1,4 @@
+import '../../../../core/errors/result.dart';
 /// Step 25 — Tool Execution Repository Interface
 ///
 /// Contract for the Step 25 orchestration layer's tool execution adapter.

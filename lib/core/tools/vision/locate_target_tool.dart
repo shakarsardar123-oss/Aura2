@@ -5,6 +5,7 @@ import '../tool_result.dart';
 import '../tool_permission.dart';
 import '../../../domain/entities/vision/vision_entities.dart';
 import '../../../services/vision/vision_service.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to locate a specific target in an image using AI vision.
 ///

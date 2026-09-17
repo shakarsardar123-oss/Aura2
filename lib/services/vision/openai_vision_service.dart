@@ -12,6 +12,7 @@ import '../../core/ai/ai_connection_storage.dart';
 import '../../core/ai/endpoint_validator.dart';
 import '../../presentation/providers/app_providers.dart' show aiConnectionStorageProvider;
 import 'vision_service.dart';
+import '../../core/errors/result.dart';
 
 /// Secure storage key for API key (shared with OpenAIProvider).
 const _apiKeyStorageKey = 'aura_openai_api_key';

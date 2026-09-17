@@ -5,6 +5,7 @@ import '../../agent/agent_confirmation_manager.dart';
 import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../../device/device_channel.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to retrieve battery level, charging status, and charging type.
 ///

@@ -5,6 +5,7 @@ import '../../domain/entities/vision/vision_entities.dart';
 import '../../services/camera/vision_camera_service.dart';
 import '../../services/vision/vision_service.dart';
 import '../../services/vision/vision_service_factory.dart'
+import '../../core/errors/result.dart';
     show visionServiceProvider;
 
 // Re-export service providers for convenient access.

@@ -1,3 +1,4 @@
+import '../../../../core/errors/result.dart';
 /// Step 27 — Translation Result Model
 ///
 /// Represents the result of a translation operation.

@@ -2,6 +2,7 @@ import '../utils/uuid_util.dart';
 
 import 'agent_step_status.dart';
 import '../tools/tool_result.dart';
+import '../../core/errors/result.dart';
 
 /// A single step in the agent's plan.
 ///

@@ -1,4 +1,5 @@
 import 'vision_target.dart';
+import '../../../core/errors/result.dart';
 
 /// Result of an AI vision analysis operation.
 ///

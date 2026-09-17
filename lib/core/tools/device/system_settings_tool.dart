@@ -5,6 +5,7 @@ import '../../agent/agent_confirmation_manager.dart';
 import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../../device/device_channel.dart';
+import '../../../core/errors/result.dart';
 
 /// Allowlist of safe system settings keys mapped to their
 /// Android `Settings.ACTION_*` constant strings.

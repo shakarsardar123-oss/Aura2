@@ -1,3 +1,4 @@
+import '../../../../core/errors/result.dart';
 /// Step 23 — Screen/Device Repository Interface
 ///
 /// Contract for the Step 14/22 screen and device control adapter.

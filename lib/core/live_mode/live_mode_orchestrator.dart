@@ -23,6 +23,7 @@ import '../agent/agent_context.dart';
 import '../../domain/entities/agent_config.dart';
 import '../../services/memory/memory_service.dart';
 import 'live_mode_state.dart';
+import '../../core/errors/result.dart';
 
 /// Callback for Live Mode state changes (for UI updates).
 typedef LiveModeStateCallback = void Function(LiveModeState state);

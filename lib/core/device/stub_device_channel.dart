@@ -8,6 +8,7 @@
 library;
 
 import 'device_channel.dart';
+import '../../core/errors/result.dart';
 
 class StubDeviceChannel implements DeviceChannel {
   /// Optional platform label included in error messages for

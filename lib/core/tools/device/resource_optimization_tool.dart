@@ -18,6 +18,7 @@ import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../../agent/agent_confirmation_manager.dart';
 import '../../device/system_control_channel.dart';
+import '../../../core/errors/result.dart';
 
 class ResourceOptimizationTool extends Tool {
   final SystemControlChannel _channel;

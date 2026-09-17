@@ -15,6 +15,7 @@ import '../domain/services/memory_storage_service.dart';
 import 'stub_memory_embedding_service.dart';
 import 'vector_search_service.dart';
 import 'package:aura_assistant/features/semantic_memory/infrastructure/local_memory_storage_service.dart';
+import '../../../core/errors/result.dart';
 
 /// Concrete [MemoryRepository] implementation.
 ///

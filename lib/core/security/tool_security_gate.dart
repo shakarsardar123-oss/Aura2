@@ -27,6 +27,7 @@ import '../tools/tool_arguments.dart';
 import '../tools/tool_result.dart';
 import '../tools/tool_definition.dart';
 import '../agent/agent_confirmation_manager.dart';
+import '../../core/errors/result.dart';
 
 /// Result of the security gate check.
 ///

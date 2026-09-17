@@ -3,6 +3,7 @@ import 'agent_plan.dart';
 import 'agent_step.dart';
 import 'agent_step_status.dart';
 import '../tools/tool_result.dart';
+import '../../core/errors/result.dart';
 
 /// Result of verifying a step or entire plan.
 class VerificationResult {

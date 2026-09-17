@@ -4,6 +4,7 @@ import '../tool_definition.dart';
 import '../tool_arguments.dart';
 import '../tool_result.dart';
 import 'alarm_tool_gateway.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to quickly set a one-shot alarm using natural language input.
 /// Simplified interface compared to CreateAlarmTool for voice/chat use.

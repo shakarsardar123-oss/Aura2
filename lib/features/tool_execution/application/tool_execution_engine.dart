@@ -49,6 +49,7 @@ import '../infrastructure/executors/tool_executor_registry.dart';
 import 'cancellation_token.dart';
 import 'tool_input_validator.dart';
 import 'tool_output_normalizer.dart';
+import '../../../core/errors/result.dart';
 
 /// Result of a full tool execution attempt through the engine.
 class EngineExecutionResult {

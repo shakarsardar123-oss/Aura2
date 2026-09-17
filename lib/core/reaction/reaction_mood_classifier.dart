@@ -17,6 +17,7 @@ library;
 
 import 'reaction_context.dart';
 import 'reaction_trigger.dart';
+import '../../core/errors/result.dart';
 
 /// Result of mood classification — immutable analysis snapshot.
 class ReactionMoodAnalysis {

@@ -30,6 +30,7 @@ import '../../core/ai/endpoint_validator.dart';
 import '../../presentation/providers/app_providers.dart'
     show aiConnectionStorageProvider;
 import 'vision_service.dart';
+import '../../core/errors/result.dart';
 
 /// Secure storage key for the Gemini API key (shared with GeminiProvider).
 const _apiKeyStorageKey = 'aura_gemini_api_key';

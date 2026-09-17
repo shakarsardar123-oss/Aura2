@@ -1,3 +1,4 @@
+import '../../core/errors/result.dart';
 /// Represents the result of a tool execution.
 ///
 /// A tool can either succeed with a [data] payload or fail with an

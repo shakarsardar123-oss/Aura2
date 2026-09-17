@@ -21,6 +21,7 @@ import '../security/confirmation_guard.dart';
 import '../tools/tool_arguments.dart';
 import '../tools/tool_registry.dart';
 import '../tools/tool_result.dart';
+import '../../core/errors/result.dart';
 
 /// Callback types for agent engine events.
 typedef AgentStateCallback = void Function(AgentState state);

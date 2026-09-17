@@ -20,6 +20,7 @@ import '../../core/live_mode/live_mode_providers.dart'
 import '../providers/app_providers.dart';
 import '../widgets/widgets.dart';
 import '../widgets/wireframe_background.dart';
+import '../../core/errors/result.dart';
 
 class ChatMessagesNotifier extends ChangeNotifier {
   final List<_ChatMessage> _messages = [];

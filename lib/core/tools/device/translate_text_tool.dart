@@ -20,6 +20,7 @@ import '../../../domain/services/ai_service.dart';
 import '../../../domain/entities/agent_config.dart';
 import '../../../core/ai/ai_message.dart';
 import '../../../services/ai/ai_provider.dart';
+import '../../../core/errors/result.dart';
 
 class TranslateTextTool extends Tool {
   final AIProvider _aiProvider;

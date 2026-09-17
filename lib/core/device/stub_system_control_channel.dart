@@ -4,6 +4,7 @@
 library;
 
 import 'system_control_channel.dart';
+import '../../core/errors/result.dart';
 
 class StubSystemControlChannel implements SystemControlChannel {
   StubSystemControlChannel({this.platformLabel = 'unsupported'});

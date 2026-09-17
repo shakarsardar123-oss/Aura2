@@ -13,6 +13,7 @@ import '../domain/models/memory_failure.dart';
 import '../domain/models/memory_type.dart';
 import '../domain/repositories/memory_repository.dart';
 import 'memory_policy.dart';
+import '../../../core/errors/result.dart';
 
 /// Application service for semantic memory operations.
 ///

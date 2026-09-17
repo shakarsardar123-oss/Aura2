@@ -19,6 +19,7 @@ import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../../agent/agent_confirmation_manager.dart';
 import '../../device/system_control_channel.dart';
+import '../../../core/errors/result.dart';
 
 /// Forbidden patterns to prevent shell injection in any argument string.
 const List<String> _forbidden = [

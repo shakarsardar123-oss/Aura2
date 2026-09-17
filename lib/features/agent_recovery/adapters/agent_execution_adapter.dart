@@ -25,6 +25,7 @@ import '../domain/models/recovery_failure.dart';
 import '../domain/models/recovery_state.dart';
 import '../domain/models/retry_policy.dart';
 import '../application/recovery_coordinator.dart';
+import '../../../core/errors/result.dart';
 
 // ─── Helper classes ────────────────────────────────────────────────
 

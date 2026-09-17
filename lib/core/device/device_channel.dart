@@ -10,6 +10,7 @@
 library;
 
 import 'package:meta/meta.dart' show immutable;
+import '../../core/errors/result.dart';
 
 /// Outcome of a single device-channel invocation.
 ///

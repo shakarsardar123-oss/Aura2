@@ -12,6 +12,7 @@
 library;
 
 import '../domain/domain.dart';
+import '../../../core/errors/result.dart';
 
 // ─── CoordinationResult ───────────────────────────────────────────────
 // Uses ONLY verified API types and factories.

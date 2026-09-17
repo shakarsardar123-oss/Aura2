@@ -15,6 +15,7 @@ library;
 import '../domain/models/memory_type.dart';
 import '../application/memory_manager.dart';
 import '../application/memory_policy.dart';
+import '../../../core/errors/result.dart';
 
 /// A tool invocation result returned to the agent engine.
 class MemoryToolResult {

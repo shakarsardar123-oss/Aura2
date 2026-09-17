@@ -5,6 +5,7 @@ import '../tool_definition.dart';
 import '../tool_arguments.dart';
 import '../tool_result.dart';
 import 'alarm_tool_gateway.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to update an existing wake verification alarm.
 class UpdateAlarmTool extends Tool {

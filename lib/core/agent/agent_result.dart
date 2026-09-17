@@ -1,3 +1,4 @@
+import '../../core/errors/result.dart';
 /// The final result of an agent execution cycle.
 class AgentResult {
   const AgentResult.success({

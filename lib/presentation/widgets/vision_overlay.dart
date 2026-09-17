@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/vision/vision_entities.dart';
+import '../../core/errors/result.dart';
 
 /// Overlay widget that renders vision analysis results on top of the camera preview.
 ///

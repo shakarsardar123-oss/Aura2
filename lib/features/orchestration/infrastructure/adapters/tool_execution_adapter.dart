@@ -17,6 +17,7 @@
 import '../../../../core/agent/agent_executor.dart';
 import '../../../../core/tools/tool_result.dart';
 import '../../domain/orchestration_domain.dart';
+import '../../../../core/errors/result.dart';
 
 class ToolExecutionAdapter implements ToolExecutionRepository {
   /// The real Step 22 execution engine (injected, wired with the security

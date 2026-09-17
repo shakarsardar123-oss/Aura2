@@ -17,6 +17,7 @@ import '../domain/models/recovery_state.dart';
 import '../domain/services/recovery_executor.dart';
 import '../domain/services/recovery_failure_classifier.dart';
 import '../domain/services/replanning_engine.dart';
+import '../../../core/errors/result.dart';
 
 /// Callback for state changes during recovery coordination.
 typedef RecoveryStateCallback = void Function(RecoveryState state);

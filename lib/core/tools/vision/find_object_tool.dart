@@ -4,6 +4,7 @@ import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../tool_permission.dart';
 import '../../../services/vision/vision_service.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to find a specific object in an image using AI vision.
 ///

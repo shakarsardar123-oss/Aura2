@@ -16,6 +16,7 @@ import '../domain/models/recovery_failure.dart';
 import '../domain/models/recovery_failure_phase.dart';
 import '../domain/models/recovery_phase.dart';
 import '../domain/services/recovery_executor.dart';
+import '../../../core/errors/result.dart';
 
 class DefaultRecoveryExecutor implements RecoveryExecutor {
   bool _isCancelled = false;

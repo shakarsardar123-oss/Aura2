@@ -6,6 +6,7 @@
 library;
 
 import 'advanced_agent_failure.dart';
+import '../../../../core/errors/result.dart';
 
 /// Overall status of an advanced agent task execution.
 enum AdvancedAgentResultStatus {

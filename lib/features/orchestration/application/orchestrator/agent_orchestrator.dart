@@ -22,6 +22,7 @@
 
 import '../../domain/orchestration_domain.dart';
 import '../localization_service.dart';
+import '../../../../core/errors/result.dart';
 
 class AgentOrchestrator {
   final AgentEngineRepository _agentEngine;

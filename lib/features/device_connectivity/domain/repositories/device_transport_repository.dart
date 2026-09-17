@@ -7,6 +7,7 @@
 library;
 
 import '../models/device_connection_state.dart';
+import '../../../../core/errors/result.dart';
 
 /// Result of a raw transport operation.
 class TransportResult {

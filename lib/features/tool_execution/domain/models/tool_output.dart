@@ -9,6 +9,7 @@ library;
 
 import 'package:meta/meta.dart';
 import 'tool_input.dart';
+import '../../../../core/errors/result.dart';
 
 /// Status of a tool execution result.
 enum ToolOutputStatus {

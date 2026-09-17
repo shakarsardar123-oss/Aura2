@@ -22,6 +22,7 @@ import '../widgets/aura_orb.dart';
 import '../widgets/wireframe_background.dart';
 import '../widgets/aura_reaction_banner.dart';
 import '../../core/providers/greeting_provider.dart';
+import '../../core/errors/result.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});

@@ -31,6 +31,7 @@ import '../../core/live_mode/live_mode_providers.dart'
     show liveModeOrchestratorProvider, liveModeStateProvider, isLiveSessionProvider;
 import '../providers/app_providers.dart';
 import '../widgets/widgets.dart';
+import '../../core/errors/result.dart';
 
 /// Voice Screen — redesigned with Wave Form (Reference Image 1).
 ///

@@ -4,6 +4,7 @@
 /// Immutable. FAIL-CLOSED: unknown/errors produce a denied/empty result.
 
 import 'orchestration_state.dart';
+import '../../../../core/errors/result.dart';
 
 class OrchestrationResult {
   final String requestId;

@@ -12,6 +12,7 @@ library;
 
 import 'package:flutter/services.dart';
 import 'system_control_channel.dart';
+import '../../core/errors/result.dart';
 
 /// Method names shared verbatim between Flutter and Kotlin.
 abstract class SystemControlMethods {

@@ -10,6 +10,7 @@ library;
 
 import 'package:flutter/services.dart';
 import 'device_channel.dart';
+import '../../core/errors/result.dart';
 
 /// Method names shared between Flutter and Kotlin.
 ///

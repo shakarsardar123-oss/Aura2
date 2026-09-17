@@ -1,3 +1,4 @@
+import '../../../../core/errors/result.dart';
 /// Step 23 — Tool Execution Repository Interface
 ///
 /// Contract for the Step 22 Tool Execution Engine adapter.

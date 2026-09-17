@@ -12,6 +12,7 @@ import '../security/confirmation_guard.dart';
 import '../tools/tool_arguments.dart';
 import '../tools/tool_registry.dart';
 import '../tools/tool_result.dart';
+import '../../core/errors/result.dart';
 
 /// Cancellation token that can be used to abort execution mid-step.
 class CancellationToken {

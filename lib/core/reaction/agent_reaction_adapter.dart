@@ -22,6 +22,7 @@ import '../tools/tool_result.dart';
 import 'reaction_engine.dart';
 import 'reaction_context.dart' show ReactionContext, ContextTriggerSource;
 import 'reaction_trigger.dart' show ReactionTrigger;
+import '../../core/errors/result.dart';
 
 /// Bridges AgentEngine callbacks into the Reaction subsystem.
 ///

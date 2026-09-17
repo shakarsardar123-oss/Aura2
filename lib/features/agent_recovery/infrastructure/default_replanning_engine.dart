@@ -17,6 +17,7 @@ import '../domain/models/recovery_failure_phase.dart';
 import '../domain/models/recovery_strategy.dart';
 import '../domain/services/recovery_failure_classifier.dart';
 import '../domain/services/replanning_engine.dart';
+import '../../../core/errors/result.dart';
 
 class DefaultReplanningEngine implements ReplanningEngine {
   final RecoveryFailureClassifier _classifier;

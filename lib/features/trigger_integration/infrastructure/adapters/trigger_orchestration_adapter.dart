@@ -18,6 +18,7 @@
 
 import '../../domain/entities/trigger_request.dart';
 import '../../domain/entities/trigger_result.dart';
+import '../../../../core/errors/result.dart';
 
 class TriggerOrchestrationAdapter {
   /// Forward a trigger request to the Step 23 orchestration pipeline.

@@ -6,6 +6,7 @@ import '../tool_definition.dart';
 import '../tool_arguments.dart';
 import '../tool_result.dart';
 import '../tool_permission.dart';
+import '../../../core/errors/result.dart';
 
 /// Tool to open the live vision camera.
 ///

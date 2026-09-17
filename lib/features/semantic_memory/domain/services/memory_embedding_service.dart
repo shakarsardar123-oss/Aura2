@@ -7,6 +7,7 @@
 library;
 
 import '../models/memory_failure.dart';
+import '../../../../core/errors/result.dart';
 
 /// Abstract interface for computing text embeddings.
 ///
