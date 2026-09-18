@@ -1,7 +1,7 @@
 /// provider_registry.dart
 /// AURA Assistant – R7-D: Provider Registry Service
 ///
-/// UPDATED: Gemini is now the first preset and default provider.
+/// UPDATED: gemini is now the first preset and default provider.
 /// OpenAI is available as a secondary option.
 /// Added supportedModels list, allowsCustomModel, icon property alias.
 library;
@@ -68,18 +68,18 @@ class ProviderPreset {
 class ProviderRegistry {
   ProviderRegistry._();
 
-  /// All built-in provider presets, ordered with Gemini first.
+  /// All built-in provider presets, ordered with gemini first.
   static const List<ProviderPreset> presets = [
-    // ─── Gemini (primary/default) ───────────────────────────
+    // ─── gemini (primary/default) ───────────────────────────
     ProviderPreset(
       id: 'gemini',
-      displayName: 'Google Gemini',
+      displayName: 'Google gemini',
       type: ConnectionType.gemini,
       defaultModel: 'gemini-1.5-flash',
-      defaultBaseUrl: 'https://generativelanguage.googleapis.com/v1beta',
+      defaultBaseUrl: '',
       iconEmoji: '✨',
       description:
-          'Google Gemini – fast, multilingual, supports vision & tools. Recommended for AURA.',
+          'Google gemini – fast, multilingual, supports vision & tools. Recommended for AURA.',
       isDefault: true,
       requiresApiKey: true,
       apiKeyHint: 'AIzaSy...',
@@ -87,13 +87,7 @@ class ProviderRegistry {
       supportsStreaming: true,
       supportsTools: true,
       isBuiltIn: true,
-      supportedModels: [
-        'gemini-1.5-flash',
-        'gemini-1.5-flash',
-        'gemini-1.5-pro',
-        'gemini-1.5-pro',
-        'gemini-1.5-flash',
-      ],
+      supportedModels: ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'],
       allowsCustomModel: true,
     ),
 
@@ -103,7 +97,7 @@ class ProviderRegistry {
       displayName: 'OpenAI',
       type: ConnectionType.openaiCompatible,
       defaultModel: 'gpt-4o-mini',
-      defaultBaseUrl: 'https://api.openai.com/v1',
+      defaultBaseUrl: '',
       iconEmoji: '🤖',
       description:
           'OpenAI GPT models – powerful but may not handle Kurdish RTL natively.',
@@ -143,7 +137,7 @@ class ProviderRegistry {
     ),
   ];
 
-  /// The default (primary) preset — Gemini.
+  /// The default (primary) preset — gemini.
   static ProviderPreset get defaultPreset => presets.first;
 
   /// Lookup a preset by its id.

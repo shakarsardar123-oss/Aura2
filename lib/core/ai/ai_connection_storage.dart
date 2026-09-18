@@ -82,22 +82,10 @@ class AIConnectionStorage {
   /// Throws [AIProviderException] if validation fails.
   Future<void> setBaseUrl(String url, [ConnectionType? type]) async {
     final connectionType = type ?? getConnectionType();
-    final result = EndpointValidator.validate(url);
-    result.when(
-      success: (validated) async {
-        final storageKey = connectionType == ConnectionType.gemini
-            ? kGeminiBaseUrlStorageKey
-            : kOpenAIBaseUrlStorageKey;
-        await secureStorage.write(key: storageKey, value: validated);
-      },
-      failure: (failure) {
-        throw AIProviderException(
-          message: failure.verdictReason ?? failure.message,
-          errorCode: 'INVALID_BASE_URL',
-          providerId: 'connection_storage',
-        );
-      },
-    );
+    final storageKey = connectionType == ConnectionType.gemini
+        ? kGeminiBaseUrlStorageKey
+        : kOpenAIBaseUrlStorageKey;
+    await secureStorage.write(key: storageKey, value: url.trim());
   }
 
   // ─── Model ────────────────────────────────────────────────

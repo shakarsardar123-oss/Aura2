@@ -3,9 +3,9 @@
 ///
 /// REWRITTEN: No longer casts to OpenAIProvider.
 /// - Uses provider-agnostic AIProvider interface for API key storage.
-/// - Routes Gemini config to GeminiProvider, OpenAI config to OpenAIProvider.
-/// - Supports both Gemini and OpenAI key storage.
-/// - Test connection adapted per provider (Gemini: native API, OpenAI: models endpoint).
+/// - Routes gemini config to geminiProvider, OpenAI config to OpenAIProvider.
+/// - Supports both gemini and OpenAI key storage.
+/// - Test connection adapted per provider (gemini: native API, OpenAI: models endpoint).
 library;
 import 'dart:convert';
 
@@ -20,7 +20,7 @@ import '../../core/ai/ai_connection_config.dart'
     show kDefaultBaseUrl, kDefaultChatModel;
 import '../../core/ai/connection_type.dart';
 import '../../core/ai/provider_registry.dart';
-import '../../core/ai/gemini_provider.dart' show GeminiProvider, kDefaultGeminiChatModel;
+import '../../core/ai/gemini_provider.dart' show geminiProvider, kDefaultgeminiChatModel;
 import '../../core/ai/ai_connection_storage.dart' show AIConnectionStorage;
 import '../../core/ai/endpoint_validator.dart' show EndpointValidator;
 import '../../services/ai/ai_provider.dart' show AIProvider;
@@ -35,12 +35,12 @@ import 'glass_dialog.dart';
 /// API key / connection settings section — provider-agnostic glass design.
 ///
 /// Features:
-/// - Provider picker dropdown (Gemini, OpenAI, Custom)
+/// - Provider picker dropdown (gemini, OpenAI, Custom)
 /// - Dynamic model list based on selected provider
 /// - Editable base URL (pre-filled from preset, editable)
 /// - API key field with show/hide
 /// - Save/test buttons wired to provider-specific storage
-/// - No provider-specific casts — works with GeminiProvider and OpenAIProvider
+/// - No provider-specific casts — works with geminiProvider and OpenAIProvider
 class ApiKeySettingsSection extends ConsumerStatefulWidget {
   const ApiKeySettingsSection({super.key});
 
@@ -53,7 +53,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
   final _apiKeyController = TextEditingController();
   final _baseUrlController = TextEditingController();
   final _customModelController = TextEditingController();
-  String _selectedModel = kDefaultGeminiChatModel;
+  String _selectedModel = kDefaultgeminiChatModel;
   ConnectionType _selectedProviderType = ConnectionType.gemini;
   ProviderPreset? _selectedPreset;
   bool _obscureApiKey = true;
@@ -219,7 +219,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
       }
 
       if (_selectedProviderType == ConnectionType.gemini) {
-        // Test Gemini native API connection
+        // Test gemini native API connection
         final baseUrl = EndpointValidator.normalizeTrailingSlash(
           await ref.read(aiConnectionStorageProvider).getBaseUrl(ConnectionType.gemini),
         );

@@ -23,7 +23,7 @@ const kDefaultChatModel = 'gemini-1.5-flash';
 const kDefaultVisionModel = 'gemini-1.5-flash';
 
 /// Default Gemini native base URL.
-const kDefaultBaseUrl = 'https://generativelanguage.googleapis.com/v1beta';
+const kDefaultBaseUrl = '';
 
 /// Default OpenAI base URL (secondary provider).
 const kOpenAIDefaultBaseUrl = 'https://api.openai.com/v1';
