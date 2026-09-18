@@ -33,7 +33,7 @@ import '../errors/result.dart';
 const _geminiApiKeyStorageKey = 'aura_gemini_api_key';
 
 /// Default Gemini base URL (native API, not OpenAI-compatible).
-const _defaultGeminiBaseUrl = 'https://generativelanguage.googleapis.com/v1beta';
+const _defaultGeminiBaseUrl = 'https://generativelanguage.googleapis.com';
 
 /// Default Gemini model for chat.
 const kDefaultGeminiChatModel = 'gemini-1.5-flash';
@@ -295,7 +295,10 @@ class GeminiProvider implements AIProvider {
 
     try {
       // Gemini native API uses ?key= query param, NOT Authorization header
-      final uri = Uri.parse("$baseUrl/models/${model.replaceAll("models/", "")}:generateContent?key=$apiKey");
+      final cleanBase = baseUrl.replaceAll(RegExp(r'/v1beta/?$'), '').replaceAll(RegExp(r'/+$'), '');
+      final cleanModel = model.replaceAll(RegExp(r'^models/'), '');
+      final uri = Uri.parse("$cleanBase/v1beta/models/$cleanModel:generateContent?key=$apiKey");
+
 
       final response = await _httpClient
           .post(
