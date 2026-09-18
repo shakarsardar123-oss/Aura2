@@ -108,7 +108,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
         _selectedPreset = preset;
 
         // Set model: if it's in the preset list, select it; otherwise use custom
-        if (preset.supportedModels.contains(model)) {
+        if (preset.supportedModels.toSet().toList().contains(model)) {
           _selectedModel = model;
         } else if (model.isNotEmpty) {
           _selectedModel = model;
@@ -318,7 +318,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
 
   List<String> get _currentModelOptions {
     if (_selectedPreset == null) return [];
-    final models = _selectedPreset!.supportedModels.toList();
+    final models = _selectedPreset!.supportedModels.toSet().toList();
     if (_selectedPreset!.allowsCustomModel) {
       models.add('custom');
     }
@@ -423,7 +423,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
         GlassTextField(
           controller: _baseUrlController,
           hint: _selectedProviderType == ConnectionType.gemini
-              ? 'https://generativelanguage.googleapis.com/v1beta'
+              ? ''
               : 'https://api.openai.com/v1',
           onChanged: (_) => _clearSaveStatus(),
         ),
