@@ -29,9 +29,54 @@ import 'package:aura_assistant/features/security/domain/models/security_failure.
 /// NOT supported, even for development. Use an HTTPS proxy or
 /// a local TLS-terminating reverse proxy if you need to test
 /// against a local endpoint.
-/// - Add localhost HTTP bypass
 class EndpointValidator {
   EndpointValidator._();
+
+  /// Strips common copy-paste artifacts from a pasted URL:
+  /// - Markdown link syntax: `[https://x.com](https://x.com)` -> `https://x.com`
+  /// - Surrounding brackets/parens/angle brackets: `[https://x.com]` -> `https://x.com`
+  /// - Surrounding straight/curly quotes
+  /// - Trailing punctuation accidentally copied along with the URL
+  ///
+  /// This is a defensive pre-processing step so that pasted text from
+  /// chat apps or documents doesn't get rejected as an "invalid URL"
+  /// when the actual URL inside it is perfectly valid.
+  static String _sanitize(String raw) {
+    var s = raw.trim();
+
+    // Markdown link: [label](url) or [url](url) -> extract the url in parens.
+    final markdownLink = RegExp(r'^\[([^\]]*)\]\(([^)]+)\)$');
+    final mdMatch = markdownLink.firstMatch(s);
+    if (mdMatch != null) {
+      s = mdMatch.group(2)!.trim();
+    }
+
+    // Strip a single layer of wrapping brackets/parens/angle brackets/quotes.
+    const wrappers = [
+      ['[', ']'],
+      ['(', ')'],
+      ['<', '>'],
+      ['"', '"'],
+      ["'", "'"],
+    ];
+    for (final pair in wrappers) {
+      if (s.length >= 2 && s.startsWith(pair[0]) && s.endsWith(pair[1])) {
+        s = s.substring(1, s.length - 1).trim();
+      }
+    }
+
+    // If, after unwrapping, there's still a dangling markdown remnant like
+    // "https://x.com](https://x.com" (mismatched braces), fall back to
+    // extracting the first well-formed https:// token found in the string.
+    if (s.contains('[') || s.contains(']') || s.contains('(') || s.contains(')')) {
+      final urlMatch = RegExp(r'https?://[^\s\[\]()<>"' r"']+").firstMatch(s);
+      if (urlMatch != null) {
+        s = urlMatch.group(0)!;
+      }
+    }
+
+    return s.trim();
+  }
 
   /// Validates [url] as an acceptable AI endpoint base URL.
   ///
@@ -39,7 +84,7 @@ class EndpointValidator {
   /// or [Result.failure] with a [SecurityFailure] explaining the problem.
   static Result<String, SecurityFailure> validate(String url) {
     // ─── Empty / whitespace ──────────────────────────────────
-    final trimmed = url.trim();
+    final trimmed = _sanitize(url);
     if (trimmed.isEmpty) {
       return SecurityFailure.providerPrivacyViolation(
         action: 'setBaseUrl',
