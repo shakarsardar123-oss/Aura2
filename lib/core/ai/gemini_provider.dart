@@ -1,14 +1,14 @@
 /// gemini_provider.dart
-/// AURA Assistant – P1 Fix: Native gemini AI Provider
+/// AURA Assistant – P1 Fix: Native Gemini AI Provider
 ///
-/// Implements AIProvider using Google gemini's native REST API
+/// Implements AIProvider using Google Gemini's native REST API
 /// (POST /v1beta/models/{model}:generateContent?key={apikey})
 /// instead of the broken OpenAI-compatible shim.
 ///
-/// CRITICAL FIXES vs the old OpenAIProvider-for-gemini approach:
-/// 1. Uses gemini-native auth: ?key= query parameter, NOT Authorization: Bearer
-/// 2. Uses gemini-native request format: contents[] with parts[]
-/// 3. Uses gemini-native response format: candidates[0].content.parts[0].text
+/// CRITICAL FIXES vs the old OpenAIProvider-for-Gemini approach:
+/// 1. Uses Gemini-native auth: ?key= query parameter, NOT Authorization: Bearer
+/// 2. Uses Gemini-native request format: contents[] with parts[]
+/// 3. Uses Gemini-native response format: candidates[0].content.parts[0].text
 /// 4. Robust error handling: empty body, non-JSON, HTTP errors, rate limits
 /// 5. Never throws FormatException from jsonDecode on empty bodies
 /// 6. Reports providerId as 'gemini' (not 'openai')
@@ -29,22 +29,22 @@ import '../../core/ai/provider_exception.dart';
 import '../../core/ai/endpoint_validator.dart';
 import '../errors/result.dart';
 
-/// Secure storage key for the gemini API key.
+/// Secure storage key for the Gemini API key.
 const _geminiApiKeyStorageKey = 'aura_gemini_api_key';
 
-/// Default gemini base URL (native API, not OpenAI-compatible).
-const _defaultgeminiBaseUrl = '';
+/// Default Gemini base URL (native API, not OpenAI-compatible).
+const _defaultGeminiBaseUrl = 'https://generativelanguage.googleapis.com/v1beta';
 
-/// Default gemini model for chat.
-const kDefaultgeminiChatModel = 'gemini-1.5-flash';
+/// Default Gemini model for chat.
+const kDefaultGeminiChatModel = 'gemini-1.5-flash';
 
-/// Native gemini REST API provider implementation.
+/// Native Gemini REST API provider implementation.
 ///
-/// Makes actual HTTP requests to Google's gemini API using the
+/// Makes actual HTTP requests to Google's Gemini API using the
 /// native request/response format. API key is stored securely
-/// in FlutterSecureStorage with a gemini-specific key.
-class geminiProvider implements AIProvider {
-  geminiProvider({
+/// in FlutterSecureStorage with a Gemini-specific key.
+class GeminiProvider implements AIProvider {
+  GeminiProvider({
     required this.secureStorage,
     this.connectionStorage,
     http.Client? httpClient,
@@ -53,7 +53,7 @@ class geminiProvider implements AIProvider {
   final FlutterSecureStorage secureStorage;
 
   /// Optional [AIConnectionStorage] for reading the user-configured model.
-  /// When null, falls back to [kDefaultgeminiChatModel].
+  /// When null, falls back to [kDefaultGeminiChatModel].
   final AIConnectionStorage? connectionStorage;
 
   final http.Client _httpClient;
@@ -62,7 +62,7 @@ class geminiProvider implements AIProvider {
   String get id => 'gemini';
 
   @override
-  String get displayName => 'Google gemini';
+  String get displayName => 'Google Gemini';
 
   @override
   bool supportsModel(String modelId) => supportedModels.contains(modelId);
@@ -70,26 +70,26 @@ class geminiProvider implements AIProvider {
   @override
   List<String> get supportedModels => const ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
 
-  /// Retrieves the stored gemini API key from secure storage.
+  /// Retrieves the stored Gemini API key from secure storage.
   Future<String?> getApiKey() =>
       secureStorage.read(key: _geminiApiKeyStorageKey);
 
-  /// Stores the gemini API key in secure storage.
+  /// Stores the Gemini API key in secure storage.
   Future<void> setApiKey(String key) =>
       secureStorage.write(key: _geminiApiKeyStorageKey, value: key);
 
-  /// Deletes the stored gemini API key.
+  /// Deletes the stored Gemini API key.
   Future<void> deleteApiKey() =>
       secureStorage.delete(key: _geminiApiKeyStorageKey);
 
   /// Retrieves the stored base URL from secure storage.
-  /// Returns [_defaultgeminiBaseUrl] if nothing is stored.
+  /// Returns [_defaultGeminiBaseUrl] if nothing is stored.
   Future<String> getBaseUrl() async {
     final url = await secureStorage.read(key: 'aura_gemini_base_url');
-    return url ?? _defaultgeminiBaseUrl;
+    return url ?? _defaultGeminiBaseUrl;
   }
 
-  /// Stores a custom gemini base URL in secure storage.
+  /// Stores a custom Gemini base URL in secure storage.
   Future<void> setBaseUrl(String url) async {
     final result = EndpointValidator.validate(url);
     result.when(
@@ -106,7 +106,7 @@ class geminiProvider implements AIProvider {
     );
   }
 
-  /// Converts AIMessage list to gemini contents format.
+  /// Converts AIMessage list to Gemini contents format.
   List<Map<String, dynamic>> _buildContents(
     AIRequest request,
   ) {
@@ -116,7 +116,7 @@ class geminiProvider implements AIProvider {
     if (request.messages != null) {
       for (final msg in request.messages!) {
         final role = msg.role == AIMessageRole.system
-            ? 'user' // gemini doesn't have system role; inject via systemInstruction
+            ? 'user' // Gemini doesn't have system role; inject via systemInstruction
             : msg.role == AIMessageRole.assistant
                 ? 'model'
                 : 'user';
@@ -166,7 +166,7 @@ class geminiProvider implements AIProvider {
     };
   }
 
-  /// Maps common lowercase/Dart-style type names to gemini's required
+  /// Maps common lowercase/Dart-style type names to Gemini's required
   /// UPPERCASE JSON Schema type enum values.
   static const Map<String, String> _geminiTypeMap = {
     'string': 'STRING',
@@ -187,7 +187,7 @@ class geminiProvider implements AIProvider {
   };
 
   /// Recursively walks a JSON Schema map and converts every 'type' value
-  /// to the UPPERCASE format required by the gemini API
+  /// to the UPPERCASE format required by the Gemini API
   /// (STRING, INTEGER, NUMBER, BOOLEAN, ARRAY, OBJECT), including nested
   /// 'properties' and 'items' schemas.
   dynamic _normalizeSchemaTypes(dynamic node) {
@@ -219,7 +219,7 @@ class geminiProvider implements AIProvider {
     return node;
   }
 
-  /// Build tool declarations in gemini functionDeclarations format.
+  /// Build tool declarations in Gemini functionDeclarations format.
   List<Map<String, dynamic>>? _buildToolDeclarations(
     List<Map<String, dynamic>>? toolDefinitions,
   ) {
@@ -250,7 +250,7 @@ class geminiProvider implements AIProvider {
     if (apiKey == null || apiKey.isEmpty) {
       throw AIProviderException(
         message:
-            'gemini API key not configured. Please set it in Settings.',
+            'Gemini API key not configured. Please set it in Settings.',
         statusCode: 401,
         errorCode: 'NO_API_KEY',
         providerId: id,
@@ -264,13 +264,13 @@ class geminiProvider implements AIProvider {
     // otherwise fall back to the agent config modelId, then default.
     final model = connectionStorage?.getModel() ??
         request.agentConfig.modelId ??
-        kDefaultgeminiChatModel;
+        kDefaultGeminiChatModel;
 
     final temperature =
         request.temperature ?? request.agentConfig.temperature;
     final maxTokens = request.maxTokens ?? request.agentConfig.maxTokens;
 
-    // Build the gemini-native request body
+    // Build the Gemini-native request body
     final body = <String, dynamic>{
       'contents': _buildContents(request),
       'generationConfig': {
@@ -294,11 +294,8 @@ class geminiProvider implements AIProvider {
     final stopwatch = Stopwatch()..start();
 
     try {
-      // gemini native API uses ?key= query param, NOT Authorization header
-      final cleanBase = baseUrl.replaceAll(RegExp(r'/v1beta/?$'), '').replaceAll(RegExp(r'/+$'), '');
-      final cleanModel = model.replaceAll('models/', '').trim();
-      final uri = Uri.parse("$cleanBase/v1beta/models/$cleanModel:generateContent?key=$apiKey");
-
+      // Gemini native API uses ?key= query param, NOT Authorization header
+      final uri = Uri.parse("$cleanBase/models/$model:generateContent?key=$apiKey");
 
       final response = await _httpClient
           .post(
@@ -322,19 +319,19 @@ class geminiProvider implements AIProvider {
             final errorBody = jsonDecode(response.body) as Map<String, dynamic>;
             final error = errorBody['error'] as Map<String, dynamic>?;
             errorMessage = error?['message'] as String? ??
-                'gemini API request failed with status ${response.statusCode}';
+                'Gemini API request failed with status ${response.statusCode}';
             errorCode = error?['status'] as String?;
           } else {
             errorMessage =
-                'gemini API request failed with status ${response.statusCode} (empty response body)';
+                'Gemini API request failed with status ${response.statusCode} (empty response body)';
           }
         } on FormatException {
           // Body exists but is not valid JSON
           errorMessage =
-              'gemini API returned status ${response.statusCode} with non-JSON body';
+              'Gemini API returned status ${response.statusCode} with non-JSON body';
         } catch (e) {
           errorMessage =
-              'gemini API request failed with status ${response.statusCode}';
+              'Gemini API request failed with status ${response.statusCode}';
         }
 
         throw AIProviderException(
@@ -350,7 +347,7 @@ class geminiProvider implements AIProvider {
       try {
         if (response.body.isEmpty) {
           throw AIProviderException(
-            message: 'gemini API returned 200 but with empty response body',
+            message: 'Gemini API returned 200 but with empty response body',
             statusCode: 200,
             errorCode: 'EMPTY_RESPONSE',
             providerId: id,
@@ -360,7 +357,7 @@ class geminiProvider implements AIProvider {
       } on FormatException {
         throw AIProviderException(
           message:
-              'gemini API returned 200 but response body is not valid JSON',
+              'Gemini API returned 200 but response body is not valid JSON',
           statusCode: 200,
           errorCode: 'INVALID_JSON',
           providerId: id,
@@ -378,14 +375,14 @@ class geminiProvider implements AIProvider {
               promptFeedback['blockReason'] as String?;
           throw AIProviderException(
             message:
-                'gemini response blocked: ${blockReason ?? "unknown reason"}',
+                'Gemini response blocked: ${blockReason ?? "unknown reason"}',
             statusCode: 200,
             errorCode: 'RESPONSE_BLOCKED',
             providerId: id,
           );
         }
         throw AIProviderException(
-          message: 'gemini API returned no candidates in response',
+          message: 'Gemini API returned no candidates in response',
           statusCode: 200,
           errorCode: 'NO_CANDIDATES',
           providerId: id,
@@ -406,7 +403,7 @@ class geminiProvider implements AIProvider {
           if (partMap.containsKey('text')) {
             text += partMap['text'] as String? ?? '';
           }
-          // Handle function calls from gemini
+          // Handle function calls from Gemini
           if (partMap.containsKey('functionCall')) {
             final fc = partMap['functionCall'] as Map<String, dynamic>;
             toolCalls ??= [];
@@ -463,7 +460,7 @@ class geminiProvider implements AIProvider {
     } on FormatException catch (e) {
       // This should be rare with our guards, but just in case
       throw AIProviderException(
-        message: 'Failed to parse gemini response: ${e.message}',
+        message: 'Failed to parse Gemini response: ${e.message}',
         providerId: id,
         errorCode: 'PARSE_ERROR',
         originalError: e,
@@ -480,7 +477,7 @@ class geminiProvider implements AIProvider {
   @override
   Stream<AIResponse> streamComplete(AIRequest request) async* {
     // For now, streaming yields the complete response as a single chunk.
-    // Full SSE streaming via gemini's streamGenerateContent can be added later.
+    // Full SSE streaming via Gemini's streamGenerateContent can be added later.
     final response = await complete(request);
     yield response;
   }
