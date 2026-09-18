@@ -53,7 +53,7 @@ class _ApiKeySettingsSectionState extends ConsumerState<ApiKeySettingsSection> {
   final _apiKeyController = TextEditingController();
   final _baseUrlController = TextEditingController();
   final _customModelController = TextEditingController();
-  String _selectedModel = kDefaultgeminiChatModel;
+  String _selectedModel = kDefaultGeminiChatModel;
   ConnectionType _selectedProviderType = ConnectionType.gemini;
   ProviderPreset? _selectedPreset;
   bool _obscureApiKey = true;
