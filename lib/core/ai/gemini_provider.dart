@@ -295,7 +295,9 @@ class GeminiProvider implements AIProvider {
 
     try {
       // Gemini native API uses ?key= query param, NOT Authorization header
-      final uri = Uri.parse("$baseUrl/models/$model:generateContent?key=$apiKey");
+      final cleanBase = baseUrl.trim().toLowerCase().replaceAll(RegExp(r'/v1beta/?$'), '').replaceAll(RegExp(r'/+$'), '');
+      final cleanModel = model.trim().toLowerCase().replaceAll(RegExp(r'^models/'), '').replaceAll('models/', '');
+      final uri = Uri.parse("$cleanBase/v1beta/models/$cleanModel:generateContent?key=$apiKey");
 
       final response = await _httpClient
           .post(
