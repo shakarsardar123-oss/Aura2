@@ -126,7 +126,7 @@
   "deviceToolSuccess": "Success",
   "aiConnectionTitle": "AI Connection",
   "aiModel": "Model",
-  "aiModelHint": "e.g. gemini-3.6-flash",
+  "aiModelHint": "e.g. gemini-1.5-flash",
   "aiBaseUrl": "API base URL",
   "aiApiKey": "API key",
   "aiNoKeyStored": "No API key stored",

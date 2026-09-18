@@ -544,7 +544,7 @@ class LiveModeOrchestrator {
       description: 'یاریدەدەری تایبەتی تۆ',
       systemPrompt:
           'من ئەورای تایبەتی تۆم. وەڵامی کوردی سۆرانی بدەرەوە.',
-      modelId: 'gemini-3.6-flash',
+      modelId: 'gemini-1.5-flash',
       temperature: 0.7,
       maxTokens: 2048,
       isDefault: true,

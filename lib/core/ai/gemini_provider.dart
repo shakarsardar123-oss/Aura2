@@ -36,7 +36,7 @@ const _geminiApiKeyStorageKey = 'aura_gemini_api_key';
 const _defaultGeminiBaseUrl = 'https://generativelanguage.googleapis.com/v1beta';
 
 /// Default Gemini model for chat.
-const kDefaultGeminiChatModel = 'gemini-3.6-flash';
+const kDefaultGeminiChatModel = 'gemini-1.5-flash';
 
 /// Native Gemini REST API provider implementation.
 ///

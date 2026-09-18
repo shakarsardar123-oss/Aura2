@@ -2,7 +2,7 @@
 /// AURA Assistant – R7-B: Unified AI Connection Config Model
 ///
 /// UPDATED: Gemini is now the default provider.
-/// - Default model: gemini-3.6-flash
+/// - Default model: gemini-1.5-flash
 /// - Default base URL: Gemini native API
 /// - Default connection type: ConnectionType.gemini
 ///
@@ -17,10 +17,10 @@ library;
 import 'connection_type.dart';
 
 /// Default model for chat completions — Gemini primary.
-const kDefaultChatModel = 'gemini-3.6-flash';
+const kDefaultChatModel = 'gemini-1.5-flash';
 
 /// Default model for vision (Gemini supports image input natively).
-const kDefaultVisionModel = 'gemini-3.6-flash';
+const kDefaultVisionModel = 'gemini-1.5-flash';
 
 /// Default Gemini native base URL.
 const kDefaultBaseUrl = 'https://generativelanguage.googleapis.com/v1beta';

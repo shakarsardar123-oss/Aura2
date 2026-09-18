@@ -814,7 +814,7 @@ abstract class S {
   /// No description provided for @aiModelHint.
   ///
   /// In ku, this message translates to:
-  /// **'بۆ نموونە gemini-3.6-flash'**
+  /// **'بۆ نموونە gemini-1.5-flash'**
   String get aiModelHint;
 
   /// No description provided for @aiBaseUrl.

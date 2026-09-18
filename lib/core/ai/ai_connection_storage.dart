@@ -3,7 +3,7 @@
 ///
 /// UPDATED: Gemini is now the default/primary provider.
 /// - Default connection type: ConnectionType.gemini
-/// - Default model: gemini-3.6-flash
+/// - Default model: gemini-1.5-flash
 /// - Default base URL: Gemini native API
 /// - Gemini API key: FlutterSecureStorage (key: 'aura_gemini_api_key')
 /// - OpenAI API key: FlutterSecureStorage (key: 'aura_openai_api_key') — preserved

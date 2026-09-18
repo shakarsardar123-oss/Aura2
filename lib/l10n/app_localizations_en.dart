@@ -370,7 +370,7 @@ class SEn extends S {
   String get aiModel => 'Model';
 
   @override
-  String get aiModelHint => 'e.g. gemini-3.6-flash';
+  String get aiModelHint => 'e.g. gemini-1.5-flash';
 
   @override
   String get aiBaseUrl => 'API base URL';

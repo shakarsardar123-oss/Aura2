@@ -126,7 +126,7 @@
   "deviceToolSuccess": "سەرکەوتوو",
   "aiConnectionTitle": "پەیوەندی AI",
   "aiModel": "مۆدێل",
-  "aiModelHint": "بۆ نموونە gemini-3.6-flash",
+  "aiModelHint": "بۆ نموونە gemini-1.5-flash",
   "aiBaseUrl": "URLی بنەڕەتی API",
   "aiApiKey": "کلیلی API",
   "aiNoKeyStored": "هیچ کلیلی API یەک پاشەکەوت نەکراوە",

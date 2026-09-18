@@ -5,7 +5,7 @@
 /// - Added [geminiProviderProvider] for native Gemini REST API.
 /// - [selectedAIProviderProvider] now routes Gemini type to GeminiProvider.
 /// - OpenAI Provider is kept for openaiCompatible and customOpenAI types.
-/// - Default AgentConfig modelId changed to gemini-3.6-flash.
+/// - Default AgentConfig modelId changed to gemini-1.5-flash.
 library;
 
 import 'package:flutter/material.dart';
@@ -262,7 +262,7 @@ final agentConfigEntityProvider = FutureProvider<AgentConfig>((ref) async {
     description: 'یاریدەدەری تایبەتی تۆ',
     systemPrompt:
         'من ئەورای تایبەتی تۆم. وەلامی کوردی سۆرانی بدەرەوە.',
-    modelId: 'gemini-3.6-flash',
+    modelId: 'gemini-1.5-flash',
     temperature: 0.7,
     maxTokens: 2048,
     isDefault: true,
@@ -354,7 +354,7 @@ final agentConfigProvider = StateProvider<AgentConfig>((ref) {
     description: 'یاریدەدەری تایبەتی تۆ',
     systemPrompt:
         'من ئەورای تایبەتی تۆم. وەلامی کوردی سۆرانی بدەرەوە.',
-    modelId: 'gemini-3.6-flash',
+    modelId: 'gemini-1.5-flash',
     temperature: 0.7,
     maxTokens: 2048,
     isDefault: true,

@@ -370,7 +370,7 @@ class SKu extends S {
   String get aiModel => 'مۆدێل';
 
   @override
-  String get aiModelHint => 'بۆ نموونە gemini-3.6-flash';
+  String get aiModelHint => 'بۆ نموونە gemini-1.5-flash';
 
   @override
   String get aiBaseUrl => 'URLی بنەڕەتی API';
