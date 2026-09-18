@@ -20,7 +20,7 @@ import '../../core/ai/ai_connection_config.dart'
     show kDefaultBaseUrl, kDefaultChatModel;
 import '../../core/ai/connection_type.dart';
 import '../../core/ai/provider_registry.dart';
-import '../../core/ai/gemini_provider.dart' show geminiProvider, kDefaultgeminiChatModel;
+import '../../core/ai/gemini_provider.dart' show GeminiProvider, kDefaultGeminiChatModel;
 import '../../core/ai/ai_connection_storage.dart' show AIConnectionStorage;
 import '../../core/ai/endpoint_validator.dart' show EndpointValidator;
 import '../../services/ai/ai_provider.dart' show AIProvider;
