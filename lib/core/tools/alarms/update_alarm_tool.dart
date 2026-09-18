@@ -59,6 +59,7 @@ class UpdateAlarmTool extends Tool {
           ToolArgumentDef(
             name: 'repeat_days',
             type: 'list',
+            itemType: 'int',
             description: 'New repeat days (1=Mon, 7=Sun). Empty for one-shot.',
             isRequired: false,
           ),

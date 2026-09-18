@@ -14,6 +14,7 @@ class ToolArgumentDef {
   this.keyboardType,
     this.minValue,
     this.maxValue,
+    this.itemType,
   });
 
   /// Parameter name (e.g. 'query').
@@ -55,6 +56,10 @@ class ToolArgumentDef {
   /// Maximum numeric value (for int/double types).
   final num? maxValue;
 
+  /// Element type for 'list'/'array' arguments (e.g. 'int', 'string').
+  /// Gemini requires an `items` schema for ARRAY-typed parameters.
+  final String? itemType;
+
   /// Converts to a JSON-serializable map for LLM tool schema.
   Map<String, dynamic> toSchemaMap() {
     final map = <String, dynamic>{
@@ -64,6 +69,9 @@ class ToolArgumentDef {
     if (enumValues != null) map['enum'] = enumValues;
     if (defaultValue != null) map['default'] = defaultValue;
     if (example != null) map['example'] = example;
+    if (type == 'list' || type == 'array') {
+      map['items'] = {'type': itemType ?? 'string'};
+    }
     return map;
   }
 }
