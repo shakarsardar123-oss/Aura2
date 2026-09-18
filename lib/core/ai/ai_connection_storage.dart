@@ -112,7 +112,7 @@ class AIConnectionStorage {
   bool setModel(String model) {
     final trimmed = model.trim();
     if (trimmed.isEmpty) return false;
-    sharedPreferences.setString(kModelStorageKey, trimmed);
+    sharedPreferences.setString(kModelStorageKey, trimmed.trim());
     return true;
   }
 
