@@ -172,6 +172,59 @@ class GeminiProvider implements AIProvider {
     };
   }
 
+  /// Maps common lowercase/Dart-style type names to Gemini's required
+  /// UPPERCASE JSON Schema type enum values.
+  static const Map<String, String> _geminiTypeMap = {
+    'string': 'STRING',
+    'str': 'STRING',
+    'int': 'INTEGER',
+    'integer': 'INTEGER',
+    'double': 'NUMBER',
+    'float': 'NUMBER',
+    'number': 'NUMBER',
+    'num': 'NUMBER',
+    'bool': 'BOOLEAN',
+    'boolean': 'BOOLEAN',
+    'list': 'ARRAY',
+    'array': 'ARRAY',
+    'map': 'OBJECT',
+    'object': 'OBJECT',
+    'dict': 'OBJECT',
+  };
+
+  /// Recursively walks a JSON Schema map and converts every 'type' value
+  /// to the UPPERCASE format required by the Gemini API
+  /// (STRING, INTEGER, NUMBER, BOOLEAN, ARRAY, OBJECT), including nested
+  /// 'properties' and 'items' schemas.
+  dynamic _normalizeSchemaTypes(dynamic node) {
+    if (node is Map) {
+      final result = <String, dynamic>{};
+      node.forEach((key, value) {
+        if (key == 'type' && value is String) {
+          final normalized = _geminiTypeMap[value.toLowerCase()] ??
+              value.toUpperCase();
+          result[key] = normalized;
+        } else if (key == 'properties' && value is Map) {
+          final props = <String, dynamic>{};
+          value.forEach((propKey, propValue) {
+            props[propKey] = _normalizeSchemaTypes(propValue);
+          });
+          result[key] = props;
+        } else if (key == 'items') {
+          result[key] = _normalizeSchemaTypes(value);
+        } else {
+          result[key] = value is Map || value is List
+              ? _normalizeSchemaTypes(value)
+              : value;
+        }
+      });
+      return result;
+    } else if (node is List) {
+      return node.map((e) => _normalizeSchemaTypes(e)).toList();
+    }
+    return node;
+  }
+
   /// Build tool declarations in Gemini functionDeclarations format.
   List<Map<String, dynamic>>? _buildToolDeclarations(
     List<Map<String, dynamic>>? toolDefinitions,
@@ -180,12 +233,17 @@ class GeminiProvider implements AIProvider {
 
     return toolDefinitions.map((tool) {
       final function = tool['function'] as Map<String, dynamic>? ?? tool;
+      final rawParameters =
+          function['parameters'] ?? tool['parameters'] ?? {};
+      final normalizedParameters =
+          _normalizeSchemaTypes(rawParameters) as Map<String, dynamic>;
       return {
         'functionDeclarations': [
           {
             'name': function['name'] ?? tool['name'] ?? '',
-            'description': function['description'] ?? tool['description'] ?? '',
-            'parameters': function['parameters'] ?? tool['parameters'] ?? {},
+            'description':
+                function['description'] ?? tool['description'] ?? '',
+            'parameters': normalizedParameters,
           },
         ],
       };
